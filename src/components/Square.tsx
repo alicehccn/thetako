@@ -5,10 +5,10 @@ type Props = {
   onClick: () => void;
 };
 const Square: React.FC<Props> = props => {
+  const symbol = String.fromCharCode(parseInt('0xFF0B',16))
   return (
     <button className="square" onClick={props.onClick}>
-      {props.value}
-      &#65291;
+      {props.value || symbol}
     </button>
   );
 };
