@@ -4,10 +4,12 @@ body {
 }
 ol,
 ul {
-  padding-left: 30px;
+  padding-left: 0;
+  list-style: none;
 }
 
 .status {
+  font-size: 24px;
   margin-bottom: 10px;
 }
 .square {
@@ -23,6 +25,7 @@ ul {
   text-align: center;
   width: 34px;
   position: relative;
+  cursor: pointer;
 }
 .square:nth-of-type(19n+1) {
   clear: both;
@@ -37,6 +40,22 @@ ul {
 }
 .game {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: center;
   padding: 30px;
+}
+.game-info {
+  margin-right: 50px;
+}
+.moves {
+  overflow: scroll;
+  max-height: 300px;
+  cursor: pointer;
+  line-height: 1.5;
+  padding: 10px 0;
+  width: 150px;
+  font-size: 15px;
+  * {
+    color: #0598bc;
+  }
 }

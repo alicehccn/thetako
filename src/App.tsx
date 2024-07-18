@@ -46,15 +46,15 @@ function App() {
     const desc = move ? "Go to move #" + move : "Go to game start";
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{desc}</button>
+        <a onClick={() => jumpTo(move)}>{desc}</a>
       </li>
     );
   });
   return (
     <div className="game">
        <div className="game-info">
-        <div>{status}</div>
-        <ol>{moves}</ol>
+        <div className="status">{status}</div>
+        <ol className="moves">{moves}</ol>
       </div>
       <Board
         squares={squares}
