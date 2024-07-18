@@ -3,7 +3,7 @@ import Board from "./components/Board";
 import "./App.css";
 
 function App() {
-  const [history, setHistory] = useState([{ squares: new Array(81) }]);
+  const [history, setHistory] = useState([{ squares: new Array(19*19) }]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXIsNext] = useState(true);
   const [finished, setFinished] = useState(false);

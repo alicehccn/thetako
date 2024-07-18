@@ -1,1 +1,1 @@
-The Game of Go on React and Typescript
+A game of Go in React and Typescript
