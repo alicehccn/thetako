@@ -11,18 +11,18 @@ ul {
   margin-bottom: 10px;
 }
 .square {
-  background: #8b6a09;
-  border: 1px solid #aaa;
+  background: #a57d04;
+  color: #a6a08f;
+  border: none;
   float: left;
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
   height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
   padding: 0;
   text-align: center;
   width: 34px;
+  position: relative;
 }
 .square:nth-of-type(9n+1) {
   clear: both;
