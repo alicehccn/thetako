@@ -1,4 +1,4 @@
-Game of Go on React and Typescript
+The Game of Go on React and Typescript
 
 ## Available Scripts
 
