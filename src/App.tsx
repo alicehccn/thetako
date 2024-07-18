@@ -52,15 +52,15 @@ function App() {
   });
   return (
     <div className="game">
+       <div className="game-info">
+        <div>{status}</div>
+        <ol>{moves}</ol>
+      </div>
       <Board
         squares={squares}
         finished={finished}
         onClick={i => handleClick(i)}
       />
-      <div className="game-info">
-        <div>{status}</div>
-        <ol>{moves}</ol>
-      </div>
     </div>
   );
 }

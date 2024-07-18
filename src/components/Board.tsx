@@ -7,7 +7,7 @@ type Props = {
   onClick: (i: number) => void;
 };
 
-const squares = Array.from(Array(81).keys());
+const squares = Array.from(Array(19*19).keys());
 const Board: React.FC<Props> = props => {
   const renderSquare = (i: number) => (
     <Square value={props.squares[i]} onClick={() => props.onClick(i)} />

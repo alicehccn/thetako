@@ -15,7 +15,8 @@ ul {
   color: #a6a08f;
   border: none;
   float: left;
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: 100;
   line-height: 34px;
   height: 34px;
   padding: 0;
@@ -23,7 +24,7 @@ ul {
   width: 34px;
   position: relative;
 }
-.square:nth-of-type(9n+1) {
+.square:nth-of-type(19n+1) {
   clear: both;
   content: "";
   display: table;
@@ -36,8 +37,6 @@ ul {
 }
 .game {
   display: flex;
-  flex-direction: row;
-}
-.game-info {
-  margin-left: 20px;
+  justify-content: space-evenly;
+  padding: 30px;
 }
