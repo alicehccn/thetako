@@ -14,7 +14,7 @@ const Board: React.FC<Props> = props => {
   );
 
   return (
-    <div>
+    <div className="board">
       {squares.map((row, i) => renderSquare(i))}
     </div>
   );

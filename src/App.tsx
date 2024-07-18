@@ -26,7 +26,7 @@ function App() {
       setFinished(true);
       return;
     }
-    squares[i] = xIsNext ? "X" : "O";
+    squares[i] = xIsNext ? '⚫︎'  : '⚪';
     setHistory([..._history, { squares }]);
     setStepNumber(_history.length);
     setXIsNext(!xIsNext);
@@ -41,7 +41,7 @@ function App() {
   const winner = calculateWinner(squares);
   const status = winner
     ? "Winner: " + winner
-    : "Next player: " + (xIsNext ? "X" : "O");
+    : "Next player: " + (xIsNext ? "⚫︎" : "⚪");
   const moves = _history.map((step, move) => {
     const desc = move ? "Go to move #" + move : "Go to game start";
     return (
