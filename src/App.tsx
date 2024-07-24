@@ -1,12 +1,12 @@
 import "./App.css";
-import Album from "./components/Album";
+import Albums from "./components/Albums";
 import { ALBUM_URL } from "./constant";
 
 function App() {
   
   return (
     <div className="app">
-      <Album url={ALBUM_URL}/>
+      <Albums url={ALBUM_URL}/>
     </div>
   );
 }

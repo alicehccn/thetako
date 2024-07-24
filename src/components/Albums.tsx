@@ -1,41 +1,25 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../App.css";
+import { Album } from "../interfaces";
 
 type Props = {
   url: string
 }
 
-interface Album {
-  id: string,
-  owner: string, 
-  username: string,
-  primary: string,
-  secret: string,
-  server: string,
-  farm: number,
-  count_views: number,
-  count_comments: number,
-  count_photos: number,
-  count_videos: number, 
-  title: {
-    _content: string
-  },
-  description: {
-    _content: string
-  }
-}
 
-
-const Album: React.FC<Props> = props => {
+const Albums: React.FC<Props> = props => {
   const [albums, setAlbums] = useState<Album[]>([])
+
   useEffect(() => {
     fetch(props.url).then(response => response.json())
     .then(json => setAlbums(json?.photosets?.photoset))
     .catch(error => console.error(error));
   }, [])
+
   const handleClick = (id: string) => {
     console.log(id)
   }
+
   if (albums.length === 0) return null;
 
   return (
@@ -53,4 +37,4 @@ const Album: React.FC<Props> = props => {
   );
 }
 
-export default Album;
+export default Albums;
