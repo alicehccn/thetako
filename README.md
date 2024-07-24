@@ -1,1 +1,0 @@
-A game of Go in React and Typescript

@@ -59,3 +59,8 @@ ul {
     color: #0598bc;
   }
 }
+
+.matrix {
+  font-size: 32px;
+  line-height: 1;
+}
