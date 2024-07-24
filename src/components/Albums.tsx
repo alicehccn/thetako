@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
 import "../App.css";
 import { Album } from "../interfaces";
+import { ALBUM_URL, getAlbumCover } from "../constant";
 
-type Props = {
-  url: string
-}
-
-
-const Albums: React.FC<Props> = props => {
+const Albums: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([])
 
   useEffect(() => {
-    fetch(props.url).then(response => response.json())
+    fetch(ALBUM_URL).then(response => response.json())
     .then(json => setAlbums(json?.photosets?.photoset))
     .catch(error => console.error(error));
   }, [])
@@ -26,7 +22,7 @@ const Albums: React.FC<Props> = props => {
     <div className="albums-container">
       {albums.map((album) => (
         <div key={album.id} className="album-container" onClick={() => handleClick(album.id)}>
-          <img alt={album.title._content} src={`https://live.staticflickr.com/${album.server}/${album.primary}_${album.secret}_q.jpg`}/>
+          <img alt={album.title._content} src={getAlbumCover(album)}/>
           <div className="album-text-container">
             <h3>{album.title._content}</h3>
             <p>{album.description._content}</p>
