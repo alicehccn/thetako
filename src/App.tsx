@@ -9,6 +9,8 @@ function App() {
       <ul className="App-menu-list">
         <li className="App-menu-item"><Link to="/">Home</Link></li>
         <li className="App-menu-item"><Link to="/albums">Photography</Link></li>
+        <li className="App-menu-item"><Link to="/music">Music</Link></li>
+        <li className="App-menu-item"><Link to="/events">Events</Link></li>
         </ul>
     </div>
   );

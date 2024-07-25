@@ -193,7 +193,6 @@ ul {
   text-align: center;
   margin-top: 15%;
 
-
   p {
     margin-top: -1em;
     font-size: 1.3em;
@@ -209,4 +208,37 @@ ul {
       width: 30px;
     }
   }
+}
+
+.music-list-container {
+  iframe {
+    width: 100%;
+    height: 73vh;
+    opacity: 0.8;
+  }
+}
+
+.events-container {
+  p {
+    margin-top: -2em;
+    font-size: 1.2em;
+  }
+}
+
+
+.bit-nav-bar-container, .bit-top-track-button {
+  display: none !important;
+}
+
+.bit-widget-container {
+  display: none;
+}
+.bit-widget {
+  width: 70%;
+  max-width: 1000px;
+  margin: auto;
+}
+.bit-play-my-city-button {
+  max-width: 250px;
+  margin: 2.5em auto;
 }
