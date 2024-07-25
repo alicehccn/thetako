@@ -3,14 +3,17 @@ import { getPhotosUrl, getPhotoUrl } from "../constant";
 import { Photo } from "../interfaces";
 import { useEffect, useState } from "react";
 import Lightbox from "./Lightbox";
+import '../App.css';
 
 
 const Photos: React.FC = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
+  const [photo, selectPhoto] = useState<Photo | null>(null);
   const [isModalOpen, setModalOpen] = useState(false);
   const { albumId } = useParams();
 
-  function handleClick() {
+  function handleClick(photo: Photo) {
+    selectPhoto(photo)
     setModalOpen(!isModalOpen);
   }
 
@@ -22,18 +25,23 @@ const Photos: React.FC = () => {
     }
   }, [albumId])
 
+  function closeModal() {
+    selectPhoto(null)
+    setModalOpen(false);
+  }
+
   if (!albumId || photos.length === 0) return null;
 
   return (
     <div className="photos-container">
+      <Lightbox
+        photo={photo}
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+      />
       {photos?.map((photo) => (
-        <div key={photo.id} className="photo-container" onClick={handleClick}>
+        <div key={photo.id} className="photo-container" onClick={() => handleClick(photo)}>
           <img alt={photo.title} src={getPhotoUrl(photo)}/>
-          <Lightbox
-            photo={photo}
-            isModalOpen={isModalOpen}
-            closeModal={() => setModalOpen(false)}
-          />
           <div className="photo-text-container">
             <p>{photo.title}</p>
           </div>
