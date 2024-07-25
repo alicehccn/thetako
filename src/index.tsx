@@ -15,7 +15,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path='/albums' element={<Albums />} />
-        {/* <Route path='/photos' element={<Photos />} /> */}
+        <Route path='/albums/:albumId' element={<Photos />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

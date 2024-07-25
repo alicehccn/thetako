@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react";
 import "../App.css";
 import { Album } from "../interfaces";
-import { ALBUM_URL, getAlbumCover } from "../constant";
+import { ALBUMS_URL, getAlbumCover } from "../constant";
+import { useNavigate } from "react-router-dom";
+
 
 const Albums: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([])
+  let history = useNavigate();
+
+  function handleClick(albumId: string) {
+    history(`/${albumId}`);
+  }
 
   useEffect(() => {
-    fetch(ALBUM_URL).then(response => response.json())
+    fetch(ALBUMS_URL).then(response => response.json())
     .then(json => setAlbums(json?.photosets?.photoset))
     .catch(error => console.error(error));
   }, [])
-
-  const handleClick = (id: string) => {
-    console.log(id)
-  }
-
+  
   if (albums.length === 0) return null;
 
   return (

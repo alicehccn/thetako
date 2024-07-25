@@ -1,34 +1,40 @@
-import { getPhotoUrl } from "../constant";
+import { useNavigate, useParams } from "react-router-dom";
+import { getPhotosUrl, getPhotoUrl } from "../constant";
 import { Photo } from "../interfaces";
+import { useEffect, useState } from "react";
 
-type Props = {
-  photos: Photo[];
-}
 
-const Photos: React.FC<Props> = props => {
-  
 
-  // const handleClick = (photo: Photo) {
-  //   // this.props.getPhoto(photo)
-  //   // this.props.history.push(`${this.props.location.pathname}/${photo.id}`)
-  // }
+const Photos: React.FC = () => {
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const { albumId } = useParams();
+  let history = useNavigate();
 
-  // goBack() {
-  //   this.props.history.goBack()
-  // }
-  const handleClick = (photo: Photo) => {
-    console.log(photo)
+  function handleClick(photoId: string) {
   }
+
+  useEffect(() => {
+    if (albumId) {
+      fetch(getPhotosUrl(albumId as string)).then(response => response.json())
+      .then(json => setPhotos(json?.photoset.photo))
+      .catch(error => console.error(error));
+    }
+  }, [albumId])
+
+  function goBack() {
+    history('/albums')
+  }
+
   
-  if (props.photos.length === 0) return null;
+  if (!albumId || photos.length === 0) return null;
 
     return (
     <div className="photos-container">
-      {/* <div className="photos-back-link-wrapper" onClick={this.goBack.bind(this)}>
+      <div className="photos-back-link-wrapper" onClick={goBack}>
         <p className="text-link">Back to Album</p>
-        </div> */}
-      {props.photos?.map((photo) => (
-        <div key={photo.id} className="photo-container" onClick={() => handleClick(photo)}>
+      </div>
+      {photos?.map((photo) => (
+        <div key={photo.id} className="photo-container" onClick={() => handleClick(photo.id)}>
           <img alt={photo.title} src={getPhotoUrl(photo)}/>
           <div className="photo-text-container">
             <p>{photo.title}</p>
@@ -38,4 +44,4 @@ const Photos: React.FC<Props> = props => {
     </div>
   );
 }
-export default Photos
+export default Photos;
