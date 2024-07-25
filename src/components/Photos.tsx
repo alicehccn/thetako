@@ -1,16 +1,17 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getPhotosUrl, getPhotoUrl } from "../constant";
 import { Photo } from "../interfaces";
 import { useEffect, useState } from "react";
-
+import Lightbox from "./Lightbox";
 
 
 const Photos: React.FC = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
+  const [isModalOpen, setModalOpen] = useState(false);
   const { albumId } = useParams();
-  let history = useNavigate();
 
-  function handleClick(photoId: string) {
+  function handleClick() {
+    setModalOpen(!isModalOpen);
   }
 
   useEffect(() => {
@@ -21,21 +22,18 @@ const Photos: React.FC = () => {
     }
   }, [albumId])
 
-  function goBack() {
-    history('/albums')
-  }
-
-  
   if (!albumId || photos.length === 0) return null;
 
-    return (
+  return (
     <div className="photos-container">
-      <div className="photos-back-link-wrapper" onClick={goBack}>
-        <p className="text-link">Back to Album</p>
-      </div>
       {photos?.map((photo) => (
-        <div key={photo.id} className="photo-container" onClick={() => handleClick(photo.id)}>
+        <div key={photo.id} className="photo-container" onClick={handleClick}>
           <img alt={photo.title} src={getPhotoUrl(photo)}/>
+          <Lightbox
+            photo={photo}
+            isModalOpen={isModalOpen}
+            closeModal={() => setModalOpen(false)}
+          />
           <div className="photo-text-container">
             <p>{photo.title}</p>
           </div>

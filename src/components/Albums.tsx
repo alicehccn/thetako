@@ -10,7 +10,7 @@ const Albums: React.FC = () => {
   let history = useNavigate();
 
   function handleClick(albumId: string) {
-    history(`/${albumId}`);
+    history(`/albums/${albumId}`);
   }
 
   useEffect(() => {
