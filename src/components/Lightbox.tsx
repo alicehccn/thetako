@@ -1,5 +1,6 @@
 import Modal from 'react-modal';
 import { Photo } from "../interfaces";
+import '../App.css'
 
 
 type Props = {

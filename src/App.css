@@ -1,11 +1,109 @@
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
+  background-color: black;
+  color: #fff;
 }
 ol,
 ul {
   padding-left: 0;
   list-style: none;
+}
+
+.photos-container {
+  display: flex;
+  position: relative;
+  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 50px;
+  align-items: flex-start;
+  margin-top: 6em;
+}
+
+.photos-back-link-wrapper{
+  margin-top: -60px;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+
+  .text-link {
+    margin-left: 20px;
+    &:before {
+      content: '<<  ';
+      font-size: 15px
+    }
+  }
+
+  .photo-container {
+    border: 2px solid white;
+    margin: 15px;
+    height: fit-content;
+    padding: 8px;
+    position: relative;
+    cursor: pointer;
+    height: 240px;
+    width: 200px;
+
+    img {
+      width: 200px;
+    }
+
+    .photo-text-container {
+      margin-top: -5px;
+      p {
+        font-size: 12px;
+      }
+    }
+    
+    :hover {
+      img {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.albums-container {
+  display: flex;
+  width: 70%;
+  position: relative;
+  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 50px;
+  align-items: flex-start;
+    cursor: pointer;
+
+  img {
+    width: 200px;
+  }
+
+  .album-text-container {
+    position: absolute;
+    text-align: center;
+    width: 70%;
+    height: 100%;
+    top: 35%;
+    padding: 0px 25px;
+    display: none;
+
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  :hover {
+    img {
+      opacity: 0.4;
+    }
+    .album-text-container {
+      display: block;
+    }
+  }
 }
 
 
@@ -90,14 +188,25 @@ ul {
   }
 }
 
-body.page-photography {
-  .App {
-    background-image: none;
-    position: sticky;
 
-    footer {
-      background: black;
-      opacity: 0.9;
+.home-container {
+  text-align: center;
+  margin-top: 15%;
+
+
+  p {
+    margin-top: -1em;
+    font-size: 1.3em;
+
+  }
+
+  .social-links {
+    margin-top: 2em;
+    a {
+      margin: 0 1em;
+    }
+    img {
+      width: 30px;
     }
   }
 }
