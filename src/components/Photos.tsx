@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getPhotosUrl, getPhotoUrl } from "../constant";
 import { Photo } from "../interfaces";
 import { useEffect, useState } from "react";
@@ -33,7 +33,15 @@ const Photos: React.FC = () => {
   if (!albumId || photos.length === 0) return null;
 
   return (
-    <div className="photos-container">
+    <>
+      <div className="App-header">
+        <div className="App-logo">
+          <Link to="/albums">
+            <img alt="DJLodestone" src="/lodestonerunegod2.png" />
+          </Link>
+        </div>
+      </div>
+      <div className="photos-container">
       <Lightbox
         photo={photo}
         isModalOpen={isModalOpen}
@@ -48,6 +56,8 @@ const Photos: React.FC = () => {
         </div>
       ))}
     </div>
+      </>
+    
   );
 }
 export default Photos;

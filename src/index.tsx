@@ -5,9 +5,7 @@ import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Albums from './components/Albums';
 import Photos from './components/Photos';
-import Home from './components/Home';
 import Music from './components/Music';
-import Events from './components/Events';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,14 +13,14 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path='/albums' element={<Albums />} />
-        <Route path='/albums/:albumId' element={<Photos />} />
-        <Route path='/music' element={<Music />} />
-        <Route path='/events' element={<Events />} />
+      <App >
+        <Routes>
+          <Route path="/" element={<Music />} />
+          <Route path="music" element={<Music />} />
+          <Route path='/albums' element={<Albums />} />
+          <Route path='/albums/:albumId' element={<Photos />} />
         </Routes>
+      </App>
     </BrowserRouter>
   </React.StrictMode>
 );

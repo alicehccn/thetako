@@ -1,8 +1,11 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  margin: 0;
+  font-weight: 100;
+  color: #ccc;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: black;
-  color: #fff;
+  font-family: sans-serif;
 }
 ol,
 ul {
@@ -10,58 +13,84 @@ ul {
   list-style: none;
 }
 
-.photos-container {
-  display: flex;
-  position: relative;
-  margin: auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-bottom: 50px;
-  align-items: flex-start;
-  margin-top: 6em;
+.App {
 }
 
-.photos-back-link-wrapper{
-  margin-top: -60px;
-  position: absolute;
-  left: 0;
-  cursor: pointer;
+.App-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  margin: auto;
+  width: 100%;
+}
 
-  .text-link {
-    margin-left: 20px;
-    &:before {
-      content: '<<  ';
-      font-size: 15px
-    }
+.App-logo {
+  img {
+    width: 300px;
+  }
+}
+
+.App-menu-list {
+  font-size: 18px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.App-menu-item {
+  margin: 0 3em;
+}
+
+footer {
+  color: #ccc;
+  display: flex;
+  position: fixed;
+  font-size: 12px;
+  bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 3;
+  height: 40px;
+
+  div {
+    margin-top: 10px;
   }
 
-  .photo-container {
-    border: 2px solid white;
-    margin: 15px;
-    height: fit-content;
-    padding: 8px;
-    position: relative;
-    cursor: pointer;
-    height: 240px;
-    width: 200px;
+  span {
+    margin: 0 10px;
+  }
+}
 
-    img {
-      width: 200px;
-    }
+a, a:visited, a:hover {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: normal;
+}
 
-    .photo-text-container {
-      margin-top: -5px;
-      p {
-        font-size: 12px;
-      }
-    }
-    
-    :hover {
-      img {
-        opacity: 0.8;
-      }
-    }
+a:focus, a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.home-container {
+  text-align: center;
+  p {
+    font-size: 1.2em;
+
+  }
+  
+}
+.social-links {
+  color: #fff;
+  a {
+    margin: 0 1em;
+  }
+  img {
+    width: 20px;
   }
 }
 
@@ -73,9 +102,18 @@ ul {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 50px;
   align-items: flex-start;
-    cursor: pointer;
+  background-color: black;
+  height: 50vh;
+}
+
+.album-container {
+  border: 3px solid white;
+  margin: 10px;
+  height: fit-content;
+  padding: 8px;
+  position: relative;
+  cursor: pointer;
 
   img {
     width: 200px;
@@ -106,10 +144,64 @@ ul {
   }
 }
 
+.photos-container {
+  display: flex;
+  position: relative;
+  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 50px;
+  height: 50vh;
+  align-items: flex-start;
+}
+
+.photos-back-link-wrapper{
+margin-top: -60px;
+position: absolute;
+left: 0;
+cursor: pointer;
+}
+
+.text-link {
+  margin-left: 20px;
+  &:before {
+    content: '<<  ';
+    font-size: 15px
+  }
+}
+
+.photo-container {
+  border: 2px solid white;
+  margin: 15px;
+  height: fit-content;
+  padding: 8px;
+  position: relative;
+  cursor: pointer;
+  height: 240px;
+  width: 200px;
+
+  img {
+    width: 200px;
+  }
+
+  .photo-text-container {
+    margin-top: -5px;
+    p {
+      font-size: 12px;
+    }
+  }
+  
+  :hover {
+    img {
+      opacity: 0.8;
+    }
+  }
+}
 
 .photo-wrapper {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.9);
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -137,85 +229,14 @@ ul {
     max-height: 90vh;
   }
 }
-.albums-container {
-  display: flex;
-  width: 70%;
-  position: relative;
-  margin: auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-bottom: 50px;
-  align-items: flex-start;
-  background-color: black;
-  margin-top: 2em;
-
-  .album-container {
-    border: 5px solid white;
-    margin: 10px;
-    height: fit-content;
-    padding: 8px;
-    position: relative;
-    cursor: pointer;
-
-    img {
-      width: 200px;
-    }
-
-    .album-text-container {
-      position: absolute;
-      text-align: center;
-      width: 70%;
-      height: 100%;
-      top: 35%;
-      padding: 0px 25px;
-      display: none;
-
-      p {
-        font-size: 14px;
-        line-height: 1.5;
-      }
-    }
-
-    &:hover {
-      img {
-        opacity: 0.4;
-      }
-      .album-text-container {
-        display: block;
-      }
-    }
-  }
-}
-
-
-.home-container {
-  text-align: center;
-  margin-top: 15%;
-
-  p {
-    margin-top: -1em;
-    font-size: 1.3em;
-
-  }
-
-  .social-links {
-    margin-top: 2em;
-    a {
-      margin: 0 1em;
-    }
-    img {
-      width: 30px;
-    }
-  }
-}
 
 .music-list-container {
   iframe {
     width: 100%;
-    height: 73vh;
-    opacity: 0.8;
+    height: 50vh;
+    opacity: 0.7;
   }
+  height: 50vh;
 }
 
 .events-container {
@@ -225,20 +246,22 @@ ul {
   }
 }
 
-
 .bit-nav-bar-container, .bit-top-track-button {
   display: none !important;
 }
 
 .bit-widget-container {
+  display: block;
+  margin: 0;
+  @media screen and (max-width: 760px){
+    display: none;
+  }
+
+}
+.bit-no-dates-title {
   display: none;
 }
-.bit-widget {
-  width: 70%;
-  max-width: 1000px;
-  margin: auto;
-}
-.bit-play-my-city-button {
-  max-width: 250px;
-  margin: 2.5em auto;
+
+.bit-widget .bit-no-dates-container {
+  padding: 50px 0 !important;
 }
