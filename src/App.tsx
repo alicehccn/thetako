@@ -1,6 +1,7 @@
 import "./App.css";
-import Home from "./components/Home";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Content from "./components/Content";
 
 type Props = {
 }
@@ -8,7 +9,8 @@ type Props = {
 const App: React.FC<Props> = () => {
   return (
     <div className="App">
-      <Home />
+      <Header />
+      <Content />
       <Footer />
     </div>
   );

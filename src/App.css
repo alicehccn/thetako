@@ -1,11 +1,9 @@
 body {
-  margin: 0;
   font-weight: 100;
-  color: #ccc;
+  color: gray;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: sans-serif;
-  background-color: #e5f3fd;
 }
 ol,
 ul {
@@ -13,50 +11,37 @@ ul {
   list-style: none;
 }
 
-.App-header {
-  font-size: 1.2em;
+.App {
+  background-color: #e5f3fd;
+  width: 100%;
+  max-width: 960px;
   margin: auto;
-  width: 100%;
-  text-align: center;
-  position: fixed;
-  background-color: #D1E5F4;
-  top: 0;
-  z-index: 9;
+  margin-top: 0;
 }
 
-.App-logo {
-  img {
-    height: 200px;
-  }
+.App-header {
+  font-size: 1.1em;
+  margin: auto;
+  margin-top: 0;
+  padding: 60px 0 0;
+  margin-left: 30px;
 }
 
-.App-menu-list {
-  font-size: 18px;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-.App-menu-item {
-  margin: 0 3em;
+.App-content {
+  background-color: #fff;
+  padding: 30px;
 }
 
 footer {
-  color: #ccc;
-  display: flex;
   position: fixed;
-  font-size: 12px;
   bottom: 0;
-  padding: 10px 0;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: #D1E5F4;
-  flex-direction: row;
-  @media screen and (max-width: 480px){
-    flex-direction: column;
-  }
+  background-color: #e5f3fd;
+  font-size: 12px;
+  text-align: center;
+  width: inherit;
+  max-width: 960px;
+  height: 30px;
+  padding-top: 10px;
 }
 
 a, a:visited, a:hover {
@@ -68,23 +53,4 @@ a, a:visited, a:hover {
 a:focus, a:hover {
   color: #fff;
   text-decoration: underline;
-}
-
-.home-container {
-  text-align: center;
-  p {
-    font-size: 1.2em;
-
-  }
-  
-}
-.social-links {
-  color: #fff;
-  margin: 10px;
-  a {
-    margin: 0 1em;
-  }
-  img {
-    width: 20px;
-  }
 }
