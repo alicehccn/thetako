@@ -4,16 +4,13 @@ body {
   color: #ccc;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
   font-family: sans-serif;
+  background-color: #e5f3fd;
 }
 ol,
 ul {
   padding-left: 0;
   list-style: none;
-}
-
-.App {
 }
 
 .App-header {
@@ -22,7 +19,7 @@ ul {
   width: 100%;
   text-align: center;
   position: fixed;
-  background-color: #000;
+  background-color: #D1E5F4;
   top: 0;
   z-index: 9;
 }
@@ -55,7 +52,7 @@ footer {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #000;
+  background-color: #D1E5F4;
   flex-direction: row;
   @media screen and (max-width: 480px){
     flex-direction: column;
@@ -90,170 +87,4 @@ a:focus, a:hover {
   img {
     width: 20px;
   }
-}
-
-.albums-container {
-  display: flex;
-  position: relative;
-  margin: auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: black;
-}
-
-.album-container {
-  border: 3px solid white;
-  margin: 10px;
-  height: fit-content;
-  padding: 8px;
-  position: relative;
-  cursor: pointer;
-
-  img {
-    width: 200px;
-  }
-
-  .album-text-container {
-    position: absolute;
-    text-align: center;
-    width: 70%;
-    height: 100%;
-    top: 35%;
-    padding: 0px 25px;
-    display: none;
-
-    p {
-      font-size: 14px;
-      line-height: 1.5;
-    }
-  }
-
-  :hover {
-    img {
-      opacity: 0.4;
-    }
-    .album-text-container {
-      display: block;
-    }
-  }
-}
-
-.photos-container {
-  display: flex;
-  position: relative;
-  margin: auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.photos-back-link-wrapper{
-margin-top: -60px;
-position: absolute;
-left: 0;
-cursor: pointer;
-}
-
-.text-link {
-  margin-left: 20px;
-  &:before {
-    content: '<<  ';
-    font-size: 15px
-  }
-}
-
-.photo-container {
-  border: 2px solid white;
-  margin: 15px;
-  height: fit-content;
-  padding: 8px;
-  position: relative;
-  cursor: pointer;
-  height: 240px;
-  width: 200px;
-
-  img {
-    width: 200px;
-  }
-
-  .photo-text-container {
-    margin-top: -5px;
-    p {
-      font-size: 12px;
-    }
-  }
-  
-  :hover {
-    img {
-      opacity: 0.8;
-    }
-  }
-}
-
-.photo-wrapper {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.9);
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: 99;
-}
-
-.photo-main {
-  top: 50%;
-  position: absolute;
-  width: 100%;
-  z-index: 999;
-  transform: translate(0, -50%);
-}
-
-.photo-content {
-  position: relative;
-  border: 2px solid white;
-  margin: auto;
-  width: fit-content;
-  padding: 8px;
-
-  img {
-    max-width: 90vw;
-    max-height: 90vh;
-  }
-}
-
-.music-list-container {
-  iframe {
-    width: 100%;
-    height: 60vh;
-    opacity: 0.7;
-  }
-}
-
-.events-container {
-  p {
-    margin-top: -2em;
-    font-size: 1.2em;
-  }
-}
-.albums-container, .music-list-container, .photos-container {
-  overflow: scroll;
-  margin-top: 200px;
-}
-.bit-nav-bar-container, .bit-top-track-button {
-  display: none !important;
-}
-
-.bit-widget-container {
-  display: block;
-  margin-bottom: 100px;
-}
-.bit-no-dates-title {
-  display: none;
-}
-
-.bit-widget .bit-no-dates-container {
-  padding: 20px 0 !important;
 }
