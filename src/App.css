@@ -1,9 +1,10 @@
 body {
-  font-weight: 100;
-  color: grey;
+  color: gray;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: sans-serif;
+  font-weight: medium;
+  background-color: #eee;
 }
 ol,
 ul {
@@ -12,9 +13,9 @@ ul {
 }
 
 .App {
-  background-color: #D1E5F4;
+  background-color: #BDD5E7;
   width: 100%;
-  max-width: 960px;
+  max-width: 860px;
   margin: auto;
   margin-top: 0;
 }
@@ -28,16 +29,30 @@ ul {
 }
 
 .App-content {
-  background-color: #fff;
+  background-color: #eee;
   display: flex;
   flex-direction: column;
+
   section {
-    padding: 30px;
+    cursor: pointer;
+    padding: 20px 30px;
     margin: 10px 0;
-    font-size: large;
     background-color: #F5FBFF;
-      &:hover {
-      background-color: #D1E5F4;
+    display: flex;
+  
+    /* .legend {
+      display: none;
+    }
+    &:hover {
+      .legend {
+        display: block;
+      }
+    } */
+    .columns {
+      flex-direction: column;
+    }
+    .column {
+      padding: 0 40px
     }
   }
 }
@@ -53,12 +68,15 @@ footer {
 }
 
 a, a:visited, a:hover {
-  color: #ddd;
   text-decoration: none;
   font-weight: normal;
 }
 
 a:focus, a:hover {
-  color: #fff;
   text-decoration: underline;
+}
+
+a.collapse {
+  font-size: small;
+  color: #AECCE4;
 }
