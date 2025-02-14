@@ -5,7 +5,16 @@ const Content: React.FC = () => {
   
   return (
     <div className="App-content">
-      Engineering
+      
+      <section>
+        Experience
+      </section>
+      <section>
+        Projects
+      </section>
+      <section>
+        Community
+      </section>
     </div>
   );
 }

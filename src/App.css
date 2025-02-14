@@ -1,6 +1,6 @@
 body {
   font-weight: 100;
-  color: gray;
+  color: grey;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: sans-serif;
@@ -12,7 +12,7 @@ ul {
 }
 
 .App {
-  background-color: #e5f3fd;
+  background-color: #D1E5F4;
   width: 100%;
   max-width: 960px;
   margin: auto;
@@ -29,13 +29,21 @@ ul {
 
 .App-content {
   background-color: #fff;
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  section {
+    padding: 30px;
+    margin: 10px 0;
+    font-size: large;
+    background-color: #F5FBFF;
+      &:hover {
+      background-color: #D1E5F4;
+    }
+  }
 }
 
 footer {
-  position: fixed;
   bottom: 0;
-  background-color: #e5f3fd;
   font-size: 12px;
   text-align: center;
   width: inherit;
