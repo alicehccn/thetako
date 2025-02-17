@@ -5,8 +5,10 @@ const Header: React.FC = () => {
   
   return (
     <div className="App-header">
-          <div className="App-logo"></div>
-          <h1>Alice Huang</h1>
+          <div className="App-logo">
+            <img src="./logo.png"/>
+          </div>
+          
     </div>
   );
 }

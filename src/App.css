@@ -13,23 +13,25 @@ ul {
 }
 
 .App {
-  background-color: #BDD5E7;
   width: 100%;
-  max-width: 860px;
+  /* max-width: 860px; */
   margin: auto;
   margin-top: 0;
 }
 
 .App-header {
+  background-color: #adcced;
   font-size: 1.1em;
   margin: auto;
   margin-top: 0;
-  padding: 60px 0 0;
-  margin-left: 30px;
+    img {
+      margin-left: 20px;
+
+    }
 }
 
 .App-content {
-  background-color: #eee;
+  background-color: #6d8196;
   display: flex;
   flex-direction: column;
 
@@ -38,31 +40,22 @@ ul {
     padding: 20px 30px;
     margin: 10px 0;
     background-color: #F5FBFF;
-    display: flex;
-  
-    /* .legend {
-      display: none;
-    }
-    &:hover {
-      .legend {
-        display: block;
+    table {
+      width: 100%;
+      th {
+        text-align: left;
       }
-    } */
-    .columns {
-      flex-direction: column;
-    }
-    .column {
-      padding: 0 40px
     }
   }
 }
 
 footer {
+  background-color: #adcced;
+  position: fixed;
   bottom: 0;
+  width: 100%;
   font-size: 12px;
   text-align: center;
-  width: inherit;
-  max-width: 960px;
   height: 30px;
   padding-top: 10px;
 }
