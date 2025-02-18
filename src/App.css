@@ -5,7 +5,7 @@ body {
   font-family: "Gill Sans Extrabold", sans-serif;
   background-image: url("../public/background.jpeg");
   background-size: cover;
-  background-color: #eee;
+  background-color: #e0e0e0;
   line-height: 1.2;
   color: gray;
 }
@@ -49,23 +49,25 @@ ul {
   display: flex;
   flex-direction: row;
   section {
-    background-color: #eee;
     padding: 60px;
-    opacity: 0.8;
     margin: 50px 10px;
     border-radius: 20px;
+    background-color: #e0e0e0;
     @media screen and (max-width: 900px) {
       display: none;
     }
     height: 65vh;
   }
   section.left {
+    opacity: 0.5;
     img {
-      width: 150px;
+      width: 180px;
       border-radius: 50%;
+      opacity: 1;
     }
   }
   section.right {
+    opacity: 0.8;
     width: 50%;
     flex-grow: 1;
   }
