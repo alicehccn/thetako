@@ -57,7 +57,7 @@ ul {
     @media screen and (max-width: 900px) {
       display: none;
     }
-    height: 65svh;
+    height: 65vh;
   }
   section.left {
     img {
