@@ -9,7 +9,12 @@ const Content: React.FC = () => {
         <img src="./linkedin.png" alt="social" />
         <img src="./email.png" alt="social" />
       </section>
-      <section className="right"></section>
+      <section className="right">
+        <div>Web</div>
+        <div>e-Commerce</div>
+        <div>Cloud</div>
+        <div>Healthcare</div>
+        </section>
     </div>
   );
 };
