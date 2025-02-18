@@ -1,10 +1,13 @@
 body {
-  color: gray;
+  /* color: gray; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: sans-serif;
-  font-weight: medium;
+  font-family: "Gill Sans Extrabold", sans-serif;
+  background-image: url("../public/background.jpeg");
+  background-size: cover;
   background-color: #eee;
+  line-height: 1.2;
+  color: gray;
 }
 ol,
 ul {
@@ -17,42 +20,65 @@ ul {
   /* max-width: 860px; */
   margin: auto;
   margin-top: 0;
+  min-height: 100vh;
+  max-width: 80%;
 }
 
 .App-header {
-  background-color: #adcced;
-  font-size: 1.1em;
+  /* background-color: #C4D8E2; */
   margin: auto;
   margin-top: 0;
-    img {
-      margin-left: 20px;
-
-    }
-}
-
-.App-content {
-  background-color: #6d8196;
-  display: flex;
-  flex-direction: column;
-
-  section {
-    cursor: pointer;
-    padding: 20px 30px;
-    margin: 10px 0;
-    background-color: #F5FBFF;
-    table {
-      width: 100%;
-      th {
-        text-align: left;
-      }
+  width: 100%;
+  font-size: 14px;
+  img {
+    margin-left: 20px;
+    opacity: 0;
+    height: 30px;
+  }
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    li {
+      margin: 0 20px;
     }
   }
 }
 
+.App-content {
+  /* background-color: #6d8196; */
+  display: flex;
+  flex-direction: row;
+  section {
+    background-color: #eee;
+    padding: 60px;
+    opacity: 0.8;
+    margin: 50px 10px;
+    border-radius: 20px;
+    @media screen and (max-width: 900px) {
+      display: none;
+    }
+    height: 65svh;
+  }
+  section.left {
+    img {
+      width: 150px;
+      border-radius: 50%;
+    }
+  }
+  section.right {
+    width: 50%;
+    flex-grow: 1;
+  }
+  h2 {
+    color: gray;
+  }
+}
+
 footer {
-  background-color: #adcced;
+  color: #eee;
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
   font-size: 12px;
   text-align: center;
