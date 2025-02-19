@@ -42,7 +42,7 @@ const Content: React.FC = () => {
             <p>CI/CD</p>
           </div>
         </div>
-        <div className={`horizontal ${showContent ? "clicked" : ""}`} onClick={() => setShowContent(!showContent)}>
+        <div className="horizontal" onClick={() => setShowContent(!showContent)}>
           <h2>Engineering</h2>
         </div>
         
