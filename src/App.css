@@ -2,7 +2,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Gill Sans Extrabold", sans-serif;
-  background-image: url("../public/background.jpeg");
+  background-image: url("../public/cover.jpg");
   background-size: cover;
   background-color: #e0e0e0;
   line-height: 1;
