@@ -3,7 +3,6 @@ import "../App.css";
 
 const Content: React.FC = () => {
   const [showContent, setShowContent] = React.useState(false);
-  console.log(showContent);
   return (
     <div className="App-content">
       <section className="right">
