@@ -2,6 +2,8 @@ import React from "react";
 import "../App.css";
 
 const Content: React.FC = () => {
+  const [showContent, setShowContent] = React.useState(false);
+  console.log(showContent)
   return (
     <div className="App-content">
       <section className="left">
@@ -10,12 +12,10 @@ const Content: React.FC = () => {
         <img src="./email.png" alt="social" />
       </section>
       <section className="right">
-        <div className="horizontal">
-          <h2>Engineering</h2>
-        </div>
-        <div className="vertical">
+        
+        <div className={`vertical ${showContent ? "" : "hidden"}`}>
           <div>
-            <h2>Web / Mobile</h2>
+            <h3>Web / Mobile</h3>
             <p>Typescript</p>
             <p>React</p>
             <p>HTML / CSS</p>
@@ -24,7 +24,7 @@ const Content: React.FC = () => {
             <p>Expo</p>
           </div>
           <div>
-            <h2>e-Commerce</h2>
+            <h3>e-Commerce</h3>
             <p>UI/UX</p>
             <p>Billing</p>
             <p>Payment</p>
@@ -33,7 +33,7 @@ const Content: React.FC = () => {
             <p>Analytics</p>
           </div>
           <div>
-            <h2>Cloud</h2>
+            <h3>Cloud</h3>
             <p>AWS</p>
             <p>Heroku</p>
             <p>Vercel</p>
@@ -42,7 +42,9 @@ const Content: React.FC = () => {
             <p>CI/CD</p>
           </div>
         </div>
-
+        <div className={`horizontal ${showContent ? "clicked" : ""}`} onClick={() => setShowContent(!showContent)}>
+          <h2>Engineering</h2>
+        </div>
         
         </section>
     </div>
