@@ -6,11 +6,6 @@ const Header: React.FC = () => {
       <div className="logo">
         <img src="./logo2.png" alt="logo" />
       </div>
-      <ul className="menu">
-        <li>Home</li>
-        <li>Portfolio</li>
-        <li>Credentials</li>
-      </ul>
     </div>
   );
 };

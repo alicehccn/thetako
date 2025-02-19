@@ -2,11 +2,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Gill Sans Extrabold", sans-serif;
-  background-image: url("../public/cover.jpg");
+  background-image: url("../public/desk.jpg");
   background-size: cover;
   background-color: #e0e0e0;
   line-height: 1;
-  color: gray;
+  color: #e0e0e0;
 }
 ol,
 ul {
@@ -18,38 +18,24 @@ h1 {
 }
 .App {
   width: 100%;
-  margin: auto;
+  margin-left: auto;
   margin-top: 0;
   min-height: 100vh;
-  max-width: 80%;
+  max-width: 900px;
 }
 
 .App-header {
-  margin: auto;
-  width: 96%;
-  font-size: 14px;
   display: flex;
- 
-  .menu {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 90px;
-    flex-grow: 1;
-    li {
-      margin: 0 20px;
-    }
-    @media screen and (max-width: 600px) {
-      display: none;
-    }
-  }
-}
-.logo {
-  padding: 30px 10px;
-  margin: auto;
-  img {
-    width: 150px;
-    @media screen and (max-width: 600px) {
-      width: 100%;
+  justify-content: end;
+  .logo {
+    padding: 30px 60px;
+    text-align: right;
+    /* margin: auto; */
+    img {
+      width: 180px;
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
     }
   }
 }
@@ -68,13 +54,13 @@ h1 {
     height: fit-content;
     min-height: 500px;
     background-color: transparent;
-    border: 1px solid gray;
   }
   section.left {
     opacity: 0.9;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    border: none;
     img {
       width: 30px;
       border-radius: 50%;
@@ -94,24 +80,23 @@ h1 {
       width: fit-content;
       text-align: center;
       cursor: pointer;
-      width: 99%;
+      width: 96%;
       padding: 10px 0;
-      border: 1px solid #e0e0e0;
+      border: 1px solid #222222;
       &:hover {
-        background-color: #e0e0e0;
+        background-color: #222222;
       }
-  }
+    }
     .vertical {
       display: flex;
       justify-content: space-around;
       margin: 10px 0;
       div {
-        background-color: #e0e0e0;
+        background-color: #222222;
         width: 30%;
         margin: 10px 5px;
         text-align: center;
         border-radius: 10px;
-        padding: 30px;
         @media screen and (max-width: 1000px) {
           width: 100%;
           height: fit-content;
@@ -126,7 +111,6 @@ h1 {
   h2 {
     color: gray;
   }
-  
 }
 
 footer {

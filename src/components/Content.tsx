@@ -3,16 +3,10 @@ import "../App.css";
 
 const Content: React.FC = () => {
   const [showContent, setShowContent] = React.useState(false);
-  console.log(showContent)
+  console.log(showContent);
   return (
     <div className="App-content">
-      <section className="left">
-        <img src="./github.png" alt="social" />
-        <img src="./linkedin.png" alt="social" />
-        <img src="./email.png" alt="social" />
-      </section>
       <section className="right">
-        
         <div className={`vertical ${showContent ? "" : "hidden"}`}>
           <div>
             <h3>Web / Mobile</h3>
@@ -42,11 +36,13 @@ const Content: React.FC = () => {
             <p>CI/CD</p>
           </div>
         </div>
-        <div className="horizontal" onClick={() => setShowContent(!showContent)}>
+        <div
+          className="horizontal"
+          onClick={() => setShowContent(!showContent)}
+        >
           <h2>Engineering</h2>
         </div>
-        
-        </section>
+      </section>
     </div>
   );
 };
