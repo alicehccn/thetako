@@ -5,11 +5,11 @@ const Content: React.FC = () => {
   const [showContent, setShowContent] = React.useState(false);
   const [events, setEvents] = React.useState();
   React.useEffect(() => {
-    if(!events) {
-      fetch('https://eonet.gsfc.nasa.gov/api/v2.1/events?limit=10&status=open')
-      .then(response => response?.json())
-      .then(json => setEvents(json.events))
-      .catch(error => console.error(error));
+    if (!events) {
+      fetch("https://eonet.gsfc.nasa.gov/api/v2.1/events?limit=10&status=open")
+        .then((response) => response?.json())
+        .then((json) => setEvents(json.events))
+        .catch((error) => console.error(error));
     }
   }, [events]);
   return (
@@ -50,6 +50,9 @@ const Content: React.FC = () => {
           onClick={() => setShowContent(!showContent)}
         >
           <h2>Engineering</h2>
+        </div>
+        <div className="horizontal">
+          <h2>Data Visualization</h2>
         </div>
       </section>
     </div>

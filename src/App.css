@@ -68,16 +68,20 @@ h1 {
   display: flex;
   flex-direction: column;
   padding: 0 20px;
+
   .apod {
     height: 300px;
     overflow: hidden;
-      img {
-        width: 500px;
-        height: auto;
-        transform: translate(0, -20%);
-      }
-      text-align: center;
+
+    img {
+      width: 500px;
+      height: auto;
+      transform: translate(0, -20%);
     }
+
+    text-align: center;
+  }
+
   section {
     margin: 10px;
     border-radius: 10px;
@@ -93,18 +97,19 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: end;
+
     .horizontal {
-      margin: 20px auto;
+      margin: 10px auto;
       border-radius: 10px;
       width: fit-content;
       text-align: center;
       cursor: pointer;
       width: 98%;
-      padding: 10px 0;
+      padding: 2px 0;
       border: 1px solid #808080;
 
       &:hover {
-        background-image: linear-gradient(#808080, #222222, #141414);
+        background-image: linear-gradient(#808080, #222222);
         border: none;
       }
     }
@@ -112,6 +117,7 @@ h1 {
     .vertical {
       display: flex;
       margin: 10px 0;
+
       @media screen and (max-width: 600px) {
         flex-direction: column;
         /* display: none; */
