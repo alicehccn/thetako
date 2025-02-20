@@ -3,8 +3,18 @@ import "../App.css";
 
 const Content: React.FC = () => {
   const [showContent, setShowContent] = React.useState(false);
+  const [events, setEvents] = React.useState();
+  React.useEffect(() => {
+    if(!events) {
+      fetch('https://eonet.gsfc.nasa.gov/api/v2.1/events?limit=10&status=open')
+      .then(response => response?.json())
+      .then(json => setEvents(json.events))
+      .catch(error => console.error(error));
+    }
+  }, [events]);
   return (
     <div className="App-content">
+      {/* <div className="apod"><img src={imageUrl}/></div> */}
       <section className="right">
         <div className={`vertical ${showContent ? "" : "hidden"}`}>
           <div>

@@ -4,7 +4,6 @@ body {
   font-family: "Gill Sans Extrabold", sans-serif;
   background-image: url("../public/desk.jpg");
   background-size: cover;
-  background-color: #e0e0e0;
   line-height: 1;
   color: #e0e0e0;
 }
@@ -46,7 +45,7 @@ h1 {
   }
 
   .logo {
-    padding: 30px 60px;
+    padding: 40px 50px 20px;
     text-align: right;
 
     img {
@@ -67,8 +66,18 @@ h1 {
 
 .App-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 0 20px;
+  .apod {
+    height: 300px;
+    overflow: hidden;
+      img {
+        width: 500px;
+        height: auto;
+        transform: translate(0, -20%);
+      }
+      text-align: center;
+    }
   section {
     margin: 10px;
     border-radius: 10px;
@@ -92,7 +101,7 @@ h1 {
       cursor: pointer;
       width: 98%;
       padding: 10px 0;
-      border: 1px solid #222222;
+      border: 1px solid #808080;
 
       &:hover {
         background-image: linear-gradient(#808080, #222222, #141414);
@@ -116,10 +125,11 @@ h1 {
         text-align: center;
         border-radius: 10px;
 
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 600px) {
           width: 90%;
           height: fit-content;
           margin: 10px auto;
+          background-image: none;
         }
       }
 
