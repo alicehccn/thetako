@@ -84,6 +84,7 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: end;
+    margin-top: 20px;
 
     .horizontal {
       margin: 10px auto;
@@ -167,19 +168,23 @@ a.collapse {
 
 .apod {
   color: gray;
+
   img {
     max-width: 100%;
     height: auto;
   }
+
   margin: auto;
   width: 90%;
+  max-height: 90vh;
   padding: 0 20px;
 
   h2 {
     text-align: center;
   }
+
   .close-btn {
     text-align: center;
-    margin: 30px;
+    padding-bottom: 30px;
   }
 }

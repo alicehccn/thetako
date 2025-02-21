@@ -19,7 +19,6 @@ const Content: React.FC = () => {
   const [image, setImage] = React.useState<APOD>();
   const customStyles = {
     content: {
-      width: "70%",
       maxWidth: "800px",
       top: "50%",
       left: "50%",
