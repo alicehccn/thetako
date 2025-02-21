@@ -4,8 +4,8 @@ body {
   font-family: "Gill Sans Extrabold", sans-serif;
   background-image: url("../public/desk.jpg");
   background-size: cover;
-  line-height: 1;
-  color: #aaa;
+  line-height: 1.2;
+  color: #e0e0e0;
 }
 
 ol,
@@ -166,6 +166,7 @@ a.collapse {
 }
 
 .apod {
+  color: gray;
   img {
     max-width: 100%;
     height: auto;
