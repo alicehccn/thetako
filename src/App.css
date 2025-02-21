@@ -5,7 +5,7 @@ body {
   background-image: url("../public/desk.jpg");
   background-size: cover;
   line-height: 1;
-  color: #e0e0e0;
+  color: #aaa;
 }
 
 ol,
@@ -68,19 +68,6 @@ h1 {
   display: flex;
   flex-direction: column;
   padding: 0 20px;
-
-  .apod {
-    height: 300px;
-    overflow: hidden;
-
-    img {
-      width: 500px;
-      height: auto;
-      transform: translate(0, -20%);
-    }
-
-    text-align: center;
-  }
 
   section {
     margin: 10px;
@@ -176,4 +163,22 @@ a:hover {
 a.collapse {
   font-size: small;
   color: #aecce4;
+}
+
+.apod {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  margin: auto;
+  width: 90%;
+  padding: 0 20px;
+
+  h2 {
+    text-align: center;
+  }
+  .close-btn {
+    text-align: center;
+    margin: 30px;
+  }
 }
