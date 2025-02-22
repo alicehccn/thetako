@@ -103,10 +103,10 @@ const Content: React.FC = () => {
               {">>"}
             </div>
           </div>
-          {image?.date && <h2>{format(image.date, "MMMM dd, yyyy")}</h2>}
+          {image?.date && <h3>{format(image.date, "MMMM dd, yyyy")}</h3>}
           {image?.media_type === "image" && <img src={image?.url} />}
           {image?.media_type === "video" && <iframe src={image?.url} />}
-          <h3>{image?.title}</h3>
+          <h2>{image?.title}</h2>
           <p>{image?.explanation}</p>
           <p>&copy; {image?.copyright ? image?.copyright : "NASA"}</p>
           <div className="close-btn">

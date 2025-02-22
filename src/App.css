@@ -180,7 +180,8 @@ a.collapse {
   width: 90%;
   max-height: 90vh;
 
-  h2 {
+  h2,
+  h3 {
     text-align: center;
     line-height: 1;
   }
@@ -198,6 +199,9 @@ a.collapse {
     .prev,
     .next {
       cursor: pointer;
+      width: 50px;
+      height: 100px;
+      text-align: center;
     }
   }
 
