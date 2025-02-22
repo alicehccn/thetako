@@ -11,6 +11,7 @@ interface APOD {
   service_version: string;
   title: string;
   url: string;
+  copyright?: string;
 }
 
 const Content: React.FC = () => {
@@ -18,6 +19,9 @@ const Content: React.FC = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [events, setEvents] = React.useState();
   const [images, setImages] = React.useState<APOD[]>();
+  const [image, setImage] = React.useState<APOD>();
+  let [imageIndex, setImageIndex] = React.useState(1);
+
   const apodEndDate = new Date();
   const apodStartDate = format(subDays(apodEndDate, 7), "yyyy-MM-dd");
   const customStyles = {
@@ -46,15 +50,38 @@ const Content: React.FC = () => {
       fetch(
         `https://api.nasa.gov/planetary/apod?api_key=ibUVEf1jTwiXdSMK0eTmaUCKi9LAIdsTAkLeiRO4&start_date=${apodStartDate}`
       )
-        .then((response) => response?.json().then((json) => setImages(json)))
+        .then((response) =>
+          response?.json().then((json) => {
+            setImages(json);
+            setImage(json[json.length - imageIndex]);
+            setImageIndex(imageIndex);
+          })
+        )
         .catch((error) => console.error(error));
     }
   });
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
   function closeModal() {
     setIsOpen(false);
   }
-  function openModal() {
-    setIsOpen(true);
+
+  function goPrev() {
+    if (imageIndex < (images?.length ?? 0)) {
+      imageIndex++;
+      setImageIndex(imageIndex);
+      setImage(images?.[images.length - imageIndex]);
+    }
+  }
+  function goNext() {
+    if (imageIndex > 1) {
+      imageIndex--;
+      setImageIndex(imageIndex);
+      setImage(images?.[images.length - imageIndex]);
+    }
   }
 
   return (
@@ -67,11 +94,21 @@ const Content: React.FC = () => {
         ariaHideApp={false}
       >
         <div className="apod">
-          <h2>Astronomy Picture of the Day </h2>
-          <h2>{images?.[images.length - 1]?.date}</h2>
-          <img src={images?.[images.length - 1]?.url} />
-          <h3>{images?.[images.length - 1]?.title}</h3>
-          <p>{images?.[images.length - 1]?.explanation}</p>
+          <h2>Astronomy Picture of the Day</h2>
+          <div className="apod-nav">
+            <div onClick={goPrev} className="prev">
+              {"<<"}
+            </div>
+            <div onClick={goNext} className="next">
+              {">>"}
+            </div>
+          </div>
+          {image?.date && <h2>{format(image.date, "MMMM dd, yyyy")}</h2>}
+          {image?.media_type === "image" && <img src={image?.url} />}
+          {image?.media_type === "video" && <iframe src={image?.url} />}
+          <h3>{image?.title}</h3>
+          <p>{image?.explanation}</p>
+          <p>&copy; {image?.copyright ? image?.copyright : "NASA"}</p>
           <div className="close-btn">
             <a target="_blank" href="https://apod.nasa.gov/apod/astropix.html">
               Source
@@ -116,7 +153,7 @@ const Content: React.FC = () => {
         >
           <h2>Engineering</h2>
         </div>
-        <div className="horizontal" onClick={() => setIsOpen(true)}>
+        <div className="horizontal" onClick={openModal}>
           <h2>NASA</h2>
         </div>
       </section>
