@@ -55,12 +55,6 @@ h1 {
         width: 100%;
       }
     }
-
-    @media screen and (max-width: 600px) {
-      width: 80%;
-      background-color: #222222;
-      text-align: center;
-    }
   }
 }
 
@@ -181,10 +175,18 @@ a.collapse {
 
   h2 {
     text-align: center;
+    line-height: 1;
   }
 
   .close-btn {
     text-align: center;
-    padding-bottom: 30px;
+    button {
+      margin: 0 10px 20px;
+      width: max-content;
+    }
+    a {
+      font-size: 0.9em;
+      color: gray
+    }
   }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import Modal from "react-modal";
+import { subDays, format } from "date-fns";
 
 interface APOD {
   date: string;
@@ -16,7 +17,9 @@ const Content: React.FC = () => {
   const [showContent, setShowContent] = React.useState(false);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [events, setEvents] = React.useState();
-  const [image, setImage] = React.useState<APOD>();
+  const [images, setImages] = React.useState<APOD[]>();
+  const apodEndDate = new Date();
+  const apodStartDate = format(subDays(apodEndDate, 7), "yyyy-MM-dd");
   const customStyles = {
     content: {
       maxWidth: "800px",
@@ -39,11 +42,11 @@ const Content: React.FC = () => {
   }, [events]);
 
   React.useEffect(() => {
-    if (!image) {
+    if (!images) {
       fetch(
-        "https://api.nasa.gov/planetary/apod?api_key=ibUVEf1jTwiXdSMK0eTmaUCKi9LAIdsTAkLeiRO4"
+        `https://api.nasa.gov/planetary/apod?api_key=ibUVEf1jTwiXdSMK0eTmaUCKi9LAIdsTAkLeiRO4&start_date=${apodStartDate}`
       )
-        .then((response) => response?.json().then((json) => setImage(json)))
+        .then((response) => response?.json().then((json) => setImages(json)))
         .catch((error) => console.error(error));
     }
   });
@@ -64,11 +67,15 @@ const Content: React.FC = () => {
         ariaHideApp={false}
       >
         <div className="apod">
-          <h2>Astronomy Picture of the Day {image?.date}</h2>
-          <img src={image?.url} />
-          <h3>{image?.title}</h3>
-          <p>{image?.explanation}</p>
+          <h2>Astronomy Picture of the Day </h2>
+          <h2>{images?.[images.length - 1]?.date}</h2>
+          <img src={images?.[images.length - 1]?.url} />
+          <h3>{images?.[images.length - 1]?.title}</h3>
+          <p>{images?.[images.length - 1]?.explanation}</p>
           <div className="close-btn">
+            <a target="_blank" href="https://apod.nasa.gov/apod/astropix.html">
+              Source
+            </a>
             <button onClick={closeModal}>Close</button>
           </div>
         </div>
