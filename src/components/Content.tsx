@@ -154,7 +154,7 @@ const Content: React.FC = () => {
           <h2>Engineering</h2>
         </div>
         <div className="horizontal" onClick={openModal}>
-          <h2>NASA</h2>
+          <h2>APOD</h2>
         </div>
       </section>
     </div>

@@ -23,7 +23,7 @@ h1 {
   margin-left: auto;
   margin-top: 0;
   min-height: 100vh;
-  max-width: 760px;
+  max-width: 680px;
 }
 
 .App-header {
@@ -32,11 +32,11 @@ h1 {
 
   .social {
     display: flex;
-    margin-top: 80px;
-
+    margin-top: 100px;
+    padding: 20px 0;
     img {
-      height: 40px;
-      margin: 0 20px;
+      height: 25px;
+      margin: -5px 10px -5px 40px;
     }
 
     @media screen and (max-width: 600px) {
@@ -54,6 +54,11 @@ h1 {
       @media screen and (max-width: 600px) {
         width: 100%;
       }
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      background-color: #222;
     }
   }
 }
@@ -83,7 +88,6 @@ h1 {
     .horizontal {
       margin: 10px auto;
       border-radius: 10px;
-      width: fit-content;
       text-align: center;
       cursor: pointer;
       width: 98%;
@@ -102,7 +106,6 @@ h1 {
 
       @media screen and (max-width: 600px) {
         flex-direction: column;
-        /* display: none; */
       }
 
       div {
@@ -117,7 +120,7 @@ h1 {
           width: 90%;
           height: fit-content;
           margin: 10px auto;
-          background-image: none;
+          background-image: linear-gradient(#808080, #222222, #141414);
         }
       }
 
@@ -148,6 +151,7 @@ a:visited,
 a:hover {
   text-decoration: none;
   font-weight: normal;
+  color: #808080;
 }
 
 a:focus,
@@ -178,7 +182,7 @@ a.collapse {
 
   margin: auto;
   width: 90%;
-  max-height: 90vh;
+  max-height: 88vh;
 
   h2,
   h3 {
@@ -193,6 +197,7 @@ a.collapse {
     justify-content: space-between;
     position: absolute;
     left: 0;
+
     .next {
       float: right;
     }
