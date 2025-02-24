@@ -103,7 +103,6 @@ h1 {
     .vertical {
       display: flex;
       margin: 10px 0;
-
       @media screen and (max-width: 600px) {
         flex-direction: column;
       }
@@ -124,8 +123,8 @@ h1 {
         }
       }
 
-      &.hidden {
-        display: none;
+      h2 {
+        color: #ccc;
       }
     }
   }
@@ -161,7 +160,7 @@ a:hover {
 
 a.collapse {
   font-size: small;
-  color: #aecce4;
+  color: #e0e0e0;
 }
 
 .apod {
