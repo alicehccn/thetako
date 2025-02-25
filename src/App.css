@@ -59,7 +59,7 @@ h1 {
 
     @media screen and (max-width: 600px) {
       width: 100%;
-      background-color: #222;
+      background-color: rgba(10, 10, 10, 0.8);
     }
   }
 }
@@ -67,7 +67,7 @@ h1 {
 .App-content {
   display: flex;
   flex-direction: column;
-  padding: 0 30px;
+  padding: 0;
 
   section {
     margin: 10px;
@@ -91,28 +91,34 @@ h1 {
       text-align: center;
       cursor: pointer;
       width: 98%;
-      padding: 2px 0;
       border: 1px solid #808080;
+      line-height: 0.8;
 
       &:hover {
         background-image: linear-gradient(#808080, #222222);
         border: none;
+
+        * {
+          color: #e0e0e0;
+
+        }
       }
     }
 
     .vertical {
       display: flex;
-      margin: 10px 0;
+      margin-top: 10px;
 
       @media screen and (max-width: 600px) {
-        flex-direction: column;
+        /* flex-direction: column; */
+        display: none;
       }
 
       div {
         background-image: linear-gradient(#808080, #222222, #141414);
         width: 30%;
-        margin: 10px 5px;
-        padding: 30px 10px;
+        margin: 5px;
+        padding: 10px;
         text-align: center;
         border-radius: 10px;
 
@@ -124,8 +130,8 @@ h1 {
         }
       }
 
-      h2 {
-        color: #ccc;
+      * {
+        color: #e0e0e0;
       }
     }
   }

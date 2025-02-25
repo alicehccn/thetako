@@ -4,7 +4,7 @@ import { Apod } from "./Apod";
 import { FETCH_EVENT_URL, SKILL_MAP } from "../constant";
 
 const Content: React.FC = () => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [ApodOpen, setApodOpen] = React.useState(false);
   const [events, setEvents] = React.useState();
   React.useEffect(() => {
     if (!events) {
@@ -15,22 +15,26 @@ const Content: React.FC = () => {
     }
   }, [events]);
 
-  function openModal() {
-    setIsOpen(true);
+  function openApod() {
+    setApodOpen(true);
   }
 
-  function closeModal() {
-    setIsOpen(false);
+  function closeApod() {
+    setApodOpen(false);
   }
+
+  function openEONET() {}
+
+  function closeEONET() {}
 
   return (
     <div className="App-content">
-      <Apod modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <Apod modalIsOpen={ApodOpen} closeModal={closeApod} />
       <section className="right">
         <div className={`vertical`}>
-          {SKILL_MAP.map((skill) => {
+          {SKILL_MAP.map((skill, i) => {
             return (
-              <div>
+              <div key={i}>
                 <h2>{skill.subject}</h2>
                 {skill.items.map((item) => (
                   <p>{item}</p>
@@ -39,8 +43,11 @@ const Content: React.FC = () => {
             );
           })}
         </div>
-        <div className="horizontal" onClick={openModal}>
-          <h2>NASA</h2>
+        <div className="horizontal" onClick={openApod}>
+          <h2>APOD</h2>
+        </div>
+        <div className="horizontal" onClick={openEONET}>
+          <h2>EONET</h2>
         </div>
       </section>
     </div>

@@ -25,19 +25,19 @@ type ApodProps = {
 };
 
 export const Apod: React.FC<ApodProps> = ({ modalIsOpen, closeModal }) => {
-  const [images, setImages] = React.useState<ApodResponse[]>();
-  const [image, setImage] = React.useState<ApodResponse>();
-  let [imageIndex, setImageIndex] = React.useState(1);
+  const [assets, setAssets] = React.useState<ApodResponse[]>();
+  const [asset, setAsset] = React.useState<ApodResponse>();
+  let [assetIndex, setAssetIndex] = React.useState(1);
   const apodStartDate = getApodStartDate();
 
   React.useEffect(() => {
-    if (!images) {
+    if (!assets) {
       fetch(fetchApodApi(apodStartDate))
         .then((response) =>
           response?.json().then((json) => {
-            setImages(json);
-            setImage(json[json.length - imageIndex]);
-            setImageIndex(imageIndex);
+            setAssets(json);
+            setAsset(json[json.length - assetIndex]);
+            setAssetIndex(assetIndex);
           })
         )
         .catch((error) => console.error(error));
@@ -45,18 +45,22 @@ export const Apod: React.FC<ApodProps> = ({ modalIsOpen, closeModal }) => {
   });
 
   function goPrev() {
-    if (imageIndex < (images?.length ?? 0)) {
-      imageIndex++;
-      setImageIndex(imageIndex);
-      setImage(images?.[images.length - imageIndex]);
+    if (assetIndex < (assets?.length ?? 0)) {
+      assetIndex++;
+      setAssetIndex(assetIndex);
+      setAsset(assets?.[assets.length - assetIndex]);
     }
   }
   function goNext() {
-    if (imageIndex > 1) {
-      imageIndex--;
-      setImageIndex(imageIndex);
-      setImage(images?.[images.length - imageIndex]);
+    if (assetIndex > 1) {
+      assetIndex--;
+      setAssetIndex(assetIndex);
+      setAsset(assets?.[assets.length - assetIndex]);
     }
+  }
+
+  if (!asset) {
+    return;
   }
 
   return (
@@ -77,16 +81,18 @@ export const Apod: React.FC<ApodProps> = ({ modalIsOpen, closeModal }) => {
             {">>"}
           </div>
         </div>
-        {image?.date && <h3>{formatDate(image.date)}</h3>}
-        {image?.media_type === "image" && <img src={image?.url} />}
-        {image?.media_type === "video" && <iframe src={image?.url} />}
-        <h3>{image?.title}</h3>
-        <p>{image?.explanation}</p>
-        <small>Credits: &copy;{image?.copyright}NASA</small>
-        <div className="close-btn">
+        {asset?.date && <h3>{formatDate(asset.date)}</h3>}
+        {asset?.media_type === "image" && <img src={asset?.url} />}
+        {asset?.media_type === "video" && <iframe src={asset?.url} />}
+        <h3>{asset?.title}</h3>
+        <p>{asset?.explanation}</p>
+        <small>
+          Credits: &copy;{asset?.copyright}
           <a target="_blank" href={APOD_HOMEPAGE}>
-            Source
+            NASA
           </a>
+        </small>
+        <div className="close-btn">
           <button onClick={closeModal}>Close</button>
         </div>
       </div>
