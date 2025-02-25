@@ -19,9 +19,6 @@ export const MODAL_STYLES = {
 export const getApodStartDate = () =>
   format(subDays(new Date(), 7), "yyyy-MM-dd");
 
-export const formatDate = (date: Date | string) =>
-  format(date, "MMMM dd, yyyy");
-
 export const fetchApodApi = (startDate: string) =>
   `https://api.nasa.gov/planetary/apod?api_key=ibUVEf1jTwiXdSMK0eTmaUCKi9LAIdsTAkLeiRO4&start_date=${startDate}`;
 

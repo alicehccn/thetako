@@ -3,7 +3,6 @@ import ReactModal from "react-modal";
 import {
   getApodStartDate,
   fetchApodApi,
-  formatDate,
   MODAL_STYLES,
   APOD_HOMEPAGE,
 } from "../constant";
@@ -81,7 +80,7 @@ export const Apod: React.FC<ApodProps> = ({ modalIsOpen, closeModal }) => {
             {">>"}
           </div>
         </div>
-        {asset?.date && <h3>{formatDate(asset.date)}</h3>}
+        {asset?.date && <h3>{new Date(asset.date).toDateString()}</h3>}
         {asset?.media_type === "image" && <img src={asset?.url} />}
         {asset?.media_type === "video" && <iframe src={asset?.url} />}
         <h3>{asset?.title}</h3>

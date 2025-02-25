@@ -36,8 +36,8 @@ const Content: React.FC = () => {
             return (
               <div key={i}>
                 <h2>{skill.subject}</h2>
-                {skill.items.map((item) => (
-                  <p>{item}</p>
+                {skill.items.map((item, j) => (
+                  <p key={j}>{item}</p>
                 ))}
               </div>
             );
