@@ -28,18 +28,17 @@ const Content: React.FC = () => {
       <Apod modalIsOpen={modalIsOpen} closeModal={closeModal} />
       <section className="right">
         <div className={`vertical`}>
-          {
-            SKILL_MAP.map(skill => {
-              return (
-                <div>
-                  <h2>{skill.subject}</h2>
-                  {skill.items.map(item => <p>{item}</p>)}
-                </div>
-              )
-            })
-          }
+          {SKILL_MAP.map((skill) => {
+            return (
+              <div>
+                <h2>{skill.subject}</h2>
+                {skill.items.map((item) => (
+                  <p>{item}</p>
+                ))}
+              </div>
+            );
+          })}
         </div>
-        
         <div className="horizontal" onClick={openModal}>
           <h2>NASA</h2>
         </div>

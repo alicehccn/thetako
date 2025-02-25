@@ -6,7 +6,7 @@ export const FETCH_EVENT_LIMIT = 10;
 export const FETCH_EVENT_URL = `https://eonet.gsfc.nasa.gov/api/v2.1/events?limit=${FETCH_EVENT_LIMIT}&status=open`;
 export const MODAL_STYLES = {
   content: {
-    maxWidth: "700px",
+    maxWidth: "600px",
     top: "50%",
     left: "50%",
     right: "auto",
