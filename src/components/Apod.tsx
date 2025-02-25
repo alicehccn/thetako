@@ -80,9 +80,9 @@ export const Apod: React.FC<ApodProps> = ({ modalIsOpen, closeModal }) => {
         {image?.date && <h3>{formatDate(image.date)}</h3>}
         {image?.media_type === "image" && <img src={image?.url} />}
         {image?.media_type === "video" && <iframe src={image?.url} />}
-        <h2>{image?.title}</h2>
+        <h3>{image?.title}</h3>
         <p>{image?.explanation}</p>
-        <p>&copy; {image?.copyright ? image?.copyright : "NASA"}</p>
+        <small>Credits: &copy;{image?.copyright}NASA</small>
         <div className="close-btn">
           <a target="_blank" href={APOD_HOMEPAGE}>
             Source

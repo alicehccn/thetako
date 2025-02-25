@@ -27,7 +27,7 @@ export const fetchApodApi = (startDate: string) =>
 
 export const SKILL_MAP = [
   {
-    subject: "Basics",
+    subject: "Stack",
     items: [
       "Typescript",
       "ReactJS",
@@ -52,14 +52,6 @@ export const SKILL_MAP = [
   },
   {
     subject: "DevOps",
-    items: [
-      "AWS",
-      "Docker",
-      "Github",
-      "Heroku",
-      "Vercel",
-      "Datadog",
-      "CircleCI",
-    ],
+    items: ["Cloud", "Container", "Git", "Data Storage", "APM", "CI/CD"],
   },
 ];
