@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import { Apod } from "./Apod";
-import { FETCH_EVENT_URL } from "../constant";
+import { FETCH_EVENT_URL, SKILL_MAP } from "../constant";
 
 const Content: React.FC = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -28,33 +28,16 @@ const Content: React.FC = () => {
       <Apod modalIsOpen={modalIsOpen} closeModal={closeModal} />
       <section className="right">
         <div className={`vertical`}>
-          <div>
-            <h2>Web / Mobile</h2>
-            <p>Typescript</p>
-            <p>React</p>
-            <p>HTML / CSS</p>
-            <p>Webpack</p>
-            <p>Express</p>
-            <p>Expo</p>
-          </div>
-          <div>
-            <h2>e-Commerce</h2>
-            <p>UI/UX</p>
-            <p>Billing</p>
-            <p>Payment</p>
-            <p>Access Control</p>
-            <p>Maps</p>
-            <p>Analytics</p>
-          </div>
-          <div>
-            <h2>Cloud</h2>
-            <p>AWS</p>
-            <p>Heroku</p>
-            <p>Vercel</p>
-            <p>Docker</p>
-            <p>Database</p>
-            <p>CI/CD</p>
-          </div>
+          {
+            SKILL_MAP.map(skill => {
+              return (
+                <div>
+                  <h2>{skill.subject}</h2>
+                  {skill.items.map(item => <p>{item}</p>)}
+                </div>
+              )
+            })
+          }
         </div>
         
         <div className="horizontal" onClick={openModal}>
