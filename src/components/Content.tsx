@@ -1,25 +1,14 @@
 import React from "react";
 import "../App.css";
 import { Apod } from "./Apod";
-
-interface APOD {
-  date: string;
-  explanation: string;
-  hdurl: string;
-  media_type: string;
-  service_version: string;
-  title: string;
-  url: string;
-  copyright?: string;
-}
+import { FETCH_EVENT_URL } from "../constant";
 
 const Content: React.FC = () => {
-  const [showContent, setShowContent] = React.useState(false);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [events, setEvents] = React.useState();
   React.useEffect(() => {
     if (!events) {
-      fetch("https://eonet.gsfc.nasa.gov/api/v2.1/events?limit=10&status=open")
+      fetch(FETCH_EVENT_URL)
         .then((response) => response?.json())
         .then((json) => setEvents(json.events))
         .catch((error) => console.error(error));
@@ -67,7 +56,7 @@ const Content: React.FC = () => {
             <p>CI/CD</p>
           </div>
         </div>
-
+        
         <div className="horizontal" onClick={openModal}>
           <h2>NASA</h2>
         </div>

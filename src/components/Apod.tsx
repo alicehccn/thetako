@@ -1,6 +1,12 @@
 import React from "react";
 import ReactModal from "react-modal";
-import { subDays, format } from "date-fns";
+import {
+  getApodStartDate,
+  fetchApodApi,
+  formatDate,
+  MODAL_STYLES,
+  APOD_HOMEPAGE,
+} from "../constant";
 
 interface ApodResponse {
   date: string;
@@ -22,20 +28,21 @@ export const Apod: React.FC<ApodProps> = ({ modalIsOpen, closeModal }) => {
   const [images, setImages] = React.useState<ApodResponse[]>();
   const [image, setImage] = React.useState<ApodResponse>();
   let [imageIndex, setImageIndex] = React.useState(1);
+  const apodStartDate = getApodStartDate();
 
-  const apodEndDate = new Date();
-  const apodStartDate = format(subDays(apodEndDate, 7), "yyyy-MM-dd");
-  const customStyles = {
-    content: {
-      maxWidth: "800px",
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-    },
-  };
+  React.useEffect(() => {
+    if (!images) {
+      fetch(fetchApodApi(apodStartDate))
+        .then((response) =>
+          response?.json().then((json) => {
+            setImages(json);
+            setImage(json[json.length - imageIndex]);
+            setImageIndex(imageIndex);
+          })
+        )
+        .catch((error) => console.error(error));
+    }
+  });
 
   function goPrev() {
     if (imageIndex < (images?.length ?? 0)) {
@@ -52,27 +59,11 @@ export const Apod: React.FC<ApodProps> = ({ modalIsOpen, closeModal }) => {
     }
   }
 
-  React.useEffect(() => {
-    if (!images) {
-      fetch(
-        `https://api.nasa.gov/planetary/apod?api_key=ibUVEf1jTwiXdSMK0eTmaUCKi9LAIdsTAkLeiRO4&start_date=${apodStartDate}`
-      )
-        .then((response) =>
-          response?.json().then((json) => {
-            setImages(json);
-            setImage(json[json.length - imageIndex]);
-            setImageIndex(imageIndex);
-          })
-        )
-        .catch((error) => console.error(error));
-    }
-  });
-
   return (
     <ReactModal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      style={customStyles}
+      style={MODAL_STYLES}
       contentLabel="Example Modal"
       ariaHideApp={false}
     >
@@ -86,14 +77,14 @@ export const Apod: React.FC<ApodProps> = ({ modalIsOpen, closeModal }) => {
             {">>"}
           </div>
         </div>
-        {image?.date && <h3>{format(image.date, "MMMM dd, yyyy")}</h3>}
+        {image?.date && <h3>{formatDate(image.date)}</h3>}
         {image?.media_type === "image" && <img src={image?.url} />}
         {image?.media_type === "video" && <iframe src={image?.url} />}
         <h2>{image?.title}</h2>
         <p>{image?.explanation}</p>
         <p>&copy; {image?.copyright ? image?.copyright : "NASA"}</p>
         <div className="close-btn">
-          <a target="_blank" href="https://apod.nasa.gov/apod/astropix.html">
+          <a target="_blank" href={APOD_HOMEPAGE}>
             Source
           </a>
           <button onClick={closeModal}>Close</button>
