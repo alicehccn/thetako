@@ -1,26 +1,33 @@
 import React from "react";
 import "../App.css";
-import { APOD } from "./Apod";
+import { APOD } from "./apod";
 import { SKILL_MAP } from "../constant";
+import { EONET } from "./eonet";
 
 const Content: React.FC = () => {
-  const [ApodOpen, setApodOpen] = React.useState(false);
+  const [APODOpen, setAPODOpen] = React.useState(false);
+  const [EONETopen, setEONETopen] = React.useState(false);
 
-  function openApod() {
-    setApodOpen(true);
+  function openAPOD() {
+    setAPODOpen(true);
   }
 
-  function closeApod() {
-    setApodOpen(false);
+  function closeAPOD() {
+    setAPODOpen(false);
   }
 
-  function openEONET() {}
+  function openEONET() {
+    setEONETopen(true);
+  }
 
-  function closeEONET() {}
+  function closeEONET() {
+    setEONETopen(false);
+  }
 
   return (
     <div className="App-content">
-      <APOD modalIsOpen={ApodOpen} closeModal={closeApod} />
+      <APOD modalIsOpen={APODOpen} closeModal={closeAPOD} />
+      <EONET modalIsOpen={EONETopen} closeModal={closeEONET} />
       <section className="right">
         <div className={`vertical`}>
           {SKILL_MAP.map((skill, i) => {
@@ -34,7 +41,7 @@ const Content: React.FC = () => {
             );
           })}
         </div>
-        <div className="horizontal" onClick={openApod}>
+        <div className="horizontal" onClick={openAPOD}>
           <h2>APOD</h2>
         </div>
         <div className="horizontal" onClick={openEONET}>

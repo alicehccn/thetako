@@ -1,12 +1,25 @@
 import React from "react";
 import ReactModal from "react-modal";
-import {
-  MODAL_STYLES,
-  FETCH_EVENT_URL,
-} from "../constant";
+import { FETCH_EVENT_URL, getDateString } from "../constant";
 
-interface EONETResponse {
-  
+interface EventResponse {
+  id: string;
+  title: string;
+  description: string;
+  link: string;
+  categories: {
+    id: string;
+    url: string;
+  }[];
+  sources: {
+    id: string;
+    url: string;
+  }[];
+  geometries: {
+    date: string;
+    type: string;
+    coordinates: number[];
+  }[];
 }
 
 type ModalProps = {
@@ -14,8 +27,20 @@ type ModalProps = {
   closeModal: () => void;
 };
 
+const MODAL_STYLES = {
+  content: {
+    maxWidth: "600px",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
 export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
-  const [events, setEvents] = React.useState();
+  const [events, setEvents] = React.useState<EventResponse[]>();
   React.useEffect(() => {
     if (!events) {
       fetch(FETCH_EVENT_URL)
@@ -39,6 +64,11 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     >
       <div className="apod">
         <h2>Earth Observatory Natural Event Tracker</h2>
+        {events.map((event) => (
+          <p>
+            {getDateString(event.geometries[0].date)} {event.title}
+          </p>
+        ))}
       </div>
     </ReactModal>
   );

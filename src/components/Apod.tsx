@@ -3,11 +3,11 @@ import ReactModal from "react-modal";
 import {
   getApodStartDate,
   fetchApodApi,
-  MODAL_STYLES,
   APOD_HOMEPAGE,
+  getDateString,
 } from "../constant";
 
-interface ApodResponse {
+interface AssetResponse {
   date: string;
   explanation: string;
   hdurl: string;
@@ -23,9 +23,21 @@ type ModalProps = {
   closeModal: () => void;
 };
 
+const MODAL_STYLES = {
+  content: {
+    maxWidth: "600px",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
 export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
-  const [assets, setAssets] = React.useState<ApodResponse[]>();
-  const [asset, setAsset] = React.useState<ApodResponse>();
+  const [assets, setAssets] = React.useState<AssetResponse[]>();
+  const [asset, setAsset] = React.useState<AssetResponse>();
   let [assetIndex, setAssetIndex] = React.useState(1);
   const apodStartDate = getApodStartDate();
 
@@ -37,7 +49,7 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             setAssets(json);
             setAsset(json[json.length - assetIndex]);
             setAssetIndex(assetIndex);
-          })
+          }),
         )
         .catch((error) => console.error(error));
     }
@@ -80,7 +92,7 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             {">>"}
           </div>
         </div>
-        {asset?.date && <h3>{new Date(asset.date).toDateString()}</h3>}
+        {asset?.date && <h3>{getDateString(asset.date)}</h3>}
         {asset?.media_type === "image" && <img src={asset?.url} />}
         {asset?.media_type === "video" && <iframe src={asset?.url} />}
         <h3>{asset?.title}</h3>
