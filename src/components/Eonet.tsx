@@ -34,11 +34,11 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={MODAL_STYLES}
-      contentLabel="Example Modal"
+      contentLabel="EONET Modal"
       ariaHideApp={false}
     >
       <div className="apod">
-        <h2>Astronomy Picture of the Day</h2>
+        <h2>Earth Observatory Natural Event Tracker</h2>
       </div>
     </ReactModal>
   );

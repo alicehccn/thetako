@@ -67,7 +67,7 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={MODAL_STYLES}
-      contentLabel="Example Modal"
+      contentLabel="APOD Modal"
       ariaHideApp={false}
     >
       <div className="apod">

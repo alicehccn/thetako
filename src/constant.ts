@@ -20,7 +20,7 @@ export const getApodStartDate = () =>
   format(subDays(new Date(), 7), "yyyy-MM-dd");
 
 export const fetchApodApi = (startDate: string) =>
-  `https://api.nasa.gov/planetary/apod?api_key=ibUVEf1jTwiXdSMK0eTmaUCKi9LAIdsTAkLeiRO4&start_date=${startDate}`;
+  `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_OPEN_API}&start_date=${startDate}`;
 
 export const SKILL_MAP = [
   {
