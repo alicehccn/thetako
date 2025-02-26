@@ -18,12 +18,12 @@ interface ApodResponse {
   copyright?: string;
 }
 
-type ApodProps = {
+type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
 };
 
-export const Apod: React.FC<ApodProps> = ({ modalIsOpen, closeModal }) => {
+export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   const [assets, setAssets] = React.useState<ApodResponse[]>();
   const [asset, setAsset] = React.useState<ApodResponse>();
   let [assetIndex, setAssetIndex] = React.useState(1);

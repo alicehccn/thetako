@@ -1,19 +1,10 @@
 import React from "react";
 import "../App.css";
-import { Apod } from "./Apod";
-import { FETCH_EVENT_URL, SKILL_MAP } from "../constant";
+import { APOD } from "./Apod";
+import { SKILL_MAP } from "../constant";
 
 const Content: React.FC = () => {
   const [ApodOpen, setApodOpen] = React.useState(false);
-  const [events, setEvents] = React.useState();
-  React.useEffect(() => {
-    if (!events) {
-      fetch(FETCH_EVENT_URL)
-        .then((response) => response?.json())
-        .then((json) => setEvents(json.events))
-        .catch((error) => console.error(error));
-    }
-  }, [events]);
 
   function openApod() {
     setApodOpen(true);
@@ -29,7 +20,7 @@ const Content: React.FC = () => {
 
   return (
     <div className="App-content">
-      <Apod modalIsOpen={ApodOpen} closeModal={closeApod} />
+      <APOD modalIsOpen={ApodOpen} closeModal={closeApod} />
       <section className="right">
         <div className={`vertical`}>
           {SKILL_MAP.map((skill, i) => {
