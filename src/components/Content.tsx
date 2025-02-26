@@ -1,8 +1,8 @@
 import React from "react";
 import "../App.css";
-import { APOD } from "./apod";
+import { APOD } from "./Apod";
 import { SKILL_MAP } from "../constant";
-import { EONET } from "./eonet";
+import { EONET } from "./Eonet";
 
 const Content: React.FC = () => {
   const [APODOpen, setAPODOpen] = React.useState(false);
