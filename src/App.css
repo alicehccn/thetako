@@ -166,7 +166,8 @@ a.collapse {
   color: #e0e0e0;
 }
 
-.apod {
+.apod,
+.eonet {
   color: gray;
 
   img {
@@ -181,11 +182,7 @@ a.collapse {
     min-height: 420px;
     border: none;
   }
-
   margin: auto;
-  width: 100%;
-  max-height: 95vh;
-
   h2,
   h3 {
     text-align: center;
@@ -229,9 +226,13 @@ a.collapse {
     }
   }
 }
-
 .ReactModal__Overlay,
 .ReactModal__Overlay--after-open {
   background-color: rgba(0, 0, 0, 0.8) !important;
   filter: alpha(opacity=60);
+}
+.MuiAutocomplete-root {
+  * {
+    cursor: pointer;
+  }
 }

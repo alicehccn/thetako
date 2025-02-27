@@ -1,6 +1,7 @@
 import React from "react";
 import ReactModal from "react-modal";
 import { FETCH_EVENT_URL, getDateString } from "../constant";
+import { Autocomplete, Button, TextField } from "@mui/material";
 
 interface EventResponse {
   id: string;
@@ -29,7 +30,8 @@ type ModalProps = {
 
 const MODAL_STYLES = {
   content: {
-    maxWidth: "600px",
+    width: "900px",
+    maxHeight: "95vh",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -48,7 +50,7 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         .then((json) => setEvents(json.events))
         .catch((error) => console.error(error));
     }
-  }, [events]);
+  });
 
   if (!events) {
     return;
@@ -62,13 +64,18 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       contentLabel="EONET Modal"
       ariaHideApp={false}
     >
-      <div className="apod">
+      <div className="eonet">
         <h2>Earth Observatory Natural Event Tracker</h2>
-        {events.map((event) => (
-          <p>
-            {getDateString(event.geometries[0].date)} {event.title}
-          </p>
-        ))}
+        <Autocomplete
+          options={events.map((event) => {
+            return {
+              label: `${getDateString(event.geometries[0].date)} | ${event.title}`,
+              event,
+            };
+          })}
+          sx={{ width: "90%", margin: "auto" }}
+          renderInput={(params) => <TextField {...params} label="Event" />}
+        />
       </div>
     </ReactModal>
   );
