@@ -3,10 +3,10 @@ import { format, subDays } from "date-fns";
 export const APOD_HOMEPAGE = "https://apod.nasa.gov/apod/astropix.html";
 
 export const FETCH_EVENT_LIMIT = 20;
-export const FETCH_EVENT_URL = `https://eonet.gsfc.nasa.gov/api/v2.1/events?limit=${FETCH_EVENT_LIMIT}&status=open`;
+export const FETCH_EVENT_URL = `https://eonet.gsfc.nasa.gov/api/v2.1/categories/8?days=${14}&status=open`;
 
 export const getDateString = (date: Date | string) =>
-  format(new Date(date), "MMMM dd, yyyy");
+  format(new Date(date), "yyyy-MM-dd");
 
 export const getApodStartDate = () =>
   format(subDays(new Date(), 7), "yyyy-MM-dd");

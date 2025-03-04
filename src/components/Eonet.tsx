@@ -1,26 +1,10 @@
 import React from "react";
 import ReactModal from "react-modal";
 import { FETCH_EVENT_URL, getDateString } from "../constant";
-import { Autocomplete, Button, TextField } from "@mui/material";
-
-interface EventResponse {
-  title: string;
-  description: string;
-  link: string;
-  categories: {
-    id: string;
-    title: string;
-  }[];
-  sources: {
-    id: string;
-    url: string;
-  }[];
-  geometries: {
-    date: string;
-    type: string;
-    coordinates: number[];
-  }[];
-}
+import Mapbox from "./Map";
+import { Event } from "./types";
+import { DataGrid, GridRowSelectionModel } from "@mui/x-data-grid";
+import _ from "lodash";
 
 type ModalProps = {
   modalIsOpen: boolean;
@@ -41,8 +25,9 @@ const MODAL_STYLES = {
 };
 
 export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
-  const [events, setEvents] = React.useState<EventResponse[]>();
-  const [event, setEvent] = React.useState<EventResponse>();
+  const [events, setEvents] = React.useState<Event[]>();
+  const [rowSelectionModel, setRowSelectionModel] =
+    React.useState<GridRowSelectionModel>([]);
   React.useEffect(() => {
     if (!events) {
       fetch(FETCH_EVENT_URL)
@@ -51,37 +36,40 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         .catch((error) => console.error(error));
     }
   });
-
   if (!events) {
     return;
   }
+  const columns = [
+    {
+      field: "geometries",
+      headerName: "Last Updated",
+      valueGetter: (_: unknown, row: Event) =>
+        getDateString(row.geometries[0].date),
+      width: 150,
+    },
+    {
+      field: "title",
+      headerName: "Title",
+      width: 500,
+    },
+  ];
+  const data = {
+    columns,
+    rows: events,
+    initialState: {
+      pagination: {
+        paginationModel: {
+          pageSize: 5,
+        },
+      },
+    },
+  };
 
-  function renderSummary(event: EventResponse) {
-    return (
-      <div className="event">
-        <div>
-          Categories:{" "}
-          {event.categories.map((c, i) => (
-            <span key={i}>{c.title}</span>
-          ))}
-        </div>
-        <div>
-          Geometries:{" "}
-          {event.geometries.map((c, i) => (
-            <span key={i}>[{c.coordinates}], </span>
-          ))}
-        </div>
-        <div>
-          Source:{" "}
-          {event.sources.map((c, i) => (
-            <span key={i}>{c.url}</span>
-          ))}
-        </div>
-        <div>Link: {event.link}</div>
-        {event.description && <div>Desrciption: {event.description}</div>}
-      </div>
-    );
-  }
+  const selectedRows = events.filter((event: Event) =>
+    rowSelectionModel.includes(event.id),
+  );
+  const geometries = _.map(selectedRows, "geometries");
+
   return (
     <ReactModal
       isOpen={modalIsOpen}
@@ -92,29 +80,17 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     >
       <div className="eonet">
         <h2>Earth Observatory Natural Event Tracker</h2>
-        <Autocomplete
-          value={
-            event
-              ? {
-                  label: `${getDateString(event?.geometries[0].date)} | ${event?.title}`,
-                  option: event,
-                }
-              : null
-          }
-          options={events.map((event) => {
-            return {
-              label: `${getDateString(event.geometries[0].date)} | ${event.title}`,
-              option: event,
-            };
-          })}
-          onChange={(e, value) => {
-            e.preventDefault();
-            setEvent(value?.option);
-          }}
-          sx={{ width: "90%", margin: "auto" }}
-          renderInput={(params) => <TextField {...params} label="Event" />}
-        />
-        {event && renderSummary(event)}
+        <div style={{ width: "100%" }}>
+          <div>
+            <DataGrid
+              {...data}
+              checkboxSelection
+              onRowSelectionModelChange={setRowSelectionModel}
+              rowSelectionModel={rowSelectionModel}
+            />
+          </div>
+        </div>
+        <Mapbox data={geometries} />
       </div>
     </ReactModal>
   );

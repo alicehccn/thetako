@@ -42,9 +42,9 @@ const Content: React.FC = () => {
           })}
         </div>
         <div className="horizontal" onClick={openAPOD}>
-          <h2>APOD</h2>
+          <h2>Gallery</h2>
         </div>
-        <div className="horizontal" onClick={openEONET}>
+        <div className="horizontal desktop-only" onClick={openEONET}>
           <h2>EONET</h2>
         </div>
       </section>

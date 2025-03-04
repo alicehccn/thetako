@@ -2,20 +2,26 @@
   "name": "thetako",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.6",
     "@mui/material": "^6.4.6",
+    "@mui/x-data-grid": "^7.27.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/lodash": "^4.17.16",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.102",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-modal": "^3.16.3",
     "date-fns": "^4.1.0",
+    "lodash": "^4.17.21",
+    "mapbox-gl": "^3.10.0",
     "prettier": "^3.5.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -30,7 +36,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx prettier . --check "
+    "lint": "npx prettier . --check --write"
   },
   "browserslist": {
     "production": [
@@ -44,5 +50,8 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@mui/x-data-grid-generator": "^7.27.2",
+    "@types/lodash": "^4.17.16"
+  }
 }
