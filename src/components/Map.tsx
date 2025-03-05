@@ -1,12 +1,42 @@
 import { useEffect, useRef } from "react";
 import mapboxgl, { LngLatLike, Map } from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import { Event, Geometry } from "./types";
+import { Event } from "./types";
 import _ from "lodash";
+import { FeatureCollection } from "geojson";
 type MapProps = {
-  data: Geometry[][];
+  data: Event[];
 };
+
+function createGeoJson(events: Event[]) {
+  const wildfires: FeatureCollection = {
+    type: "FeatureCollection",
+    features: [],
+  };
+  for (const event of events) {
+    const positions: LngLatLike[] = event.geometries.map((g) => g.coordinates);
+    const points = positions.map((p) => {
+      return p
+        .toString()
+        .split(",")
+        .map((l) => parseFloat(l));
+    });
+    wildfires.features.push({
+      type: "Feature",
+      geometry: {
+        type: "MultiPoint",
+        coordinates: points,
+      },
+      properties: {
+        ...event,
+      },
+    });
+  }
+  return wildfires;
+}
+
 const Mapbox: React.FC<MapProps> = ({ data }) => {
   const mapContainerRef = useRef<any>();
   const mapRef = useRef<any>();
@@ -15,20 +45,33 @@ const Mapbox: React.FC<MapProps> = ({ data }) => {
     if (!data) {
       return;
     }
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoiYWxpY2VoY2NuIiwiYSI6ImNtN2pwc2F0aTBhNHEyaXB6NnltazYyc20ifQ.yI5xs8bW3CqzHk0AhPiL5Q";
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/standard",
+      style: "mapbox://styles/mapbox/outdoors-v12",
       center: [-100.04, 36.907],
       zoom: 3.5,
     });
-    _.flatten(data).map((geometry: Geometry) => {
-      new mapboxgl.Marker({ color: "red" })
-        .setLngLat(geometry.coordinates)
-        .addTo(mapRef.current);
+    mapRef.current.on("style.load", () => {
+      const currentSource = mapRef.current.getSource("wildfiles");
+      !currentSource &&
+        mapRef.current.addSource("wildfires", {
+          type: "geojson",
+          data: createGeoJson(data),
+          generateId: true,
+        });
+      mapRef.current.addLayer({
+        id: "wildfire-viz",
+        type: "circle",
+        source: "wildfires",
+        paint: {
+          "circle-stroke-color": "red",
+          "circle-stroke-width": 1,
+          "circle-color": "red",
+        },
+      });
     });
-  }, [data]);
+  }, data);
 
   return <div id="map" ref={mapContainerRef} className="map-container" />;
 };
