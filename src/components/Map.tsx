@@ -49,8 +49,8 @@ const Mapbox: React.FC<MapProps> = ({ data }) => {
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/dark-v11",
-      center: [-92.04, 35.907],
-      zoom: 3.8,
+      center: [-99.04, 37.907],
+      zoom: 3.6,
     });
     mapRef.current.on("load", () => {
       const currentSource = mapRef.current.getSource("wildfires");
