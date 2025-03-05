@@ -30,11 +30,10 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   const [assets, setAssets] = React.useState<AssetResponse[]>();
   const [asset, setAsset] = React.useState<AssetResponse>();
   let [assetIndex, setAssetIndex] = React.useState(1);
-  const apodStartDate = getApodStartDate();
 
   React.useEffect(() => {
     if (!assets) {
-      fetch(fetchApodApi(apodStartDate))
+      fetch(fetchApodApi(14))
         .then((response) =>
           response?.json().then((json) => {
             setAssets(json);

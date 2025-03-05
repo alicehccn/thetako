@@ -8,11 +8,11 @@ export const FETCH_EVENT_URL = `https://eonet.gsfc.nasa.gov/api/v2.1/categories/
 export const getDateString = (date: Date | string) =>
   format(new Date(date), "yyyy-MM-dd");
 
-export const getApodStartDate = () =>
-  format(subDays(new Date(), 7), "yyyy-MM-dd");
+export const getApodStartDate = (days: number) =>
+  format(subDays(new Date(), days), "yyyy-MM-dd");
 
-export const fetchApodApi = (startDate: string) =>
-  `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_OPEN_API}&start_date=${startDate}`;
+export const fetchApodApi = (days: number) =>
+  `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_OPEN_API}&start_date=${getApodStartDate(days)}`;
 
 export const SKILL_MAP = [
   {
