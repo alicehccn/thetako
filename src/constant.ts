@@ -1,18 +1,20 @@
 import { format, subDays } from "date-fns";
+import { tzOffset } from "@date-fns/tz";
 
 export const APOD_HOMEPAGE = "https://apod.nasa.gov/apod/astropix.html";
 
-export const FETCH_EVENT_LIMIT = 20;
-export const FETCH_EVENT_URL = `https://eonet.gsfc.nasa.gov/api/v2.1/categories/8?days=${14}&status=open`;
-
 export const getDateString = (date: Date | string) =>
-  format(new Date(date), "yyyy-MM-dd");
+  format(new Date(date), "MMMM dd, yyyy");
+
+export const getDateTimeString = (date: Date | string) =>
+  format(new Date(date), "MMMM dd, yyyy, h:mmaaa");
 
 export const getApodStartDate = (days: number) =>
   format(subDays(new Date(), days), "yyyy-MM-dd");
 
 export const fetchApodApi = (days: number) =>
   `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_OPEN_API}&start_date=${getApodStartDate(days)}`;
+export const fetchEonetApi = (days: number) => `https://eonet.gsfc.nasa.gov/api/v2.1/categories/8?days=${days}&status=open`
 
 export const SKILL_MAP = [
   {
