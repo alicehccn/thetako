@@ -48,28 +48,25 @@ const Mapbox: React.FC<MapProps> = ({ data }) => {
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/outdoors-v12",
-      center: [-100.04, 36.907],
-      zoom: 3.5,
+      style: "mapbox://styles/mapbox/light-v11",
+      center: [-92.04, 35.907],
+      zoom: 3.8,
     });
-    mapRef.current.on("style.load", () => {
-      const currentSource = mapRef.current.getSource("wildfiles");
+    mapRef.current.on("load", () => {
+      const currentSource = mapRef.current.getSource("wildfires");
+      const currentLayer = mapRef.current.getLayer("wildfires-viz");
       !currentSource &&
         mapRef.current.addSource("wildfires", {
           type: "geojson",
           data: createGeoJson(data),
           generateId: true,
         });
-      mapRef.current.addLayer({
-        id: "wildfire-viz",
-        type: "circle",
-        source: "wildfires",
-        paint: {
-          "circle-stroke-color": "red",
-          "circle-stroke-width": 1,
-          "circle-color": "red",
-        },
-      });
+      !currentLayer &&
+        mapRef.current.addLayer({
+          id: "wildfires-viz",
+          type: "heatmap",
+          source: "wildfires",
+        });
     });
   }, data);
 
