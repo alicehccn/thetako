@@ -1,12 +1,21 @@
 import React from "react";
 import ReactModal from "react-modal";
 import {
-  getApodStartDate,
   fetchApodApi,
   APOD_HOMEPAGE,
   getDateString,
 } from "../constant";
-import { AssetResponse } from "./types";
+
+type AssetResponse = {
+  date: string;
+  explanation: string;
+  hdurl: string;
+  media_type: string;
+  service_version: string;
+  title: string;
+  url: string;
+  copyright?: string;
+};
 
 type ModalProps = {
   modalIsOpen: boolean;

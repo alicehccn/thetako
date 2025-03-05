@@ -13,22 +13,9 @@ export type Event = {
     id: string;
     url: string;
   }[];
-  geometries: Geometry[];
-};
-
-export type Geometry = {
-  date: string;
-  type: string;
-  coordinates: LngLatLike;
-};
-
-export type AssetResponse = {
-  date: string;
-  explanation: string;
-  hdurl: string;
-  media_type: string;
-  service_version: string;
-  title: string;
-  url: string;
-  copyright?: string;
+  geometries: {
+    date: string;
+    type: string;
+    coordinates: LngLatLike;
+  }[];
 };

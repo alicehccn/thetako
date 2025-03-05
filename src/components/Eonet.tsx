@@ -1,6 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
-import { fetchEonetApi, getDateString, getDateTimeString } from "../constant";
+import { fetchEonetApi } from "../constant";
 import Mapbox from "./Map";
 import { Event } from "./types";
 import _ from "lodash";
@@ -12,7 +12,7 @@ type ModalProps = {
 
 const MODAL_STYLES = {
   content: {
-    width: "800px",
+    width: "900px",
     maxHeight: "95vh",
     top: "50%",
     left: "50%",
@@ -46,7 +46,12 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     >
       <div className="eonet">
         <h2>Wildfires in the United States</h2>
-        <small>Powered by <a href="https://eonet.gsfc.nasa.gov/what-is-eonet" >EONET</a></small>
+        <small>
+          Powered by{" "}
+          <a href="https://eonet.gsfc.nasa.gov/what-is-eonet">
+            Earth Observatory, NASA{" "}
+          </a>
+        </small>
         <Mapbox data={events} />
       </div>
     </ReactModal>

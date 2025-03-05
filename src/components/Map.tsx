@@ -1,11 +1,10 @@
 import { useEffect, useRef } from "react";
-import mapboxgl, { LngLatLike, Map } from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-
+import mapboxgl, { LngLatLike } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Event } from "./types";
 import _ from "lodash";
 import { FeatureCollection } from "geojson";
+
 type MapProps = {
   data: Event[];
 };
@@ -49,8 +48,8 @@ const Mapbox: React.FC<MapProps> = ({ data }) => {
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/dark-v11",
-      center: [-99.04, 37.907],
-      zoom: 3.6,
+      center: [-99.04, 38.907],
+      zoom: 3.8,
     });
     mapRef.current.on("load", () => {
       const currentSource = mapRef.current.getSource("wildfires");
@@ -66,6 +65,10 @@ const Mapbox: React.FC<MapProps> = ({ data }) => {
           id: "wildfires-viz",
           type: "heatmap",
           source: "wildfires",
+          paint: {
+            "heatmap-intensity": 1,
+            "heatmap-opacity": 0.9,
+          },
         });
     });
   }, data);
