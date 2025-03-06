@@ -32,9 +32,9 @@ export const SKILL_MAP = [
   {
     subject: "Application",
     items: [
-      "Billing API",
-      "Payment API",
-      "Map API",
+      "Billing",
+      "Payment",
+      "Map",
       "A/B Testing",
       "Analytics",
       "Access Control",
