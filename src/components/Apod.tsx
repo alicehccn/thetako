@@ -22,7 +22,7 @@ type ModalProps = {
 
 const MODAL_STYLES = {
   content: {
-    width: "860px",
+    width: "720px",
     maxHeight: "95vh",
     top: "50%",
     left: "50%",
