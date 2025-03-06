@@ -47,9 +47,9 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       <div className="eonet">
         <h2>Wildfires in the United States</h2>
         <small>
-          Powered by{" "}
+          Source:{" "}
           <a href="https://eonet.gsfc.nasa.gov/what-is-eonet">
-            Earth Observatory, NASA{" "}
+            Earth Observatory, NASA
           </a>
         </small>
         <Mapbox data={events} />

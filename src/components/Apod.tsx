@@ -1,10 +1,8 @@
 import React from "react";
 import ReactModal from "react-modal";
-import {
-  fetchApodApi,
-  APOD_HOMEPAGE,
-  getDateString,
-} from "../constant";
+import { fetchApodApi, APOD_HOMEPAGE, getDateString } from "../constant";
+import { Accordion, AccordionSummary } from "@mui/material";
+import AccordionDetails from "@mui/material/AccordionDetails";
 
 type AssetResponse = {
   date: string;
@@ -24,8 +22,8 @@ type ModalProps = {
 
 const MODAL_STYLES = {
   content: {
-    width: "600px",
-    height: "95vh",
+    width: "800px",
+    maxHeight: "95vh",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -82,7 +80,7 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="apod">
-        <h2>Astronomy Picture of the Day</h2>
+        {/* <h2>Astronomy Picture of the Day</h2> */}
         <div className="apod-nav">
           <div onClick={goPrev} className="prev">
             {"<<"}
@@ -91,17 +89,29 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             {">>"}
           </div>
         </div>
-        {asset?.date && <h3>{getDateString(asset.date)}</h3>}
+        <br />
+        <Accordion>
+          <AccordionSummary aria-controls="panel1-content" id="panel1-header">
+            <h3>{asset?.title}</h3>
+          </AccordionSummary>
+          <AccordionDetails>
+            {asset?.date && <p>{getDateString(asset.date)}</p>}
+            <br />
+            {asset?.explanation}
+            <br />
+            <br />
+            <p>
+              <small>
+                Credits: &copy;{asset?.copyright}
+                <a target="_blank" href={APOD_HOMEPAGE}>
+                  NASA
+                </a>
+              </small>
+            </p>
+          </AccordionDetails>
+        </Accordion>
         {asset?.media_type === "image" && <img src={asset?.url} />}
         {asset?.media_type === "video" && <iframe src={asset?.url} />}
-        <h3>{asset?.title}</h3>
-        <p>{asset?.explanation}</p>
-        <small>
-          Credits: &copy;{asset?.copyright}
-          <a target="_blank" href={APOD_HOMEPAGE}>
-            NASA
-          </a>
-        </small>
         <div className="close-btn">
           <button onClick={closeModal}>Close</button>
         </div>

@@ -171,6 +171,20 @@ a.collapse {
   color: #e0e0e0;
 }
 
+h2 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 18px;
+}
+h2,
+h3 {
+  text-align: center;
+  line-height: 0.5;
+  width: 100%;
+  color: gray;
+}
+
 .apod,
 .eonet {
   color: gray;
@@ -188,12 +202,6 @@ a.collapse {
     border: none;
   }
   margin: auto;
-  h2,
-  h3 {
-    text-align: center;
-    line-height: 0.5;
-    margin-top: 10px;
-  }
 
   .apod-nav {
     width: 100%;
@@ -221,7 +229,7 @@ a.collapse {
     text-align: center;
 
     button {
-      margin: 0 10px 20px;
+      margin-top: 10px;
       width: max-content;
     }
 
@@ -250,4 +258,14 @@ a.collapse {
 .map-container {
   height: 80%;
   min-height: 600px;
+}
+
+.Mui-expanded {
+  margin: 0 !important;
+  * {
+    margin: 0 !important;
+  }
+  small {
+    float: right;
+  }
 }

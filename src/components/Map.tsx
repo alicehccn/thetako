@@ -47,7 +47,7 @@ const Mapbox: React.FC<MapProps> = ({ data }) => {
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/dark-v11",
+      style: "mapbox://styles/mapbox/light-v11",
       center: [-99.04, 38.907],
       zoom: 3.8,
     });
