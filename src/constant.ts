@@ -32,13 +32,11 @@ export const SKILL_MAP = [
   {
     subject: "Expertise",
     items: [
-      "Billing",
-      "Payment",
-      "Map",
-      "UI/UX",
-      "A/B Test",
-      "Analytics",
+      "e-Commerce",
+      "Map / Geocode",
+      "Testing",
       "EHR",
+      "Data Viz",
     ],
   },
   {
@@ -47,7 +45,6 @@ export const SKILL_MAP = [
       "Cloud Computing",
       "Container",
       "CI/CD",
-      "Data Visualization",
       "APM",
       "Agile",
     ],
