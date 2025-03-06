@@ -59,7 +59,7 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         />
         <small>
           Source:{" "}
-          <a href="https://eonet.gsfc.nasa.gov/what-is-eonet">
+          <a target="_blank" href="https://eonet.gsfc.nasa.gov/what-is-eonet">
             Earth Observatory, NASA
           </a>
         </small>
