@@ -31,23 +31,11 @@ export const SKILL_MAP = [
   },
   {
     subject: "Expertise",
-    items: [
-      "e-Commerce",
-      "Map / Geocode",
-      "Testing",
-      "EHR",
-      "Data Viz",
-    ],
+    items: ["e-Commerce", "Map / Geocode", "Testing", "EHR", "Data Viz"],
   },
   {
     subject: "Paradigm",
-    items: [
-      "Cloud Computing",
-      "Container",
-      "CI/CD",
-      "APM",
-      "Agile",
-    ],
+    items: ["Cloud Computing", "Container", "CI/CD", "APM", "Agile"],
   },
 ];
 
