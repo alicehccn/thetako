@@ -18,6 +18,14 @@ h1 {
   font-size: 36px;
 }
 
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
 .App {
   width: 100%;
   margin-left: auto;
@@ -171,24 +179,16 @@ a.collapse {
   color: #e0e0e0;
 }
 
-h2 {
-  font-size: 20px;
-}
-h3 {
-  font-size: 18px;
-}
-h2,
-h3 {
-  text-align: center;
-  line-height: 0.5;
-  width: 100%;
-  color: gray;
-}
-
 .apod,
 .eonet {
   color: gray;
-
+  h2,
+  h3 {
+    text-align: center;
+    width: 100%;
+    color: gray;
+    margin: 5px;
+  }
   img {
     width: 100%;
     height: auto;
@@ -227,7 +227,7 @@ h3 {
 
   .close-btn {
     text-align: center;
-
+    cursor: pointer;
     button {
       margin-top: 10px;
       width: max-content;

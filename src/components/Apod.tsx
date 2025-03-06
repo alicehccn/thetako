@@ -22,7 +22,7 @@ type ModalProps = {
 
 const MODAL_STYLES = {
   content: {
-    width: "800px",
+    width: "860px",
     maxHeight: "95vh",
     top: "50%",
     left: "50%",
@@ -80,7 +80,6 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="apod">
-        {/* <h2>Astronomy Picture of the Day</h2> */}
         <div className="apod-nav">
           <div onClick={goPrev} className="prev">
             {"<<"}
@@ -89,10 +88,9 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             {">>"}
           </div>
         </div>
-        <br />
         <Accordion>
           <AccordionSummary aria-controls="panel1-content" id="panel1-header">
-            <h3>{asset?.title}</h3>
+            <h2>{asset?.title}</h2>
           </AccordionSummary>
           <AccordionDetails>
             {asset?.date && <p>{getDateString(asset.date)}</p>}
