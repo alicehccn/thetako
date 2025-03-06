@@ -3,31 +3,20 @@ import "../App.css";
 import { APOD } from "./Apod";
 import { SKILL_MAP } from "../constant";
 import { EONET } from "./Eonet";
+import { SplitButton } from "./SplitButton";
 
 const Content: React.FC = () => {
-  const [APODOpen, setAPODOpen] = React.useState(false);
-  const [EONETopen, setEONETopen] = React.useState(false);
-
-  function openAPOD() {
-    setAPODOpen(true);
-  }
-
-  function closeAPOD() {
-    setAPODOpen(false);
-  }
-
-  function openEONET() {
-    setEONETopen(true);
-  }
-
-  function closeEONET() {
-    setEONETopen(false);
-  }
-
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
   return (
     <div className="App-content">
-      <APOD modalIsOpen={APODOpen} closeModal={closeAPOD} />
-      <EONET modalIsOpen={EONETopen} closeModal={closeEONET} />
+      <APOD
+        modalIsOpen={selectedIndex === 1}
+        closeModal={() => setSelectedIndex(0)}
+      />
+      <EONET
+        modalIsOpen={selectedIndex === 2}
+        closeModal={() => setSelectedIndex(0)}
+      />
       <section className="right">
         <div className={`vertical`}>
           {SKILL_MAP.map((skill, i) => {
@@ -41,12 +30,10 @@ const Content: React.FC = () => {
             );
           })}
         </div>
-        <div className="horizontal" onClick={openAPOD}>
-          <h2>Gallery</h2>
-        </div>
-        <div className="horizontal desktop-only" onClick={openEONET}>
-          <h2>EONET</h2>
-        </div>
+        <SplitButton
+          setSelectedIndex={setSelectedIndex}
+          selectedIndex={selectedIndex}
+        />
       </section>
     </div>
   );

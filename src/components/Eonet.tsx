@@ -5,7 +5,6 @@ import Mapbox from "./Map";
 import { Event } from "./types";
 import _ from "lodash";
 import Switch from "@mui/material/Switch";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 type ModalProps = {
   modalIsOpen: boolean;
@@ -58,13 +57,13 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             setDarkMode(!darkMode);
           }}
         />
-        <Mapbox data={events} darkMode={darkMode} />
         <small>
           Source:{" "}
           <a href="https://eonet.gsfc.nasa.gov/what-is-eonet">
             Earth Observatory, NASA
           </a>
         </small>
+        <Mapbox data={events} darkMode={darkMode} />
       </div>
     </ReactModal>
   );
