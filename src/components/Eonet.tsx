@@ -4,7 +4,9 @@ import { fetchEonetApi } from "../constant";
 import Mapbox from "./Map";
 import { Event } from "./types";
 import _ from "lodash";
-
+import Switch from "@mui/material/Switch";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -25,6 +27,7 @@ const MODAL_STYLES = {
 
 export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   const [events, setEvents] = React.useState<Event[]>();
+  const [darkMode, setDarkMode] = React.useState<boolean>(true);
   React.useEffect(() => {
     if (!events) {
       fetch(fetchEonetApi(14))
@@ -36,6 +39,7 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   if (!events) {
     return;
   }
+  const label = { inputProps: { "aria-label": "Dark Mode" } };
   return (
     <ReactModal
       isOpen={modalIsOpen}
@@ -46,13 +50,21 @@ export const EONET: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     >
       <div className="eonet">
         <h2>Wildfires in the United States</h2>
+        <Switch
+          {...label}
+          checkedIcon={<Brightness4Icon />}
+          defaultChecked
+          onChange={() => {
+            setDarkMode(!darkMode);
+          }}
+        />
+        <Mapbox data={events} darkMode={darkMode} />
         <small>
           Source:{" "}
           <a href="https://eonet.gsfc.nasa.gov/what-is-eonet">
             Earth Observatory, NASA
           </a>
         </small>
-        <Mapbox data={events} />
       </div>
     </ReactModal>
   );

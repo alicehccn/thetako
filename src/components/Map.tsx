@@ -7,6 +7,7 @@ import { FeatureCollection } from "geojson";
 
 type MapProps = {
   data: Event[];
+  darkMode: boolean;
 };
 
 function createGeoJson(events: Event[]) {
@@ -36,7 +37,7 @@ function createGeoJson(events: Event[]) {
   return wildfires;
 }
 
-const Mapbox: React.FC<MapProps> = ({ data }) => {
+const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
   const mapContainerRef = useRef<any>();
   const mapRef = useRef<any>();
 
@@ -47,7 +48,7 @@ const Mapbox: React.FC<MapProps> = ({ data }) => {
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/light-v11",
+      style: `mapbox://styles/mapbox/${darkMode ? "dark" : "light"}-v11`,
       center: [-99.04, 38.907],
       zoom: 3.8,
     });
@@ -71,7 +72,7 @@ const Mapbox: React.FC<MapProps> = ({ data }) => {
           },
         });
     });
-  }, data);
+  }, [data, darkMode]);
 
   return <div id="map" ref={mapContainerRef} className="map-container" />;
 };

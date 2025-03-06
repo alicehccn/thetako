@@ -5,7 +5,7 @@ body {
   background-image: url("../public/desk.jpg");
   background-size: cover;
   line-height: 1.2;
-  color: #e0e0e0;
+  color: #141414;
 }
 
 ol,
@@ -180,7 +180,6 @@ a.collapse {
 
 .apod,
 .eonet {
-  color: gray;
   h2,
   h3 {
     text-align: center;
@@ -234,7 +233,6 @@ a.collapse {
 
     a {
       font-size: 0.9em;
-      color: gray;
     }
   }
 }
@@ -266,5 +264,17 @@ a.collapse {
   }
   small {
     float: right;
+  }
+}
+.MuiSwitch-root {
+  padding: 14px !important;
+
+  .MuiSwitch-switchBase {
+    * {
+      margin-top: -2px;
+    }
+    &.Mui-checked {
+      color: #4f4e4e !important;
+    }
   }
 }
