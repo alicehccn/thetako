@@ -30,19 +30,32 @@ export const SKILL_MAP = [
     ],
   },
   {
-    subject: "Application",
+    subject: "Expertise",
     items: [
       "Billing",
       "Payment",
       "Map",
-      "A/B Testing",
+      "UI/UX",
+      "A/B Test",
       "Analytics",
-      "Access Control",
-      "HIPAA",
+      "EHR",
     ],
   },
   {
-    subject: "DevOps",
-    items: ["Cloud", "Container", "Git", "Data Storage", "APM", "CI/CD"],
+    subject: "Paradigm",
+    items: [
+      "Cloud Computing",
+      "Container",
+      "CI/CD",
+      "Data Visualization",
+      "APM",
+      "Agile",
+    ],
   },
+];
+
+export const buttonOptions = [
+  "DEMO",
+  "APOD (Astronomy Picture of the Day)",
+  "EONET (Earth Observatory Natural Event Tracker)",
 ];

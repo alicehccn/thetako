@@ -8,17 +8,12 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
+import { buttonOptions } from "../constant";
 
 type SplitButtonProps = {
   setSelectedIndex: (arg0: number) => void;
   selectedIndex: number;
 };
-
-const options = [
-  "DEMO",
-  "Astronomy Picture of the Day",
-  "Earth Observatory Wildfires Tracker",
-];
 
 export const SplitButton: React.FC<SplitButtonProps> = ({
   selectedIndex,
@@ -61,7 +56,7 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
         ref={anchorRef}
         aria-label="Button group with a nested menu"
       >
-        <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+        <Button onClick={handleClick}>{buttonOptions[selectedIndex]}</Button>
         <Button
           size="medium"
           aria-controls={open ? "split-button-menu" : undefined}
@@ -92,7 +87,7 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id="split-button-menu" autoFocusItem>
-                  {options.map((option, index) => (
+                  {buttonOptions.map((option, index) => (
                     <MenuItem
                       key={option}
                       disabled={index === 0}
