@@ -3,7 +3,7 @@ import "../App.css";
 import { APOD } from "./Apod";
 import { SKILL_MAP } from "../constant";
 import { EONET } from "./Eonet";
-import { SplitButton } from "./SplitButton";
+import { GroupButton } from "./GroupButton";
 
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -30,7 +30,7 @@ const Content: React.FC = () => {
             );
           })}
         </div>
-        <SplitButton
+        <GroupButton
           setSelectedIndex={setSelectedIndex}
           selectedIndex={selectedIndex}
         />
