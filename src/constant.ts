@@ -16,6 +16,8 @@ export const fetchApodApi = (days: number) =>
 export const fetchEonetApi = (days: number) =>
   `https://eonet.gsfc.nasa.gov/api/v2.1/categories/8?days=${days}&status=open`;
 
+export const fetchWeatherApi = () => `https://api.weather.gov/alerts/active`;
+
 export const SKILL_MAP = [
   {
     subject: "Stack",
@@ -43,4 +45,5 @@ export const buttonOptions = [
   "DEMO",
   "APOD (Astronomy Picture of the Day)",
   "EONET (Earth Observatory Natural Event Tracker)",
+  "Weather API",
 ];

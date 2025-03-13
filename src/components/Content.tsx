@@ -4,6 +4,7 @@ import { APOD } from "./Apod";
 import { SKILL_MAP } from "../constant";
 import { EONET } from "./Eonet";
 import { GroupButton } from "./GroupButton";
+import { Weather } from "./Weather";
 
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -15,6 +16,10 @@ const Content: React.FC = () => {
       />
       <EONET
         modalIsOpen={selectedIndex === 2}
+        closeModal={() => setSelectedIndex(0)}
+      />
+      <Weather
+        modalIsOpen={selectedIndex === 3}
         closeModal={() => setSelectedIndex(0)}
       />
       <section className="right">
