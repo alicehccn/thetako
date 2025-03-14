@@ -22,7 +22,7 @@ h2 {
   font-size: 22px;
 }
 h3 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .App {
@@ -187,7 +187,6 @@ a.collapse {
     width: 100%;
     color: gray;
     margin: 0;
-    margin-top: 5px;
     padding: 0;
   }
   img {
@@ -238,10 +237,18 @@ a.collapse {
     }
   }
 }
+
+.weather {
+  margin-top: 20px;
+}
 .ReactModal__Overlay,
 .ReactModal__Overlay--after-open {
-  background-color: rgba(0, 0, 0, 0.8) !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
   filter: alpha(opacity=60);
+}
+.ReactModal__Content,
+.ReactModal__Content--after-open {
+  padding: 5px 5px 15px !important;
 }
 .MuiAutocomplete-root {
   * {

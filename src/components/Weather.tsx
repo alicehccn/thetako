@@ -1,14 +1,15 @@
 import React from "react";
 import ReactModal from "react-modal";
-import { fetchWeatherApi } from "../constant";
+import { fetchWeatherApi, getDateTimeString } from "../constant";
 import _ from "lodash";
 import Switch from "@mui/material/Switch";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
+import ReplayIcon from "@mui/icons-material/Replay";
 import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { GeoJSON } from "geojson";
-
+import { Button } from "@mui/material";
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -29,16 +30,18 @@ const MODAL_STYLES = {
 };
 
 export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
-  const [alerts, setAlerts] = React.useState<GeoJSON>();
+  const [alerts, setAlerts] = React.useState<any>();
+  const [reloading, setReload] = React.useState(false);
   const [darkMode, setDarkMode] = React.useState<boolean>(true);
   React.useEffect(() => {
-    if (!alerts) {
+    if (!alerts || !!reloading) {
       fetch(fetchWeatherApi())
         .then((response) => response?.json())
         .then((json) => setAlerts(json))
         .catch((error) => console.error(error));
     }
-  });
+    setReload(false);
+  }, [alerts, reloading]);
   if (!alerts) {
     return;
   }
@@ -52,7 +55,8 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="weather">
-        <h2>Severe Weather in the United States</h2>
+        <h2>{alerts.title}</h2>
+        <h3>Last updated: {getDateTimeString(alerts.updated)}</h3>
         <Switch
           {...label}
           checkedIcon={<Brightness4Icon />}
@@ -61,13 +65,18 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             setDarkMode(!darkMode);
           }}
         />
+        <Button
+          startIcon={<ReplayIcon color="action" />}
+          onClick={() => setReload(true)}
+          disabled={reloading}
+        />
+
+        <Mapbox data={alerts} darkMode={darkMode} />
         <small>
-          Source:{" "}
           <a target="_blank" href="https://api.weather.gov/openapi.json">
-            noaa.gov
+            &copy; noaa.gov
           </a>
         </small>
-        <Mapbox data={alerts} darkMode={darkMode} />
       </div>
     </ReactModal>
   );
