@@ -44,6 +44,5 @@ export const SKILL_MAP = [
 export const buttonOptions = [
   "DEMO",
   "APOD (Astronomy Picture of the Day)",
-  "EONET (Earth Observatory Natural Event Tracker)",
-  "Weather API",
+  "NOAA (National Oceanic and Atmospheric Administration)",
 ];

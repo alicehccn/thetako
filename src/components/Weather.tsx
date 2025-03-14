@@ -52,7 +52,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="weather">
-        <h2>Weather Alerts in the United States</h2>
+        <h2>Severe Weather in the United States</h2>
         <Switch
           {...label}
           checkedIcon={<Brightness4Icon />}
@@ -64,7 +64,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         <small>
           Source:{" "}
           <a target="_blank" href="https://api.weather.gov/openapi.json">
-            Weather.gov
+            noaa.gov
           </a>
         </small>
         <Mapbox data={alerts} darkMode={darkMode} />
@@ -89,21 +89,20 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/dark-v11",
+      style: `mapbox://styles/mapbox/${darkMode ? "dark" : "light"}-v11`,
       center: [-99.04, 38.907],
       zoom: 3.8,
     });
 
     mapRef.current.on("load", () => {
       const currentSource = mapRef.current.getSource("alerts");
-      const currentLayer = mapRef.current.getLayer("alerts-viz");
       !currentSource &&
         mapRef.current.addSource("alerts", {
           type: "geojson",
           data,
         });
 
-      !currentLayer &&
+      !mapRef.current.getLayer("alerts-heat") &&
         mapRef.current.addLayer(
           {
             id: "alerts-heat",
@@ -177,49 +176,58 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
           "waterway-label",
         );
 
-      mapRef.current.addLayer(
-        {
-          id: "alerts-point",
-          type: "circle",
-          source: "alerts",
-          minzoom: 7,
-          paint: {
-            // Size circle radius by alert magnitude and zoom level
-            "circle-radius": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              7,
-              ["interpolate", ["linear"], ["get", "mag"], 1, 1, 6, 4],
-              16,
-              ["interpolate", ["linear"], ["get", "mag"], 1, 5, 6, 50],
-            ],
-            // Color circle by alert magnitude
-            "circle-color": [
-              "interpolate",
-              ["linear"],
-              ["get", "mag"],
-              1,
-              "rgba(9, 68, 128, 0)",
-              2,
-              "rgb(103,169,207)",
-              3,
-              "rgb(209,229,240)",
-              4,
-              "rgb(253,219,199)",
-              5,
-              "rgb(239,138,98)",
-              6,
-              "rgb(178,24,43)",
-            ],
-            "circle-stroke-color": "white",
-            "circle-stroke-width": 1,
-            // Transition from heatmap to circle layer by zoom level
-            "circle-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0, 8, 1],
+      !mapRef.current.getLayer("alerts-point") &&
+        mapRef.current.addLayer(
+          {
+            id: "alerts-point",
+            type: "circle",
+            source: "alerts",
+            minzoom: 7,
+            paint: {
+              // Size circle radius by alert magnitude and zoom level
+              "circle-radius": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                7,
+                ["interpolate", ["linear"], ["get", "mag"], 1, 1, 6, 4],
+                16,
+                ["interpolate", ["linear"], ["get", "mag"], 1, 5, 6, 50],
+              ],
+              // Color circle by alert magnitude
+              "circle-color": [
+                "interpolate",
+                ["linear"],
+                ["get", "mag"],
+                1,
+                "rgba(33,102,172,0)",
+                2,
+                "rgb(103,169,207)",
+                3,
+                "rgb(209,229,240)",
+                4,
+                "rgb(253,219,199)",
+                5,
+                "rgb(239,138,98)",
+                6,
+                "rgb(178,24,43)",
+              ],
+              "circle-stroke-color": "white",
+              "circle-stroke-width": 1,
+              // Transition from heatmap to circle layer by zoom level
+              "circle-opacity": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                7,
+                0,
+                8,
+                1,
+              ],
+            },
           },
-        },
-        "waterway-label",
-      );
+          "waterway-label",
+        );
     });
   }, [data, darkMode]);
 

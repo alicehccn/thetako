@@ -14,12 +14,8 @@ const Content: React.FC = () => {
         modalIsOpen={selectedIndex === 1}
         closeModal={() => setSelectedIndex(0)}
       />
-      <EONET
-        modalIsOpen={selectedIndex === 2}
-        closeModal={() => setSelectedIndex(0)}
-      />
       <Weather
-        modalIsOpen={selectedIndex === 3}
+        modalIsOpen={selectedIndex === 2}
         closeModal={() => setSelectedIndex(0)}
       />
       <section className="right">
