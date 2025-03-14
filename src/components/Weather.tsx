@@ -90,6 +90,10 @@ type MapProps = {
 const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
   const mapContainerRef = useRef<any>();
   const mapRef = useRef<any>();
+  const [selectedFeature, setSelectedFeature] = React.useState(null);
+
+  // Refs to track the latest state values
+  const selectedFeatureRef = useRef(null);
 
   useEffect(() => {
     if (!data) {
@@ -237,6 +241,14 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
           },
           "waterway-label",
         );
+
+      mapRef.current.removeInteraction("map-click") &&
+        mapRef.current.addInteraction("map-click", {
+          type: "click",
+          handler: (e: any) => {
+            console.log(`Clicked at: ${e.lngLat.lng}, ${e.lngLat.lat}`);
+          },
+        });
     });
   }, [data, darkMode]);
 
