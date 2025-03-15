@@ -243,7 +243,7 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
       });
       map.addInteraction("mouseleave", {
         type: "mouseleave",
-        target: { layerId: "alerts-point" },
+        target: { layerId: "alerts-heat" },
         handler: () => {
           if (selectedFeature) {
             setSelectedFeature(null);
