@@ -269,7 +269,7 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
             padding: "10px",
             color: "#1a2224",
             fontSize: "13px",
-            opacity: 0.8,
+            opacity: 0.9,
           }}
         >
           <div
