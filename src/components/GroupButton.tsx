@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -56,7 +56,9 @@ export const GroupButton: React.FC<GroupButtonProps> = ({
         ref={anchorRef}
         aria-label="Button group with a nested menu"
       >
-        <Button onClick={handleClick}>{buttonOptions[selectedIndex]}</Button>
+        <Button onClick={handleClick}>
+          {buttonOptions[selectedIndex].split("(")[0]}
+        </Button>
         <Button
           size="medium"
           aria-controls={open ? "split-button-menu" : undefined}
