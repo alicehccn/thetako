@@ -269,11 +269,11 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
             position: "absolute",
             left: point?.x,
             top: point?.y,
-            width: "50%",
+            width: "40%",
             transform: "translate(-50%, 70%)",
             padding: "10px",
             color: "#1a2224",
-            fontSize: "13px",
+            fontSize: "14px",
             opacity: 0.9,
           }}
         >
