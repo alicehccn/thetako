@@ -232,7 +232,6 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
         },
         "waterway-label",
       );
-
       map.addInteraction("mouseenter", {
         type: "mouseenter",
         target: { layerId: "alerts-heat" },
@@ -244,6 +243,14 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
       map.addInteraction("mouseleave", {
         type: "mouseleave",
         target: { layerId: "alerts-heat" },
+        handler: () => {
+          if (selectedFeature) {
+            setSelectedFeature(null);
+          }
+        },
+      });
+      map.addInteraction("map-click", {
+        type: "click",
         handler: () => {
           if (selectedFeature) {
             setSelectedFeature(null);

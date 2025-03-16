@@ -10,12 +10,12 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import { buttonOptions } from "../constant";
 
-type GroupButtonProps = {
+type MenuProps = {
   setSelectedIndex: (arg0: number) => void;
   selectedIndex: number;
 };
 
-export const GroupButton: React.FC<GroupButtonProps> = ({
+export const Menu: React.FC<MenuProps> = ({
   selectedIndex,
   setSelectedIndex,
 }) => {

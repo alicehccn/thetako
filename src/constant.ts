@@ -13,8 +13,6 @@ export const getApodStartDate = (days: number) =>
 
 export const fetchApodApi = (days: number) =>
   `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_OPEN_API}&start_date=${getApodStartDate(days)}`;
-export const fetchEonetApi = (days: number) =>
-  `https://eonet.gsfc.nasa.gov/api/v2.1/categories/8?days=${days}&status=open`;
 
 export const fetchWeatherApi = () => `https://api.weather.gov/alerts/active`;
 

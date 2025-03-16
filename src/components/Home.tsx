@@ -2,9 +2,8 @@ import React from "react";
 import "../App.css";
 import { APOD } from "./Apod";
 import { SKILL_MAP } from "../constant";
-import { EONET } from "./Eonet";
-import { GroupButton } from "./GroupButton";
-import { Weather } from "./Weather";
+import { Menu } from "./Menu";
+import { Weather } from "./Noaa";
 
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -31,7 +30,7 @@ const Content: React.FC = () => {
             );
           })}
         </div>
-        <GroupButton
+        <Menu
           setSelectedIndex={setSelectedIndex}
           selectedIndex={selectedIndex}
         />
