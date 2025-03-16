@@ -251,6 +251,7 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
       });
       map.addInteraction("map-click", {
         type: "click",
+        target: { layerId: "alerts-heat" },
         handler: () => {
           if (selectedFeature) {
             setSelectedFeature(null);
