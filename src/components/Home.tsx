@@ -1,12 +1,15 @@
 import React from "react";
 import "../App.css";
 import { APOD } from "./Apod";
-import { SKILL_MAP } from "../constant";
 import { Menu } from "./Menu";
 import { Weather } from "./Noaa";
+import BasicDatePicker from "./DatePicker";
 
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [date, setDate] = React.useState<Date>();
+  console.log(date);
+
   return (
     <div className="App-content">
       <APOD
@@ -18,7 +21,7 @@ const Content: React.FC = () => {
         closeModal={() => setSelectedIndex(0)}
       />
       <section className="right">
-        <div className={`vertical`}>
+        {/* <div className={`vertical`}>
           {SKILL_MAP.map((skill, i) => {
             return (
               <div key={i}>
@@ -29,7 +32,8 @@ const Content: React.FC = () => {
               </div>
             );
           })}
-        </div>
+        </div> */}
+        <BasicDatePicker setValue={(props) => setDate(props)} />
         <Menu
           setSelectedIndex={setSelectedIndex}
           selectedIndex={selectedIndex}

@@ -289,8 +289,9 @@ a.collapse {
     }
   }
 }
-.MuiButtonGroup-root {
-  margin: 5px;
+.MuiButtonGroup-root,
+.MuiInputBase-root {
+  margin: 10px;
   button {
     padding: 15px;
     border-color: #808080 !important;
