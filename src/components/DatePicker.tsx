@@ -15,7 +15,7 @@ const BasicDatePicker: React.FC<DatePickerProps> = ({ setValue }) => {
         <DatePicker
           onChange={setValue}
           minDate={dayjs(getApiDate(365))}
-          maxDate={dayjs(getApiDate(1))}
+          maxDate={dayjs(getApiDate(2))}
         />
       </DemoContainer>
     </LocalizationProvider>
