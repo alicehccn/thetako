@@ -290,8 +290,10 @@ a.collapse {
   }
 }
 .MuiButtonGroup-root,
-.MuiInputBase-root {
-  margin: 10px;
+.MuiInputBase-root,
+.MuiTextField-root {
+  margin: 10px 0;
+  width: 100%;
   button {
     padding: 15px;
     border-color: #808080 !important;
