@@ -10,11 +10,11 @@ type DatePickerProps = {
 const BasicDatePicker: React.FC<DatePickerProps> = ({ setValue }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
-          onChange={setValue}
-          minDate={dayjs(getApiDate(365))}
-          maxDate={dayjs(getApiDate(2))}
-        />
+      <DatePicker
+        onChange={setValue}
+        minDate={dayjs(getApiDate(365))}
+        maxDate={dayjs(getApiDate(2))}
+      />
     </LocalizationProvider>
   );
 };
