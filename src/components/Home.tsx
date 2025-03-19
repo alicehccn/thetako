@@ -8,7 +8,6 @@ import BasicDatePicker from "./DatePicker";
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [date, setDate] = React.useState<Date>();
-  console.log(date);
 
   return (
     <div className="App-content">
@@ -21,18 +20,11 @@ const Content: React.FC = () => {
         closeModal={() => setSelectedIndex(0)}
       />
       <section className="right">
-        {/* <div className={`vertical`}>
-          {SKILL_MAP.map((skill, i) => {
-            return (
-              <div key={i}>
-                <h2>{skill.subject}</h2>
-                {skill.items.map((item, j) => (
-                  <p key={j}>{item}</p>
-                ))}
-              </div>
-            );
-          })}
-        </div> */}
+        {!!date && (
+          <div className="vertical">
+            <h1>Coming soon...</h1>
+          </div>
+        )}
         <BasicDatePicker setValue={(props) => setDate(props)} />
         <Menu
           setSelectedIndex={setSelectedIndex}
