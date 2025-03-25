@@ -4,10 +4,11 @@ import { APOD } from "./Apod";
 import { Menu } from "./Menu";
 import { Weather } from "./Noaa";
 import BasicDatePicker from "./DatePicker";
+import { Epic } from "./Epic";
 
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [date, setDate] = React.useState<Date>();
+  const [selectedDate, selectDate] = React.useState<Date | string>();
 
   return (
     <div className="App-content">
@@ -19,13 +20,13 @@ const Content: React.FC = () => {
         modalIsOpen={selectedIndex === 2}
         closeModal={() => setSelectedIndex(0)}
       />
+      <Epic
+        modalIsOpen={selectedIndex === 3}
+        closeModal={() => setSelectedIndex(0)}
+      />
+
       <section className="right">
-        {!!date && (
-          <div className="vertical">
-            <h1>Coming soon...</h1>
-          </div>
-        )}
-        <BasicDatePicker setValue={(props) => setDate(props)} />
+        <BasicDatePicker setValue={(props) => selectDate(props)} />
         <Menu
           setSelectedIndex={setSelectedIndex}
           selectedIndex={selectedIndex}

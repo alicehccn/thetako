@@ -109,7 +109,9 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           </AccordionDetails>
         </Accordion>
         {asset?.media_type === "image" && <img src={asset?.url} />}
-        {asset?.media_type === "video" && <iframe src={asset?.url} />}
+        {["video", "html"].includes(asset?.media_type) && (
+          <iframe src={asset?.url} />
+        )}
         <div className="close-btn">
           <button onClick={closeModal}>Close</button>
         </div>

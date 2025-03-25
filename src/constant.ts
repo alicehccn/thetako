@@ -8,13 +8,19 @@ export const getDateString = (date: Date | string) =>
 export const getDateTimeString = (date: Date | string) =>
   format(new Date(date), "MMMM dd, yyyy, h:mmaaa");
 
-export const getApiDate = (days: number) =>
+export const getApodDate = (days: number) =>
   format(subDays(new Date(), days), "yyyy-MM-dd");
 
 export const fetchApodApi = (days: number) =>
-  `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_OPEN_API}&start_date=${getApiDate(days)}`;
+  `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_OPEN_API}&start_date=${getApodDate(days)}`;
 
 export const fetchWeatherApi = () => `https://api.weather.gov/alerts/active`;
+
+export const fetchEpicApi = (date: string) =>
+  `https://epic.gsfc.nasa.gov/api/natural?date=${date}`;
+
+export const composeEpicImageUrl = (filename: string, date: Date | string) =>
+  `https://epic.gsfc.nasa.gov/archive/natural/${format(date, "yyyy/MM/dd")}/png/${filename}.png`;
 
 export const SKILL_MAP = [
   {
@@ -39,8 +45,9 @@ export const SKILL_MAP = [
   },
 ];
 
-export const buttonOptions = [
+export const MENU_OPTIONS = [
   "DEMO",
   "APOD (Astronomy Picture of the Day)",
   "NOAA (National Oceanic and Atmospheric Administration)",
+  "EPIC",
 ];

@@ -8,7 +8,7 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import { buttonOptions } from "../constant";
+import { MENU_OPTIONS } from "../constant";
 
 type MenuProps = {
   setSelectedIndex: (arg0: number) => void;
@@ -57,7 +57,7 @@ export const Menu: React.FC<MenuProps> = ({
         aria-label="Button group with a nested menu"
       >
         <Button onClick={handleClick}>
-          {buttonOptions[selectedIndex].split("(")[0]}
+          {MENU_OPTIONS[selectedIndex].split("(")[0]}
         </Button>
         <Button
           size="medium"
@@ -89,7 +89,7 @@ export const Menu: React.FC<MenuProps> = ({
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id="split-button-menu" autoFocusItem>
-                  {buttonOptions.map((option, index) => (
+                  {MENU_OPTIONS.map((option, index) => (
                     <MenuItem
                       key={option}
                       disabled={index === 0}
