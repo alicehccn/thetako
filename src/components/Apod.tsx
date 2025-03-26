@@ -3,7 +3,7 @@ import ReactModal from "react-modal";
 import {
   fetchApodApi,
   APOD_HOMEPAGE,
-  getDateString,
+  formatDate,
   MODAL_STYLES,
 } from "../constant";
 import { Accordion, AccordionSummary } from "@mui/material";
@@ -85,7 +85,7 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             <h2>{asset?.title}</h2>
           </AccordionSummary>
           <AccordionDetails>
-            {asset?.date && <p>{getDateString(asset.date)}</p>}
+            {asset?.date && <p>{formatDate(asset.date)}</p>}
             <br />
             {asset?.explanation}
             <br />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactModal from "react-modal";
-import { fetchWeatherApi, getDateTimeString } from "../constant";
+import { fetchWeatherApi, formatDateTime } from "../constant";
 import _ from "lodash";
 import Switch from "@mui/material/Switch";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
@@ -55,7 +55,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     >
       <div className="weather">
         <h2>{alerts.title}</h2>
-        <h3>Last updated: {getDateTimeString(alerts.updated)}</h3>
+        <h3>Last updated: {formatDateTime(alerts.updated)}</h3>
         <Switch
           {...label}
           checkedIcon={<Brightness4Icon />}

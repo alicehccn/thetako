@@ -4,7 +4,7 @@ import {
   composeEpicImageUrl,
   EPIC_INTERVAL,
   fetchEpicApi,
-  getApodDate,
+  formatApiDate,
   MODAL_STYLES,
 } from "../constant";
 import ReactModal from "react-modal";
@@ -29,7 +29,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
 
   useEffect(() => {
     if (assets.length === 0) {
-      fetch(fetchEpicApi(getApodDate(10)))
+      fetch(fetchEpicApi(formatApiDate(10)))
         .then((response) =>
           response?.json().then((json) => {
             setAssets(json);
