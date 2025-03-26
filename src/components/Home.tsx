@@ -3,7 +3,6 @@ import "../App.css";
 import { APOD } from "./Apod";
 import { Menu } from "./Menu";
 import { Weather } from "./Noaa";
-import BasicDatePicker from "./DatePicker";
 import { Epic } from "./Epic";
 
 const Content: React.FC = () => {
@@ -26,7 +25,6 @@ const Content: React.FC = () => {
       />
 
       <section className="right">
-        <BasicDatePicker setValue={(props) => selectDate(props)} />
         <Menu
           setSelectedIndex={setSelectedIndex}
           selectedIndex={selectedIndex}

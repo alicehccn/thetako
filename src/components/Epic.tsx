@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../App.css";
 import {
   composeEpicImageUrl,
@@ -35,39 +35,56 @@ const MODAL_STYLES = {
 };
 
 export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
-  const [assets, setAssets] = useState<EpicReponse[]>();
+  const [assets, setAssets] = useState<EpicReponse[]>([]);
   const [asset, setAsset] = useState<EpicReponse | null>();
-  let [assetIndex, setAssetIndex] = useState(1);
+  let [assetIndex, setAssetIndex] = useState(0);
+
   useEffect(() => {
-    if (!assets) {
-      fetch(fetchEpicApi(getApodDate(1)))
+    if (assets.length === 0) {
+      fetch(fetchEpicApi(getApodDate(10)))
         .then((response) =>
           response?.json().then((json) => {
             setAssets(json);
-            setAsset(json[json.length - assetIndex]);
+            setAsset(json[0]);
             setAssetIndex(assetIndex);
           }),
         )
         .catch((error) => console.error(error));
     }
   }, [assets]);
-  if (!asset) {
-    return null;
+
+  function useInterval(callback: () => void, delay: number) {
+    const savedCallback = useRef(callback);
+
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
   }
 
-  function goPrev() {
-    if (assetIndex < (assets?.length ?? 0)) {
+  useInterval(() => {
+    if (assetIndex < assets.length - 1) {
       assetIndex++;
       setAssetIndex(assetIndex);
-      setAsset(assets?.[assets.length - assetIndex]);
+      setAsset(assets[assetIndex]);
     }
-  }
-  function goNext() {
-    if (assetIndex > 1) {
-      assetIndex--;
-      setAssetIndex(assetIndex);
-      setAsset(assets?.[assets.length - assetIndex]);
+    if (assetIndex === assets.length - 1) {
+      setAssetIndex(0);
+      setAsset(assets[0]);
     }
+  }, 2500);
+
+  if (!asset) {
+    return null;
   }
 
   return (
@@ -90,7 +107,6 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             <br />
             <br />
             <small>Credits: &copy;NASA</small>
-            {""}
             <small>{getDateString(asset.date)}</small>
           </AccordionDetails>
         </Accordion>

@@ -22,32 +22,9 @@ export const fetchEpicApi = (date: string) =>
 export const composeEpicImageUrl = (filename: string, date: Date | string) =>
   `https://epic.gsfc.nasa.gov/archive/natural/${format(date, "yyyy/MM/dd")}/png/${filename}.png`;
 
-export const SKILL_MAP = [
-  {
-    subject: "Stack",
-    items: [
-      "Typescript",
-      "ReactJS",
-      "XHR",
-      "HTML / CSS",
-      "Golang",
-      "Python",
-      "SQL",
-    ],
-  },
-  {
-    subject: "Expertise",
-    items: ["e-Commerce", "Map / Geocode", "Testing", "EHR", "Data Viz"],
-  },
-  {
-    subject: "Paradigm",
-    items: ["Cloud Computing", "Container", "CI/CD", "APM", "Agile"],
-  },
-];
-
 export const MENU_OPTIONS = [
   "DEMO",
   "APOD (Astronomy Picture of the Day)",
   "NOAA (National Oceanic and Atmospheric Administration)",
-  "EPIC",
+  "EPIC (Earth Polychromatic Imaging Camera)",
 ];
