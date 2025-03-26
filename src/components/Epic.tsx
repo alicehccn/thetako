@@ -8,7 +8,6 @@ import {
   MODAL_STYLES,
 } from "../constant";
 import ReactModal from "react-modal";
-import { Box } from "@mui/material";
 
 type ModalProps = {
   modalIsOpen: boolean;
@@ -84,6 +83,9 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="epic">
+        <div>
+          
+        </div>
         <img src={composeEpicImageUrl(asset.image, asset.date)} />
         <div className="close-btn">
           <button onClick={closeModal}>Close</button>

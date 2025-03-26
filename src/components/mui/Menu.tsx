@@ -8,7 +8,7 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-import { MENU_OPTIONS } from "../constant";
+import { MENU_OPTIONS } from "../../constant";
 
 type MenuProps = {
   setSelectedIndex: (arg0: number) => void;

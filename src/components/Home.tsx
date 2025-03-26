@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import { APOD } from "./Apod";
-import { Menu } from "./Menu";
+import { Menu } from "./mui/Menu";
 import { Weather } from "./Noaa";
 import { Epic } from "./Epic";
 
