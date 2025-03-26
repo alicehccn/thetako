@@ -1,13 +1,13 @@
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Content from "./components/Home";
+import Home from "./components/Home";
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <Header />
-      <Content />
+      <Home />
       <Footer />
     </div>
   );

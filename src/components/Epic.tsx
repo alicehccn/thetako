@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import "../App.css";
 import {
   composeEpicImageUrl,
+  EPIC_INTERVAL,
   fetchEpicApi,
   getApodDate,
-  getDateString,
+  MODAL_STYLES,
 } from "../constant";
 import ReactModal from "react-modal";
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import { Box } from "@mui/material";
 
 type ModalProps = {
   modalIsOpen: boolean;
@@ -19,19 +20,6 @@ type EpicReponse = {
   date: string;
   identifier: string;
   image: string;
-};
-
-const MODAL_STYLES = {
-  content: {
-    width: "46%",
-    maxHeight: "96%",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
 };
 
 export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
@@ -81,7 +69,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       setAssetIndex(0);
       setAsset(assets[0]);
     }
-  }, 2500);
+  }, EPIC_INTERVAL);
 
   if (!asset) {
     return null;
@@ -96,20 +84,6 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="epic">
-        <Accordion>
-          <AccordionSummary
-            aria-controls="panel1-content"
-            id="panel1-header"
-          ></AccordionSummary>
-          <AccordionDetails>
-            <br />
-            {asset?.caption}
-            <br />
-            <br />
-            <small>Credits: &copy;NASA</small>
-            <small>{getDateString(asset.date)}</small>
-          </AccordionDetails>
-        </Accordion>
         <img src={composeEpicImageUrl(asset.image, asset.date)} />
         <div className="close-btn">
           <button onClick={closeModal}>Close</button>
