@@ -2,6 +2,8 @@ import { format, subDays } from "date-fns";
 
 export const APOD_HOMEPAGE = "https://apod.nasa.gov/apod/astropix.html";
 
+export const EPIC_HOMEPAGE = "https://epic.gsfc.nasa.gov/";
+
 export const formatDate = (date: Date | string) =>
   format(new Date(date), "MMMM dd, yyyy");
 
@@ -16,11 +18,15 @@ export const fetchApodApi = (days: number) =>
 
 export const fetchWeatherApi = () => `https://api.weather.gov/alerts/active`;
 
-export const fetchEpicApi = (date: string) =>
-  `https://epic.gsfc.nasa.gov/api/natural?date=${date}`;
+export const fetchEpicApi = (date: string, color: string) =>
+  `https://epic.gsfc.nasa.gov/api/${color}?date=${date}`;
 
-export const composeEpicImageUrl = (filename: string, date: Date | string) =>
-  `https://epic.gsfc.nasa.gov/archive/natural/${format(date, "yyyy/MM/dd")}/png/${filename}.png`;
+export const composeEpicImageUrl = (
+  filename: string,
+  date: Date | string,
+  color: string,
+) =>
+  `https://epic.gsfc.nasa.gov/archive//${color}/${format(date, "yyyy/MM/dd")}/png/${filename}.png`;
 
 export const MENU_OPTIONS = [
   "DEMO",
@@ -43,3 +49,10 @@ export const MODAL_STYLES = {
 };
 
 export const EPIC_INTERVAL = 3600;
+
+export enum EPIC_COLOR {
+  NATURAL = "natural",
+  ENHANCED = "enhanced",
+  CLOUD = "cloud",
+  AEROSOL = "aerosol",
+}

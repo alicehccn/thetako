@@ -248,6 +248,10 @@ a.collapse {
 .weather {
   margin-top: 20px;
 }
+
+.epic {
+  margin: 20px 10px;
+}
 .ReactModal__Overlay,
 .ReactModal__Overlay--after-open {
   background-color: rgba(0, 0, 0, 0.9) !important;

@@ -2,13 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import "../App.css";
 import {
   composeEpicImageUrl,
+  EPIC_COLOR,
+  EPIC_HOMEPAGE,
   EPIC_INTERVAL,
   fetchEpicApi,
   formatApiDate,
+  formatDate,
   MODAL_STYLES,
 } from "../constant";
 import ReactModal from "react-modal";
-
+import { RadioBtn } from "./mui/RadioBtn";
+import PauseIcon from "@mui/icons-material/Pause";
+import { Button, FormControl } from "@mui/material";
+import PausePresentationIcon from "@mui/icons-material/PausePresentation";
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -25,10 +31,11 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   const [assets, setAssets] = useState<EpicReponse[]>([]);
   const [asset, setAsset] = useState<EpicReponse | null>();
   let [assetIndex, setAssetIndex] = useState(0);
+  const [color, setColor] = useState<EPIC_COLOR>(EPIC_COLOR.NATURAL);
 
   useEffect(() => {
     if (assets.length === 0) {
-      fetch(fetchEpicApi(formatApiDate(10)))
+      fetch(fetchEpicApi(formatApiDate(0), color))
         .then((response) =>
           response?.json().then((json) => {
             setAssets(json);
@@ -38,7 +45,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         )
         .catch((error) => console.error(error));
     }
-  }, [assets]);
+  }, [assets, color]);
 
   function useInterval(callback: () => void, delay: number) {
     const savedCallback = useRef(callback);
@@ -83,13 +90,20 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="epic">
-        <div>
-          
-        </div>
-        <img src={composeEpicImageUrl(asset.image, asset.date)} />
-        <div className="close-btn">
-          <button onClick={closeModal}>Close</button>
-        </div>
+        <RadioBtn
+          handleChange={(e) => {
+            setColor(e.target.value);
+            setAssets([]);
+          }}
+          value={color}
+        />
+        <img src={composeEpicImageUrl(asset.image, asset.date, color)} />
+        <small>
+          Credits:{" "}
+          <a target="_blank" href={EPIC_HOMEPAGE}>
+            DSCOVR: EPIC &copy; NASA, {formatDate(asset.date)}
+          </a>
+        </small>
       </div>
     </ReactModal>
   );
