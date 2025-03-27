@@ -56,3 +56,19 @@ export enum EPIC_COLOR {
   CLOUD = "cloud",
   AEROSOL = "aerosol",
 }
+
+export const EPIC_TAB = [
+  { label: "Natural", value: EPIC_COLOR.NATURAL },
+  { label: "Enhanced", value: EPIC_COLOR.ENHANCED },
+  { label: "Aresol", value: EPIC_COLOR.AEROSOL },
+  { label: "Cloud", value: EPIC_COLOR.CLOUD },
+];
+
+export const TAB_PROPS = (index: number) => {
+  return {
+    id: EPIC_TAB[index].value,
+    "aria-controls": EPIC_TAB[index].value,
+    value: EPIC_TAB[index].value,
+    label: EPIC_TAB[index].label,
+  };
+};

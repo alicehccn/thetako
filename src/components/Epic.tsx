@@ -11,10 +11,7 @@ import {
   MODAL_STYLES,
 } from "../constant";
 import ReactModal from "react-modal";
-import { RadioBtn } from "./mui/RadioBtn";
-import PauseIcon from "@mui/icons-material/Pause";
-import { Button, FormControl } from "@mui/material";
-import PausePresentationIcon from "@mui/icons-material/PausePresentation";
+import { BasicTab } from "./mui/BasicTab";
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -90,9 +87,9 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="epic">
-        <RadioBtn
+        <BasicTab
           handleChange={(e) => {
-            setColor(e.target.value);
+            setColor(e.target.id);
             setAssets([]);
           }}
           value={color}
