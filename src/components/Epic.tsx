@@ -8,7 +8,6 @@ import {
   fetchEpicApi,
   formatApiDate,
   formatDate,
-  MODAL_STYLES,
 } from "../constant";
 import ReactModal from "react-modal";
 import { BasicTab } from "./mui/BasicTab";
@@ -22,6 +21,19 @@ type EpicReponse = {
   date: string;
   identifier: string;
   image: string;
+};
+
+const MODAL_STYLES = {
+  content: {
+    width: "700px",
+    maxHeight: "96%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
 };
 
 export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {

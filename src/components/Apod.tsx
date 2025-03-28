@@ -1,11 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
-import {
-  fetchApodApi,
-  APOD_HOMEPAGE,
-  formatDate,
-  MODAL_STYLES,
-} from "../constant";
+import { fetchApodApi, APOD_HOMEPAGE, formatDate } from "../constant";
 import { Accordion, AccordionSummary } from "@mui/material";
 import AccordionDetails from "@mui/material/AccordionDetails";
 
@@ -23,6 +18,19 @@ type AssetResponse = {
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
+};
+
+const MODAL_STYLES = {
+  content: {
+    width: "900px",
+    maxHeight: "96%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
 };
 
 export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {

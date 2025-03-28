@@ -35,19 +35,6 @@ export const MENU_OPTIONS = [
   "EPIC (Earth Polychromatic Imaging Camera)",
 ];
 
-export const MODAL_STYLES = {
-  content: {
-    width: "46%",
-    maxHeight: "96%",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-
 export const EPIC_INTERVAL = 3600;
 
 export enum EPIC_COLOR {
