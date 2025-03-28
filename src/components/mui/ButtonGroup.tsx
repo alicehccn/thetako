@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
+import BG from "@mui/material/ButtonGroup";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
@@ -10,12 +10,12 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import { MENU_OPTIONS } from "../../constant";
 
-type MenuProps = {
+type ButtonGroupProps = {
   setSelectedIndex: (arg0: number) => void;
   selectedIndex: number;
 };
 
-export const Menu: React.FC<MenuProps> = ({
+export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   selectedIndex,
   setSelectedIndex,
 }) => {
@@ -26,7 +26,7 @@ export const Menu: React.FC<MenuProps> = ({
     handleToggle();
   };
 
-  const handleMenuItemClick = (
+  const handleButtonGroupItemClick = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number,
   ) => {
@@ -51,7 +51,7 @@ export const Menu: React.FC<MenuProps> = ({
 
   return (
     <React.Fragment>
-      <ButtonGroup
+      <BG
         variant="contained"
         ref={anchorRef}
         aria-label="Button group with a nested menu"
@@ -69,7 +69,7 @@ export const Menu: React.FC<MenuProps> = ({
         >
           <ArrowDropDownIcon />
         </Button>
-      </ButtonGroup>
+      </BG>
       <Popper
         sx={{ zIndex: 1 }}
         open={open}
@@ -94,7 +94,9 @@ export const Menu: React.FC<MenuProps> = ({
                       key={option}
                       disabled={index === 0}
                       selected={index === selectedIndex}
-                      onClick={(event) => handleMenuItemClick(event, index)}
+                      onClick={(event) =>
+                        handleButtonGroupItemClick(event, index)
+                      }
                     >
                       {option}
                     </MenuItem>

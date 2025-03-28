@@ -1,13 +1,12 @@
 import React from "react";
 import "../App.css";
 import { APOD } from "./Apod";
-import { Menu } from "./mui/Menu";
+import { ButtonGroup } from "./mui/ButtonGroup";
 import { Weather } from "./Noaa";
 import { Epic } from "./Epic";
 
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [selectedDate, selectDate] = React.useState<Date | string>();
 
   return (
     <div className="App-content">
@@ -25,7 +24,7 @@ const Content: React.FC = () => {
       />
 
       <section className="right">
-        <Menu
+        <ButtonGroup
           setSelectedIndex={setSelectedIndex}
           selectedIndex={selectedIndex}
         />
