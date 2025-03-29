@@ -41,17 +41,23 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   const [asset, setAsset] = useState<EpicReponse | null>();
   let [assetIndex, setAssetIndex] = useState(0);
   const [color, setColor] = useState<EPIC_COLOR>(EPIC_COLOR.NATURAL);
+  const [albums, setAlbum] = useState<{ [key: string]: EpicReponse[] }>({});
 
   useEffect(() => {
-    fetch(fetchEpicApi(formatApiDate(0), color))
-      .then((response) =>
-        response?.json().then((json) => {
-          setAssets(json);
-          setAsset(json[0]);
-          setAssetIndex(assetIndex);
-        }),
-      )
-      .catch((error) => console.error(error));
+    if (albums?.[color]) {
+      setAssets(albums[color]);
+      setAsset(albums[color][0]);
+      return;
+    } else {
+      fetch(fetchEpicApi(formatApiDate(0), color))
+        .then((response) =>
+          response?.json().then((json) => {
+            setAssets(json);
+            setAsset(json[0]);
+          }),
+        )
+        .catch((error) => console.error(error));
+    }
   }, [color]);
 
   function useInterval(callback: () => void, delay: number) {
@@ -99,6 +105,8 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       <div className="epic">
         <BasicTab
           handleChange={(e) => {
+            albums[color] = assets;
+            setAlbum(albums);
             setColor(e.target.id);
           }}
           value={color}

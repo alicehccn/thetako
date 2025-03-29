@@ -51,11 +51,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
 
   return (
     <React.Fragment>
-      <BG
-        variant="contained"
-        ref={anchorRef}
-        aria-label="Button group with a nested menu"
-      >
+      <BG variant="contained" ref={anchorRef} aria-label="button-group">
         <Button onClick={handleClick}>
           {MENU_OPTIONS[selectedIndex].split("(")[0]}
         </Button>
@@ -63,7 +59,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
           size="medium"
           aria-controls={open ? "split-button-menu" : undefined}
           aria-expanded={open ? "true" : undefined}
-          aria-label="select merge strategy"
+          aria-label="select color filter"
           aria-haspopup="menu"
           onClick={handleToggle}
         >

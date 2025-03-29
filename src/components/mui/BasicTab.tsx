@@ -10,11 +10,7 @@ export const BasicTab: React.FC<BasicTabProps> = ({ value, handleChange }) => {
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
+        <Tabs value={value} onChange={handleChange} aria-label={value}>
           {EPIC_TAB.map((tab, i) => (
             <Tab key={i} {...TAB_PROPS(i)} />
           ))}
