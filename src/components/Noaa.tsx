@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactModal from "react-modal";
 import { fetchWeatherApi, formatDateTime } from "../constant";
-import _ from "lodash";
 import Switch from "@mui/material/Switch";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import ReplayIcon from "@mui/icons-material/Replay";
@@ -57,7 +56,14 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     >
       <div className="weather">
         <h2>{alerts.title}</h2>
-        <h4>Last updated: {formatDateTime(alerts.updated)}</h4>
+        <h4>
+          Last updated: {formatDateTime(alerts.updated)}
+          <Button
+            startIcon={<ReplayIcon color="action" />}
+            onClick={() => setReload(true)}
+            disabled={reloading}
+          />
+        </h4>
 
         <Mapbox data={alerts} darkMode={darkMode} />
         <small>
@@ -72,11 +78,6 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           onChange={() => {
             setDarkMode(!darkMode);
           }}
-        />
-        <Button
-          startIcon={<ReplayIcon color="action" />}
-          onClick={() => setReload(true)}
-          disabled={reloading}
         />
       </div>
     </ReactModal>
