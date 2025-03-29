@@ -1,9 +1,10 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import { EPIC_COLOR, EPIC_TAB, TAB_PROPS } from "../../constant";
+import { BaseSyntheticEvent } from "react";
 
 type BasicTabProps = {
   value: EPIC_COLOR;
-  handleChange: (e: any) => void;
+  handleChange: (e: BaseSyntheticEvent) => void;
 };
 
 export const BasicTab: React.FC<BasicTabProps> = ({ value, handleChange }) => {

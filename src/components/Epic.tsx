@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { BaseSyntheticEvent, useEffect, useRef, useState } from "react";
 import "../App.css";
 import {
   composeEpicImageUrl,
@@ -94,6 +94,12 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     return null;
   }
 
+  function onTabChange(e: BaseSyntheticEvent) {
+    albums[color] = assets;
+    setAlbum(albums);
+    setColor(e.target.id);
+  }
+
   return (
     <ReactModal
       isOpen={modalIsOpen}
@@ -103,14 +109,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="epic">
-        <BasicTab
-          handleChange={(e) => {
-            albums[color] = assets;
-            setAlbum(albums);
-            setColor(e.target.id);
-          }}
-          value={color}
-        />
+        <BasicTab handleChange={onTabChange} value={color} />
         <img src={composeEpicImageUrl(asset.image, asset.date, color)} />
         <small>
           Credits:{" "}
