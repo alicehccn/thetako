@@ -47,6 +47,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     if (albums?.[color]) {
       setAssets(albums[color]);
       setAsset(albums[color][0]);
+      setAssetIndex(0);
       return;
     } else {
       fetch(fetchEpicApi(formatApiDate(0), color))
@@ -54,6 +55,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           response?.json().then((json) => {
             setAssets(json);
             setAsset(json[0]);
+            setAssetIndex(0);
           }),
         )
         .catch((error) => console.error(error));
@@ -98,6 +100,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     albums[color] = assets;
     setAlbum(albums);
     setColor(e.target.id);
+    setAssetIndex(0);
   }
 
   return (
