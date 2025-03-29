@@ -9,6 +9,8 @@ import mapboxgl, { Point } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { GeoJSON } from "geojson";
 import { Button } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -55,7 +57,14 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     >
       <div className="weather">
         <h2>{alerts.title}</h2>
-        <h3>Last updated: {formatDateTime(alerts.updated)}</h3>
+        <h4>Last updated: {formatDateTime(alerts.updated)}</h4>
+
+        <Mapbox data={alerts} darkMode={darkMode} />
+        <small>
+          <a target="_blank" href="https://api.weather.gov/openapi.json">
+            &copy; noaa.gov
+          </a>
+        </small>
         <Switch
           {...label}
           checkedIcon={<Brightness4Icon />}
@@ -69,13 +78,6 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           onClick={() => setReload(true)}
           disabled={reloading}
         />
-
-        <Mapbox data={alerts} darkMode={darkMode} />
-        <small>
-          <a target="_blank" href="https://api.weather.gov/openapi.json">
-            &copy; noaa.gov
-          </a>
-        </small>
       </div>
     </ReactModal>
   );
@@ -232,28 +234,11 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
         },
         "waterway-label",
       );
-      map.addInteraction("mouseenter", {
-        type: "mouseenter",
-        target: { layerId: "alerts-heat" },
-        handler: ({ feature, point }: any) => {
-          setSelectedFeature(feature);
-          setPoint(point);
-        },
-      });
-      map.addInteraction("mouseleave", {
-        type: "mouseleave",
-        target: { layerId: "alerts-heat" },
-        handler: () => {
-          if (selectedFeature) {
-            setSelectedFeature(null);
-          }
-        },
-      });
-      map.addInteraction("map-click", {
-        type: "click",
-        handler: () => {
-          setSelectedFeature(null);
-        },
+      map.on("click", "alerts-heat", (e: any) => {
+        setSelectedFeature(e.features[0]);
+        setPoint(e.point);
+        map.setCenter(e.lngLat);
+        map.setZoom(6);
       });
     });
     return () => map.remove();
@@ -263,26 +248,23 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
     <>
       <div id="map" ref={mapContainerRef} className="map-container" />
       {selectedFeature?.properties && (
-        <div
-          className="map-overlay"
-          style={{
-            position: "absolute",
-            left: point?.x,
-            top: point?.y,
-            width: "40%",
-            transform: "translate(-50%, 70%)",
-            padding: "10px",
-            color: "#1a2224",
-            fontSize: "14px",
-            opacity: 0.9,
-          }}
-        >
+        <div className="map-overlay">
+          <div className="close-btn">
+            <Button
+              onClick={() => {
+                setSelectedFeature(null);
+                mapRef.current.setCenter([-99.04, 38.907]);
+                mapRef.current.setZoom(3.8);
+              }}
+              endIcon={<CloseIcon />}
+            />
+          </div>
           <div
             className={`map-overlay-inner ${selectedFeature.properties.severity}`}
           >
             <h3>{selectedFeature.properties.event}</h3>
-            <h4>{selectedFeature.properties.senderName}</h4>
-            <p>{selectedFeature.properties.instruction}</p>
+            <p>{selectedFeature.properties.senderName}</p>
+            <p>{selectedFeature.properties.headline}</p>
           </div>
         </div>
       )}

@@ -31,8 +31,8 @@ export const composeEpicImageUrl = (
 export const MENU_OPTIONS = [
   "DEMO",
   "APOD (Astronomy Picture of the Day)",
-  "NOAA (National Oceanic and Atmospheric Administration)",
   "EPIC (Earth Polychromatic Imaging Camera)",
+  "NOAA (National Oceanic and Atmospheric Administration)",
 ];
 
 export const EPIC_INTERVAL = 3600;

@@ -112,9 +112,6 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         {["video", "html"].includes(asset?.media_type) && (
           <iframe src={asset?.url} />
         )}
-        <div className="close-btn">
-          <button onClick={closeModal}>Close</button>
-        </div>
       </div>
     </ReactModal>
   );

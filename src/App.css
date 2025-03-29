@@ -20,7 +20,6 @@ h1 {
 
 h2 {
   font-size: 22px;
-  text-transform: capitalize;
 }
 h3 {
   font-size: 16px;
@@ -193,8 +192,7 @@ a.collapse {
     text-align: center;
     width: 100%;
     color: gray;
-    margin: 0;
-    padding: 0;
+    margin: 10px 0;
   }
   img {
     width: 100%;
@@ -233,10 +231,12 @@ a.collapse {
   }
 
   .close-btn {
+    float: right;
+    padding: 10px;
     text-align: center;
-    cursor: pointer;
     button {
-      width: max-content;
+      width: fit-content;
+      min-width: fit-content;
     }
 
     a {
@@ -275,6 +275,7 @@ a.collapse {
 .map-container {
   height: 80%;
   min-height: 600px;
+  cursor: pointer;
 }
 
 .Mui-expanded {
@@ -318,7 +319,7 @@ a.collapse {
 
 .map-overlay-inner {
   background-color: #fff;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 3px;
   color: "#000";
   text-align: "left";
@@ -331,4 +332,21 @@ a.collapse {
   &.Unknown {
     border: rgb(253, 219, 199) 8px solid;
   }
+  display: block;
+  h3 {
+    text-align: left;
+    text-transform: uppercase;
+    margin: 5px 0;
+  }
+}
+
+.map-overlay {
+  position: fixed;
+  left: 0;
+  bottom: 50px;
+  width: 40%;
+  padding: 10px;
+  color: #1a2224;
+  font-size: 14px;
+  opacity: 0.8;
 }

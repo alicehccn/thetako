@@ -14,15 +14,14 @@ const Content: React.FC = () => {
         modalIsOpen={selectedIndex === 1}
         closeModal={() => setSelectedIndex(0)}
       />
-      <Weather
+      <Epic
         modalIsOpen={selectedIndex === 2}
         closeModal={() => setSelectedIndex(0)}
       />
-      <Epic
+      <Weather
         modalIsOpen={selectedIndex === 3}
         closeModal={() => setSelectedIndex(0)}
       />
-
       <section className="right">
         <ButtonGroup
           setSelectedIndex={setSelectedIndex}
