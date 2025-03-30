@@ -54,7 +54,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="weather">
-        <h2>National Weather Service Active Alerts</h2>
+        <h2>National Weather Alerts</h2>
         <h4>
           Last updated: {formatDateTime(alerts.updated)}
           <Button
