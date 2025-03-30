@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import { APOD } from "./Apod";
 import { ButtonGroup } from "./mui/ButtonGroup";
-import { Weather } from "./Noaa";
+import { Weather } from "./Weather";
 import { Epic } from "./Epic";
 
 const Content: React.FC = () => {

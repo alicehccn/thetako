@@ -2,14 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactModal from "react-modal";
 import { fetchWeatherApi, formatDateTime } from "../constant";
 import Switch from "@mui/material/Switch";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
 import ReplayIcon from "@mui/icons-material/Replay";
 import mapboxgl, { Point } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { GeoJSON } from "geojson";
 import { Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -55,7 +54,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="weather">
-        <h2>{alerts.title}</h2>
+        <h2>National Weather Service Active Alerts</h2>
         <h4>
           Last updated: {formatDateTime(alerts.updated)}
           <Button
@@ -68,12 +67,12 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         <Mapbox data={alerts} darkMode={darkMode} />
         <small>
           <a target="_blank" href="https://api.weather.gov/openapi.json">
-            &copy; noaa.gov
+            &copy; weather.gov
           </a>
         </small>
         <Switch
           {...label}
-          checkedIcon={<Brightness4Icon />}
+          checkedIcon={<DarkModeIcon />}
           defaultChecked
           onChange={() => {
             setDarkMode(!darkMode);
@@ -264,8 +263,15 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
             className={`map-overlay-inner ${selectedFeature.properties.severity}`}
           >
             <h3>{selectedFeature.properties.event}</h3>
-            <p>{selectedFeature.properties.senderName}</p>
-            <p>{selectedFeature.properties.headline}</p>
+            <p>
+              <b>Affected area:</b>{" "}
+              {selectedFeature.properties.areaDesc
+                .split("; ")
+                .map((area: string) => (
+                  <div>{area}</div>
+                ))}
+            </p>
+            <p>{selectedFeature.properties.headline}.</p>
           </div>
         </div>
       )}
