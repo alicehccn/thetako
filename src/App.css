@@ -333,18 +333,17 @@ a.collapse {
     border: rgb(253, 219, 199) 8px solid;
   }
   display: block;
-  h3 {
-    text-align: left;
-    text-transform: uppercase;
+  h3, h4 {
     margin: 5px 0;
   }
 }
 
 .map-overlay {
   position: fixed;
-  left: 0;
-  bottom: 50px;
+  left: -5px;
+  bottom: 43px;
   width: 40%;
+  height: fit-content;
   padding: 10px;
   color: #1a2224;
   font-size: 14px;
