@@ -79,18 +79,15 @@ h3 {
   section {
     margin: 10px;
     border-radius: 10px;
-    background-color: #e0e0e0;
     height: fit-content;
     min-height: 500px;
-    background-color: transparent;
   }
 
   section.right {
-    opacity: 0.9;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: space-between;
 
     .horizontal {
       margin: 10px auto;
@@ -302,8 +299,8 @@ a.collapse {
 .MuiButtonGroup-root,
 .MuiInputBase-root,
 .MuiTextField-root {
-  margin: 10px 0;
-  width: 100%;
+  margin: 10px auto;
+  width: 70%;
   button {
     padding: 15px;
     border-color: #808080 !important;
@@ -333,7 +330,8 @@ a.collapse {
     border: rgb(253, 219, 199) 8px solid;
   }
   display: block;
-  h3, h4 {
+  h3,
+  h4 {
     margin: 5px 0;
   }
 }

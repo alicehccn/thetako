@@ -10,12 +10,12 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import { MENU_OPTIONS } from "../../constant";
 
-type ButtonGroupProps = {
+type SplitButtonProps = {
   setSelectedIndex: (arg0: number) => void;
   selectedIndex: number;
 };
 
-export const ButtonGroup: React.FC<ButtonGroupProps> = ({
+export const SplitButton: React.FC<SplitButtonProps> = ({
   selectedIndex,
   setSelectedIndex,
 }) => {
@@ -26,7 +26,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     handleToggle();
   };
 
-  const handleButtonGroupItemClick = (
+  const handleSplitButtonItemClick = (
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number,
   ) => {
@@ -91,7 +91,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
                       disabled={index === 0}
                       selected={index === selectedIndex}
                       onClick={(event) =>
-                        handleButtonGroupItemClick(event, index)
+                        handleSplitButtonItemClick(event, index)
                       }
                     >
                       {option}
