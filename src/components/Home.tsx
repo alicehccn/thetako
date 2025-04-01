@@ -1,13 +1,13 @@
-import React from "react";
 import "../App.css";
 import { APOD } from "./Apod";
 import { SplitButton } from "./mui/SplitButton";
 import { Weather } from "./Weather";
 import { Epic } from "./Epic";
 import { OnThisDay } from "./OnThisDay";
+import { useState } from "react";
 
 const Content: React.FC = () => {
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
     <div className="App-content">

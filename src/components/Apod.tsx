@@ -1,8 +1,8 @@
-import React from "react";
 import ReactModal from "react-modal";
 import { fetchApodApi, APOD_HOMEPAGE, formatDate } from "../constant";
 import { Accordion, AccordionSummary } from "@mui/material";
 import AccordionDetails from "@mui/material/AccordionDetails";
+import { useEffect, useState } from "react";
 
 type AssetResponse = {
   date: string;
@@ -34,11 +34,11 @@ const MODAL_STYLES = {
 };
 
 export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
-  const [assets, setAssets] = React.useState<AssetResponse[]>();
-  const [asset, setAsset] = React.useState<AssetResponse>();
-  let [assetIndex, setAssetIndex] = React.useState(1);
+  const [assets, setAssets] = useState<AssetResponse[]>();
+  const [asset, setAsset] = useState<AssetResponse>();
+  let [assetIndex, setAssetIndex] = useState(1);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!assets) {
       fetch(fetchApodApi(14))
         .then((response) =>
