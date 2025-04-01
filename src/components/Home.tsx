@@ -4,7 +4,7 @@ import { APOD } from "./Apod";
 import { SplitButton } from "./mui/SplitButton";
 import { Weather } from "./Weather";
 import { Epic } from "./Epic";
-import BasicCalendar from "./mui/Calendar";
+import { OnThisDay } from "./OnThisDay";
 
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -24,7 +24,7 @@ const Content: React.FC = () => {
         closeModal={() => setSelectedIndex(0)}
       />
       <section className="right">
-        <BasicCalendar />
+        <OnThisDay />
         <SplitButton
           setSelectedIndex={setSelectedIndex}
           selectedIndex={selectedIndex}

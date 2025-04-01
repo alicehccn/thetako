@@ -353,8 +353,7 @@ a.collapse {
   }
 }
 
-.MuiDateCalendar-root {
-  @media screen and (max-width: 600px) {
-    display: none;
-  }
+.MuiPaper-root {
+  margin: auto !important;
+  background: transparent !important;
 }
