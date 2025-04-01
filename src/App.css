@@ -192,14 +192,17 @@ a.collapse {
   }
   img {
     width: 100%;
-    height: auto;
+    height: fit-content;
     border: none;
     margin-bottom: 10px;
   }
 
-  iframe {
+  iframe,
+  video,
+  embed {
     width: 100%;
-    min-height: 420px;
+    min-height: 450px;
+    height: fit-content;
     border: none;
   }
   margin: auto;
@@ -285,7 +288,7 @@ a.collapse {
 }
 .MuiSwitch-root {
   padding: 14px !important;
-
+  margin: 0 10px;
   .MuiSwitch-switchBase {
     * {
       margin-top: -2px;

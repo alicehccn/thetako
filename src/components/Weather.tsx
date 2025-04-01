@@ -6,9 +6,10 @@ import ReplayIcon from "@mui/icons-material/Replay";
 import mapboxgl, { Point } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { GeoJSON } from "geojson";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
+import DarkModeIcon from "@mui/icons-material/Contrast";
+
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -56,12 +57,21 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       <div className="weather">
         <h2>National Weather Alerts</h2>
         <h4>
-          Last updated: {formatDateTime(alerts.updated)}
-          <Button
-            startIcon={<ReplayIcon color="action" />}
-            onClick={() => setReload(true)}
-            disabled={reloading}
+          <Switch
+            {...label}
+            checkedIcon={<DarkModeIcon />}
+            onChange={() => {
+              setDarkMode(!darkMode);
+            }}
           />
+          Last updated: {formatDateTime(alerts.updated)}
+          <IconButton
+            aria-label="Refresh"
+            disabled={reloading}
+            onClick={() => setReload(true)}
+          >
+            <ReplayIcon />
+          </IconButton>
         </h4>
 
         <Mapbox data={alerts} darkMode={darkMode} />
@@ -70,14 +80,6 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             &copy; weather.gov
           </a>
         </small>
-        <Switch
-          {...label}
-          checkedIcon={<DarkModeIcon />}
-          defaultChecked
-          onChange={() => {
-            setDarkMode(!darkMode);
-          }}
-        />
       </div>
     </ReactModal>
   );
