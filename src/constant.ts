@@ -26,7 +26,7 @@ export const composeEpicImageUrl = (
   date: Date | string,
   color: string,
 ) =>
-  `https://epic.gsfc.nasa.gov/archive//${color}/${format(date, "yyyy/MM/dd")}/png/${filename}.png`;
+  `https://epic.gsfc.nasa.gov/archive/${color}/${format(date, "yyyy/MM/dd")}/png/${filename}.png`;
 
 export const MENU_OPTIONS = [
   "DEMO",

@@ -341,15 +341,20 @@ a.collapse {
 .map-overlay {
   position: fixed;
   left: -5px;
-  bottom: 43px;
-  width: 40%;
+  bottom: 25px;
+  width: 400px;
   height: fit-content;
   padding: 10px;
   color: #1a2224;
   font-size: 14px;
   opacity: 0.8;
+  @media screen and (max-width: 600px) {
+    width: auto;
+  }
 }
 
 .MuiDateCalendar-root {
-  text-align: right !important;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 }
