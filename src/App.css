@@ -42,7 +42,8 @@ h3 {
     margin-top: 100px;
     padding: 20px 0;
 
-    img {
+    img,
+    svg {
       height: 25px;
       margin: -5px 10px -5px 40px;
     }
@@ -94,7 +95,6 @@ h3 {
       border-radius: 10px;
       text-align: center;
       cursor: pointer;
-      width: 98%;
       border: 1px solid #808080;
       line-height: 0.8;
 
@@ -159,7 +159,6 @@ footer {
   font-size: 12px;
   text-align: center;
   height: 40px;
-  margin-top: 10px;
 }
 
 a,
@@ -299,8 +298,8 @@ a.collapse {
 .MuiButtonGroup-root,
 .MuiInputBase-root,
 .MuiTextField-root {
-  margin: 10px auto;
-  width: 70%;
+  margin: 10px auto 0;
+  width: 450px;
   button {
     padding: 15px;
     border-color: #808080 !important;
@@ -346,4 +345,8 @@ a.collapse {
   color: #1a2224;
   font-size: 14px;
   opacity: 0.8;
+}
+
+.MuiDateCalendar-root {
+  text-align: right !important;
 }
