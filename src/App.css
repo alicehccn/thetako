@@ -356,5 +356,5 @@ a.collapse {
 .skill-chart {
   /* max-width: fit-content  */
   width: 450px !important;
-  transform: translate(30%, 0);
+  transform: translate(30%, -30px);
 }
