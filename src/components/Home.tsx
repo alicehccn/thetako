@@ -3,8 +3,8 @@ import { APOD } from "./Apod";
 import { SplitButton } from "./mui/SplitButton";
 import { Weather } from "./Weather";
 import { Epic } from "./Epic";
-import { OnThisDay } from "./OnThisDay";
 import { useState } from "react";
+import { Box } from "@mui/material";
 
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -24,7 +24,7 @@ const Content: React.FC = () => {
         closeModal={() => setSelectedIndex(0)}
       />
       <section className="right">
-        <OnThisDay />
+        <Box></Box>
         <SplitButton
           setSelectedIndex={setSelectedIndex}
           selectedIndex={selectedIndex}

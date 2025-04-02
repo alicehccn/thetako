@@ -28,9 +28,6 @@ export const composeEpicImageUrl = (
 ) =>
   `https://epic.gsfc.nasa.gov/archive/${color}/${format(date, "yyyy/MM/dd")}/png/${filename}.png`;
 
-export const onThisDayUrl = (date: Date | string) =>
-  `https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/${format(date, "yyyy/MM/dd")}`;
-
 export const MENU_OPTIONS = [
   "DEMO",
   "APOD (Astronomy Picture of the Day)",
