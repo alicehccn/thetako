@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import BG from "@mui/material/ButtonGroup";
+import ButtonGroup from "@mui/material/ButtonGroup";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
@@ -51,7 +51,11 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
 
   return (
     <React.Fragment>
-      <BG variant="contained" ref={anchorRef} aria-label="button-group">
+      <ButtonGroup
+        variant="contained"
+        ref={anchorRef}
+        aria-label="button-group"
+      >
         <Button onClick={handleClick}>
           {MENU_OPTIONS[selectedIndex].split("(")[0]}
         </Button>
@@ -65,7 +69,7 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
         >
           <ArrowDropDownIcon />
         </Button>
-      </BG>
+      </ButtonGroup>
       <Popper
         sx={{ zIndex: 1 }}
         open={open}

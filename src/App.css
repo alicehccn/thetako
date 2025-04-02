@@ -75,7 +75,6 @@ h3 {
 .App-content {
   display: flex;
   flex-direction: column;
-  padding: 0 30px;
   margin: 20px;
   section {
     margin: 10px;
@@ -88,7 +87,7 @@ h3 {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 
     .horizontal {
       margin: 10px auto;
@@ -302,7 +301,8 @@ a.collapse {
 .MuiInputBase-root,
 .MuiTextField-root {
   margin: 10px auto 0;
-  width: 450px;
+  width: 100%;
+  max-width: 360px;
   button {
     padding: 15px;
     border-color: #808080 !important;
