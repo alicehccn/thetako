@@ -1,13 +1,13 @@
-import React from "react";
 import "../App.css";
 import { APOD } from "./Apod";
 import { SplitButton } from "./mui/SplitButton";
 import { Weather } from "./Weather";
 import { Epic } from "./Epic";
-import BasicCalendar from "./mui/Calendar";
+import { useState } from "react";
+import { Box } from "@mui/material";
 
 const Content: React.FC = () => {
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
     <div className="App-content">
@@ -24,7 +24,7 @@ const Content: React.FC = () => {
         closeModal={() => setSelectedIndex(0)}
       />
       <section className="right">
-        <BasicCalendar />
+        <Box></Box>
         <SplitButton
           setSelectedIndex={setSelectedIndex}
           selectedIndex={selectedIndex}

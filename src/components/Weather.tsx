@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import ReactModal from "react-modal";
 import { fetchWeatherApi, formatDateTime } from "../constant";
 import Switch from "@mui/material/Switch";
