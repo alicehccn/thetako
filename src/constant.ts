@@ -59,3 +59,35 @@ export const TAB_PROPS = (index: number) => {
     label: EPIC_TAB[index].label,
   };
 };
+
+export const SKILL_MAP = [
+  {
+    subject: "Web Dev",
+    items: [
+      { label: "Typescript", value: 100 },
+      { label: "ReactJS", value: 300 },
+      { label: "HTML/CSS", value: 100 },
+      { label: "XHR", value: 80 },
+      { label: "SQL", value: 40 },
+    ],
+  },
+  {
+    subject: "Specialties",
+    items: [
+      { label: "Billing", value: 30 },
+      { label: "Payment", value: 50 },
+      { label: "Map/GeoLocation", value: 100 },
+      { label: "Access Control", value: 200 },
+      { label: "A/B Testing", value: 150 },
+    ],
+  },
+  {
+    subject: "DevOps",
+    items: [
+      { label: "Cloud", value: 200 },
+      { label: "Container", value: 80 },
+      { label: "CI/CD", value: 100 },
+      { label: "APM", value: 50 },
+    ],
+  },
+];
