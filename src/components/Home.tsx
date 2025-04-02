@@ -5,6 +5,7 @@ import { Weather } from "./Weather";
 import { Epic } from "./Epic";
 import { useState } from "react";
 import { Box } from "@mui/material";
+import { MPieChart } from "./mui/MPieChart";
 
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -24,7 +25,7 @@ const Content: React.FC = () => {
         closeModal={() => setSelectedIndex(0)}
       />
       <section className="right">
-        <Box></Box>
+        <MPieChart />
         <SplitButton
           setSelectedIndex={setSelectedIndex}
           selectedIndex={selectedIndex}

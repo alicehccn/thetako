@@ -352,3 +352,9 @@ a.collapse {
     width: auto;
   }
 }
+
+.skill-chart {
+  /* max-width: fit-content  */
+  width: 450px !important;
+  transform: translate(30%, 0);
+}
