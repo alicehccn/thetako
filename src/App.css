@@ -357,4 +357,7 @@ a.collapse {
   /* max-width: fit-content  */
   width: 450px !important;
   transform: translate(30%, -30px);
+  @media screen and (max-width: 600px) {
+    opacity: 0 !important;
+  }
 }
