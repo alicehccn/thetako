@@ -1,7 +1,26 @@
 import { PieChart } from "@mui/x-charts/PieChart";
 import { PIE_CHART, SKILL_MAP } from "../../constant";
+import { styled } from "@mui/material/styles";
+import { useDrawingArea } from "@mui/x-charts/hooks";
 
 export const MPieChart: React.FC = () => {
+  const StyledText = styled("text")(({ theme }) => ({
+    fill: theme.palette.text.secondary,
+    textAnchor: "middle",
+    dominantBaseline: "central",
+    fontSize: 14,
+    textTransform: "uppercase",
+  }));
+
+  function PieCenterLabel({ children }: { children: React.ReactNode }) {
+    const { width, height, left, top } = useDrawingArea();
+    return (
+      <StyledText x={left + width / 2} y={top + height / 2}>
+        {children}
+      </StyledText>
+    );
+  }
+
   return (
     <>
       <PieChart
@@ -32,7 +51,9 @@ export const MPieChart: React.FC = () => {
         }}
         colors={PIE_CHART}
         className="skill-chart"
-      />
+      >
+        <PieCenterLabel>Profile</PieCenterLabel>
+      </PieChart>
     </>
   );
 };
