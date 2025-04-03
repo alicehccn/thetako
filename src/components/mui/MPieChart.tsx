@@ -2,20 +2,29 @@ import { PieChart } from "@mui/x-charts/PieChart";
 import { PIE_CHART, SKILL_MAP } from "../../constant";
 import { styled } from "@mui/material/styles";
 import { useDrawingArea } from "@mui/x-charts/hooks";
+import { useState } from "react";
 
 export const MPieChart: React.FC = () => {
+  const [legend, setLegend] = useState(false);
   const StyledText = styled("text")(({ theme }) => ({
     fill: theme.palette.text.secondary,
     textAnchor: "middle",
     dominantBaseline: "central",
     fontSize: 14,
     textTransform: "uppercase",
+    cursor: "pointer",
   }));
 
   function PieCenterLabel({ children }: { children: React.ReactNode }) {
     const { width, height, left, top } = useDrawingArea();
     return (
-      <StyledText x={left + width / 2} y={top + height / 2}>
+      <StyledText
+        x={left + width / 2}
+        y={top + height / 2}
+        onClick={() => {
+          setLegend(!legend);
+        }}
+      >
         {children}
       </StyledText>
     );
@@ -45,12 +54,12 @@ export const MPieChart: React.FC = () => {
             valueFormatter: () => ``,
           },
         ]}
-        width={460}
+        width={520}
         slotProps={{
-          legend: { hidden: true },
+          legend: { hidden: !legend },
         }}
         colors={PIE_CHART}
-        className="skill-chart"
+        className={`skill-chart ${legend ?? "legend"}`}
       >
         <PieCenterLabel>Profile</PieCenterLabel>
       </PieChart>

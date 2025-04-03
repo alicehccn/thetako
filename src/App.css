@@ -354,10 +354,14 @@ a.collapse {
 }
 
 .skill-chart {
-  /* max-width: fit-content  */
   width: 450px !important;
-  transform: translate(30%, -30px);
+  transform: translate(25%, -30px);
   @media screen and (max-width: 600px) {
     display: none !important;
   }
+  cursor: pointer;
+}
+
+.MuiChartsLegend-root {
+  transform: translate(30%);
 }
