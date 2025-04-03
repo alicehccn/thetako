@@ -63,7 +63,11 @@ export const TAB_PROPS = (index: number) => {
 export const SKILL_MAP = [
   {
     subject: "Core",
-    items: [{ label: "Software Development", value: 100 }],
+    items: [
+      { label: "iOS/Android", value: 20 },
+      { label: "Web", value: 40 },
+      { label: "Backend", value: 40 },
+    ],
   },
   {
     subject: "Language",
@@ -71,7 +75,7 @@ export const SKILL_MAP = [
       { label: "Typescript", value: 100 },
       { label: "NodeJS", value: 100 },
       { label: "HTML/CSS", value: 100 },
-      { label: "Go", value: 40 },
+      { label: "Golang", value: 40 },
       { label: "Python", value: 60 },
       { label: "Protobuf", value: 60 },
       { label: "Rust", value: 30 },
@@ -80,11 +84,11 @@ export const SKILL_MAP = [
   {
     subject: "Framework",
     items: [
-      { label: "React", value: 80 },
-      { label: "Next", value: 80 },
+      { label: "React", value: 180 },
+      { label: "NextJS", value: 80 },
       { label: "NestJS", value: 80 },
-      { label: "Express", value: 40 },
-      { label: "Django", value: 40 },
+      { label: "Express", value: 100 },
+      { label: "gRPC", value: 40 },
       { label: "Expo", value: 40 },
       { label: "SQL", value: 80 },
       { label: "NoSQL", value: 60 },
@@ -97,13 +101,13 @@ export const SKILL_MAP = [
     items: [
       { label: "AWS", value: 100 },
       { label: "Docker", value: 100 },
-      { label: "Vercel", value: 80 },
+      { label: "Vercel", value: 60 },
       { label: "Heroku", value: 80 },
       { label: "Github", value: 100 },
-      { label: "CircleCI", value: 80 },
-      { label: "Datadog", value: 80 },
+      { label: "CircleCI", value: 40 },
+      { label: "Appetize", value: 60 },
+      { label: "Datadog", value: 60 },
       { label: "Mapbox", value: 80 },
-      { label: "Google Maps", value: 80 },
       { label: "AdvancedMD", value: 80 },
       { label: "Healthie", value: 80 },
       { label: "D3.js", value: 60 },
@@ -112,13 +116,12 @@ export const SKILL_MAP = [
 ];
 
 export const PIE_CHART = [
-  "#C4C4C4",
-  "#E0E0E0",
   "#C6C0B9",
-  "#878787",
-  "#555555",
-  "#3D3D3D",
-  "#666666",
+  "#E0E0E0",
+  "#C4C4C4",
   "#929292",
+  "#878787",
   "#6e6e6e",
+  "#666666",
+  "#555555",
 ];
