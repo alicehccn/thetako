@@ -116,12 +116,11 @@ export const SKILL_MAP = [
 ];
 
 export const PIE_CHART = [
+  "#D3D3D3",
   "#C6C0B9",
-  "#E0E0E0",
   "#C4C4C4",
   "#929292",
   "#878787",
   "#6e6e6e",
   "#666666",
-  "#555555",
 ];
