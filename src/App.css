@@ -87,7 +87,7 @@ h3 {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: end;
 
     .horizontal {
       margin: 10px auto;
@@ -302,7 +302,7 @@ a.collapse {
 .MuiTextField-root {
   margin: 10px auto 0;
   width: 100%;
-  max-width: 360px;
+  max-width: 430px;
   button {
     padding: 15px;
     border-color: #808080 !important;
@@ -358,6 +358,6 @@ a.collapse {
   width: 450px !important;
   transform: translate(30%, -30px);
   @media screen and (max-width: 600px) {
-    opacity: 0 !important;
+    display: none !important;
   }
 }

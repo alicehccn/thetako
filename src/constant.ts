@@ -32,7 +32,7 @@ export const MENU_OPTIONS = [
   "DEMO",
   "APOD (Astronomy Picture of the Day)",
   "EPIC (Earth Polychromatic Imaging Camera)",
-  "NOAA (National Weather Service)",
+  "NOAA (National Oceanic & Atmostphere Adminstration)",
 ];
 
 export const EPIC_INTERVAL = 3600;
@@ -62,32 +62,62 @@ export const TAB_PROPS = (index: number) => {
 
 export const SKILL_MAP = [
   {
-    subject: "Web Dev",
+    subject: "Core",
+    items: [{ label: "Software Development", value: 100 }],
+  },
+  {
+    subject: "Language",
     items: [
       { label: "Typescript", value: 100 },
-      { label: "ReactJS", value: 300 },
+      { label: "NodeJS", value: 100 },
       { label: "HTML/CSS", value: 100 },
-      { label: "XHR", value: 80 },
-      { label: "SQL", value: 40 },
+      { label: "Go", value: 40 },
+      { label: "Python", value: 60 },
+      { label: "Protobuf", value: 60 },
+      { label: "Rust", value: 30 },
     ],
   },
   {
-    subject: "Specialties",
+    subject: "Framework",
     items: [
-      { label: "Billing", value: 30 },
-      { label: "Payment", value: 50 },
-      { label: "Map/GeoLocation", value: 100 },
-      { label: "Access Control", value: 200 },
-      { label: "A/B Testing", value: 150 },
+      { label: "React", value: 80 },
+      { label: "Next", value: 80 },
+      { label: "NestJS", value: 80 },
+      { label: "Express", value: 40 },
+      { label: "Django", value: 40 },
+      { label: "Expo", value: 40 },
+      { label: "SQL", value: 80 },
+      { label: "NoSQL", value: 60 },
+      { label: "Jest", value: 60 },
+      { label: "Babel", value: 60 },
     ],
   },
   {
-    subject: "DevOps",
+    subject: "Tool",
     items: [
-      { label: "Cloud", value: 200 },
-      { label: "Container", value: 80 },
-      { label: "CI/CD", value: 100 },
-      { label: "APM", value: 50 },
+      { label: "AWS", value: 100 },
+      { label: "Docker", value: 100 },
+      { label: "Vercel", value: 80 },
+      { label: "Heroku", value: 80 },
+      { label: "Github", value: 100 },
+      { label: "CircleCI", value: 80 },
+      { label: "Datadog", value: 80 },
+      { label: "Mapbox", value: 80 },
+      { label: "Google Maps", value: 80 },
+      { label: "AdvancedMD", value: 80 },
+      { label: "Healthie", value: 80 },
     ],
   },
+];
+
+export const PIE_CHART = [
+  "#C4C4C4",
+  "#E0E0E0",
+  "#C6C0B9",
+  "#878787",
+  "#555555",
+  "#3D3D3D",
+  "#666666",
+  "#929292",
+  "#6e6e6e",
 ];
