@@ -32,7 +32,7 @@ export const MENU_OPTIONS = [
   "DEMO",
   "APOD (Astronomy Picture of the Day)",
   "EPIC (Earth Polychromatic Imaging Camera)",
-  "NOAA (National Oceanic & Atmostphere Adminstration)",
+  "NOAA (National Oceanic & Atmosphere Adminstration)",
 ];
 
 export const EPIC_INTERVAL = 3600;

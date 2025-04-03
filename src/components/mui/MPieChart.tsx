@@ -10,22 +10,26 @@ export const MPieChart: React.FC = () => {
             innerRadius: 0,
             outerRadius: 30,
             data: SKILL_MAP[0].items,
+            valueFormatter: () => ``,
           },
           {
             innerRadius: 50,
             outerRadius: 80,
             data: SKILL_MAP[1].items,
+            valueFormatter: () => ``,
           },
 
           {
             innerRadius: 100,
             outerRadius: 130,
             data: SKILL_MAP[2].items,
+            valueFormatter: () => ``,
           },
           {
             innerRadius: 150,
             outerRadius: 180,
             data: SKILL_MAP[3].items,
+            valueFormatter: () => ``,
           },
         ]}
         width={460}
