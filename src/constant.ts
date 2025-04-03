@@ -106,6 +106,7 @@ export const SKILL_MAP = [
       { label: "Google Maps", value: 80 },
       { label: "AdvancedMD", value: 80 },
       { label: "Healthie", value: 80 },
+      { label: "D3.js", value: 60 },
     ],
   },
 ];
