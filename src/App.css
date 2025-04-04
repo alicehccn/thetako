@@ -356,16 +356,19 @@ a.collapse {
 .skill-chart {
   margin: 0 auto;
   width: 800px !important;
+  transition-duration: 500ms;
   transform: translate(-50px, 0);
   @media screen and (max-width: 600px) {
     display: none !important;
   }
   cursor: pointer;
   &.legend {
-    transform: translate(-300px, 0);
+    transform: translate(-200px, 0);
   }
 }
 
-.MuiChartsLegend-root {
-  transform: translate(20px, 0);
+.legend2 {
+  @media screen and (max-width: 600px) {
+    display: none !important;
+  }
 }

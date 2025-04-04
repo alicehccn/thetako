@@ -11,7 +11,7 @@ export const MPieChart: React.FC = () => {
     fill: theme.palette.text.secondary,
     textAnchor: "middle",
     dominantBaseline: "central",
-    fontSize: 14,
+    fontSize: 16,
     textTransform: "uppercase",
     cursor: "pointer",
   }));
@@ -55,7 +55,7 @@ export const MPieChart: React.FC = () => {
             valueFormatter: () => ``,
           },
         ]}
-        width={950}
+        width={900}
         slotProps={{
           legend: { hidden: !legend },
         }}
@@ -64,7 +64,14 @@ export const MPieChart: React.FC = () => {
       >
         <PieCenterLabel>Skills</PieCenterLabel>
       </PieChart>
-      <Box display="flex" justifyContent="start" width="350px" margin="auto">
+      <Box
+        display="flex"
+        justifyContent="start"
+        width="300px"
+        margin="auto"
+        fontSize={14}
+        className="legend2"
+      >
         <Box
           marginRight={1}
           marginLeft={0}
@@ -76,7 +83,14 @@ export const MPieChart: React.FC = () => {
         </Box>
         Frontend (Web, iOS, Android)
       </Box>
-      <Box display="flex" justifyContent="start" width="350px" margin="auto">
+      <Box
+        display="flex"
+        justifyContent="start"
+        width="300px"
+        margin="auto"
+        fontSize={14}
+        className="legend2"
+      >
         <Box marginRight={1} bgcolor="#666666" color="#666666" width="20px">
           {"-"}
         </Box>
