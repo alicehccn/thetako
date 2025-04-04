@@ -62,7 +62,7 @@ export const MPieChart: React.FC = () => {
         colors={PIE_CHART}
         className={`skill-chart ${legend ? "legend" : ""}`}
       >
-        <PieCenterLabel>Profile</PieCenterLabel>
+        <PieCenterLabel>Skills</PieCenterLabel>
       </PieChart>
       <Box display="flex" justifyContent="start" width="350px" margin="auto">
         <Box
