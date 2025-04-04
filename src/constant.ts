@@ -62,22 +62,10 @@ export const TAB_PROPS = (index: number) => {
 
 export const SKILL_MAP = [
   {
-    subject: "Core",
-    items: [
-      { label: "Typescript", value: 100 },
-      { label: "NodeJS", value: 100 },
-      { label: "Protobuf", value: 60 },
-      { label: "Python", value: 60 },
-      { label: "Golang", value: 40 },
-      { label: "Rust", value: 30 },
-      { label: "SQL", value: 80 },
-      { label: "NoSQL", value: 60 },
-    ],
-  },
-  {
     subject: "Frontend",
     items: [
       { label: "HTML/CSS", value: 20 },
+      { label: "Typescript", value: 100 },
       { label: "React", value: 100 },
       { label: "XHR", value: 80 },
       { label: "gRPC", value: 40 },
@@ -89,16 +77,26 @@ export const SKILL_MAP = [
   {
     subject: "Backend",
     items: [
-      { label: "AWS", value: 100 },
+      { label: "NodeJS", value: 100 },
+      { label: "SQL/NoSQL", value: 80 },
+      { label: "Python", value: 60 },
+      { label: "Golang", value: 40 },
+      { label: "Rust", value: 30 },
+      { label: "Protobuf", value: 60 },
       { label: "Express", value: 100 },
+    ],
+  },
+  {
+    subject: "Tool",
+    items: [
       { label: "Docker", value: 100 },
+      { label: "AWS", value: 100 },
       { label: "Heroku", value: 80 },
       { label: "Vercel", value: 60 },
       { label: "Github", value: 100 },
       { label: "CircleCI", value: 40 },
       { label: "Appetize", value: 60 },
       { label: "Mapbox", value: 80 },
-      { label: "AdvancedMD", value: 80 },
       { label: "Datadog", value: 60 },
     ],
   },

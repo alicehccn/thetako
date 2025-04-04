@@ -3,6 +3,7 @@ import { PIE_CHART, SKILL_MAP } from "../../constant";
 import { styled } from "@mui/material/styles";
 import { useDrawingArea } from "@mui/x-charts/hooks";
 import { useState } from "react";
+import { Box } from "@mui/material";
 
 export const MPieChart: React.FC = () => {
   const [legend, setLegend] = useState(false);
@@ -54,15 +55,33 @@ export const MPieChart: React.FC = () => {
             valueFormatter: () => ``,
           },
         ]}
-        width={520}
+        width={950}
         slotProps={{
           legend: { hidden: !legend },
         }}
         colors={PIE_CHART}
-        className={`skill-chart ${legend ?? "legend"}`}
+        className={`skill-chart ${legend ? "legend" : ""}`}
       >
         <PieCenterLabel>Profile</PieCenterLabel>
       </PieChart>
+      <Box display="flex" justifyContent="start" width="350px" margin="auto">
+        <Box
+          marginRight={1}
+          marginLeft={0}
+          bgcolor="#c6c0b9"
+          color="#c6c0b9"
+          width="20px"
+        >
+          {"-"}
+        </Box>
+        Frontend (Web, iOS, Android)
+      </Box>
+      <Box display="flex" justifyContent="start" width="350px" margin="auto">
+        <Box marginRight={1} bgcolor="#666666" color="#666666" width="20px">
+          {"-"}
+        </Box>
+        Backend (Service, Database, DevOps)
+      </Box>
     </>
   );
 };
