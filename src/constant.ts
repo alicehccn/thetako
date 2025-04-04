@@ -64,8 +64,8 @@ export const SKILL_MAP = [
   {
     subject: "Frontend",
     items: [
-      { label: "HTML/CSS", value: 20 },
       { label: "Typescript", value: 100 },
+      { label: "HTML/CSS", value: 20 },
       { label: "React", value: 100 },
       { label: "XHR", value: 80 },
       { label: "gRPC", value: 40 },
@@ -89,8 +89,8 @@ export const SKILL_MAP = [
   {
     subject: "Tool",
     items: [
-      { label: "Docker", value: 100 },
       { label: "AWS", value: 100 },
+      { label: "Docker", value: 100 },
       { label: "Heroku", value: 80 },
       { label: "Vercel", value: 60 },
       { label: "Github", value: 100 },

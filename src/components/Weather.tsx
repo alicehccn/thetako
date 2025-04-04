@@ -6,9 +6,17 @@ import ReplayIcon from "@mui/icons-material/Replay";
 import mapboxgl, { Point } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { GeoJSON } from "geojson";
-import { Button, IconButton } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Button,
+  IconButton,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import DarkModeIcon from "@mui/icons-material/Contrast";
+import _ from "lodash";
 
 type ModalProps = {
   modalIsOpen: boolean;
@@ -45,6 +53,11 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   if (!alerts) {
     return;
   }
+  const result = _.chain(alerts.features)
+    .groupBy("properties.event")
+    .map((value, key) => ({ label: key, value: value.length }))
+    .orderBy("value", "desc")
+    .value();
   const label = { inputProps: { "aria-label": "Dark Mode" } };
   return (
     <ReactModal
@@ -55,24 +68,43 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="weather">
-        <h2>National Weather Alerts</h2>
-        <h4>
-          <Switch
-            {...label}
-            checkedIcon={<DarkModeIcon />}
-            onChange={() => {
-              setDarkMode(!darkMode);
-            }}
-          />
-          Last updated: {formatDateTime(alerts.updated)}
-          <IconButton
-            aria-label="Refresh"
-            disabled={reloading}
-            onClick={() => setReload(true)}
-          >
-            <ReplayIcon />
-          </IconButton>
-        </h4>
+        <Accordion>
+          <AccordionSummary aria-controls="panel1-content" id="panel1-header">
+            <Box fontSize={20} fontWeight={900} margin="auto 20px">
+              Current Alerts: {alerts.features.length}
+            </Box>{" "}
+            |
+            {result.splice(0, 3).map((event) => (
+              <Box
+                key={event.label}
+                fontSize={16}
+                fontWeight={900}
+                margin="auto 20px"
+              >
+                {event.label}: {event.value}
+              </Box>
+            ))}
+          </AccordionSummary>
+          <AccordionDetails>
+            <Switch
+              {...label}
+              checkedIcon={<DarkModeIcon />}
+              onChange={() => {
+                setDarkMode(!darkMode);
+              }}
+            />
+            <IconButton
+              aria-label="Refresh"
+              disabled={reloading}
+              onClick={() => setReload(true)}
+            >
+              <ReplayIcon />
+            </IconButton>
+            <p>
+              <small>Last updated: {formatDateTime(alerts.updated)}</small>
+            </p>
+          </AccordionDetails>
+        </Accordion>
 
         <Mapbox data={alerts} darkMode={darkMode} />
         <small>

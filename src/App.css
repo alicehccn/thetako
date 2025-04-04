@@ -278,9 +278,6 @@ a.collapse {
 
 .Mui-expanded {
   margin: 0 !important;
-  * {
-    margin: 0 !important;
-  }
   small {
     float: right;
   }
