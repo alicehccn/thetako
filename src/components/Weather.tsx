@@ -6,6 +6,13 @@ import ReplayIcon from "@mui/icons-material/Replay";
 import mapboxgl, { Point } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { GeoJSON } from "geojson";
+
+import CloseIcon from "@mui/icons-material/Close";
+import DarkModeIcon from "@mui/icons-material/Contrast";
+import _ from "lodash";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+
 import {
   Accordion,
   AccordionDetails,
@@ -14,9 +21,6 @@ import {
   Button,
   IconButton,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import DarkModeIcon from "@mui/icons-material/Contrast";
-import _ from "lodash";
 
 type ModalProps = {
   modalIsOpen: boolean;
@@ -25,9 +29,8 @@ type ModalProps = {
 
 const MODAL_STYLES = {
   content: {
-    width: "900px",
+    width: "960px",
     maxWidth: "100%",
-    height: "fit-content",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -90,16 +93,15 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             ))}
           </AccordionSummary>
           <AccordionDetails>
-            {result.map((event) => (
-              <Box
-                key={event.label}
-                fontSize={14}
-                fontWeight={500}
-                margin="auto 20px"
-              >
-                {event.label}: {event.value}
-              </Box>
-            ))}
+            <Autocomplete
+              disablePortal
+              options={result}
+              sx={{ width: "100%", margin: "auto" }}
+              renderInput={(params) => (
+                <TextField {...params} label="Active Alerts" />
+              )}
+              getOptionLabel={(option) => `${option.label}: ${option.value}`}
+            />
           </AccordionDetails>
         </Accordion>
         <Mapbox data={alerts} darkMode={darkMode} />
