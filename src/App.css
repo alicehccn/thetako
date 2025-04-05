@@ -79,12 +79,10 @@ h3 {
   section {
     margin: 10px;
     border-radius: 10px;
-    height: fit-content;
     min-height: 500px;
   }
 
   section.right {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -351,7 +349,7 @@ a.collapse {
 
 .skill-chart {
   margin: 0 auto;
-  width: 800px !important;
+  max-width: 800px !important;
   transition-duration: 500ms;
   transform: translate(-50px, 0);
   @media screen and (max-width: 600px) {
