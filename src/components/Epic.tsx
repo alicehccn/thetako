@@ -26,7 +26,7 @@ type EpicReponse = {
 const MODAL_STYLES = {
   content: {
     maxWidth: "700px",
-    maxHeight: "96%",
+    maxHeight: "96vh",
     top: "50%",
     left: "50%",
     right: "auto",

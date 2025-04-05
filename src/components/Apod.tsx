@@ -24,6 +24,7 @@ const MODAL_STYLES = {
   content: {
     maxWidth: "800px",
     height: "fit-content",
+    maxHeight: "96vh",
     top: "50%",
     left: "50%",
     right: "auto",
