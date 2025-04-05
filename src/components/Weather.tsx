@@ -103,26 +103,28 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           </AccordionDetails>
         </Accordion>
         <Mapbox data={alerts} darkMode={darkMode} />
-        <IconButton
-          aria-label="Refresh"
-          disabled={reloading}
-          onClick={() => setReload(true)}
-        >
-          <ReplayIcon />
-        </IconButton>
-        <small>Last updated: {formatDateTime(alerts.updated)} </small>
-        <small>
-          <a target="_blank" href="https://api.weather.gov/openapi.json">
-            &copy; weather.gov
-          </a>
-        </small>
-        <Switch
-          {...label}
-          checkedIcon={<DarkModeIcon />}
-          onChange={() => {
-            setDarkMode(!darkMode);
-          }}
-        />
+        <Box textAlign="center">
+          <IconButton
+            aria-label="Refresh"
+            disabled={reloading}
+            onClick={() => setReload(true)}
+          >
+            <ReplayIcon />
+          </IconButton>
+          <small>Last updated: {formatDateTime(alerts.updated)} </small>
+          <small>
+            <a target="_blank" href="https://api.weather.gov/openapi.json">
+              &copy; weather.gov
+            </a>
+          </small>
+          <Switch
+            {...label}
+            checkedIcon={<DarkModeIcon />}
+            onChange={() => {
+              setDarkMode(!darkMode);
+            }}
+          />
+        </Box>
       </div>
     </ReactModal>
   );
@@ -308,14 +310,14 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
             className={`map-overlay-inner ${selectedFeature.properties.severity}`}
           >
             <h3>{selectedFeature.properties.event}</h3>
-            <p>
+            <div>
               <b>Affected area:</b>{" "}
               {selectedFeature.properties.areaDesc
                 .split("; ")
                 .map((area: string) => (
-                  <div>{area}</div>
+                  <div key={area}>{area}</div>
                 ))}
-            </p>
+            </div>
             <p>{selectedFeature.properties.headline}.</p>
           </div>
         </div>
