@@ -56,7 +56,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   const result = _.chain(alerts.features)
     .groupBy("properties.event")
     .map((value, key) => ({ label: key, value: value.length }))
-    .orderBy("value", "desc")
+    .filter((value) => value.label !== "Test Message")
     .value();
   const label = { inputProps: { "aria-label": "Dark Mode" } };
   return (
@@ -70,48 +70,59 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       <div className="weather">
         <Accordion>
           <AccordionSummary aria-controls="panel1-content" id="panel1-header">
-            <Box fontSize={20} fontWeight={900} margin="auto 20px">
+            <Box
+              fontSize={20}
+              fontWeight={900}
+              margin="auto 10px"
+              color="#A2574F"
+            >
               Current Alerts: {alerts.features.length}
-            </Box>{" "}
-            |
+            </Box>
             {result.splice(0, 3).map((event) => (
               <Box
                 key={event.label}
                 fontSize={16}
                 fontWeight={900}
-                margin="auto 20px"
+                margin="auto"
               >
                 {event.label}: {event.value}
               </Box>
             ))}
           </AccordionSummary>
           <AccordionDetails>
-            <Switch
-              {...label}
-              checkedIcon={<DarkModeIcon />}
-              onChange={() => {
-                setDarkMode(!darkMode);
-              }}
-            />
-            <IconButton
-              aria-label="Refresh"
-              disabled={reloading}
-              onClick={() => setReload(true)}
-            >
-              <ReplayIcon />
-            </IconButton>
-            <p>
-              <small>Last updated: {formatDateTime(alerts.updated)}</small>
-            </p>
+            {result.map((event) => (
+              <Box
+                key={event.label}
+                fontSize={14}
+                fontWeight={500}
+                margin="auto 20px"
+              >
+                {event.label}: {event.value}
+              </Box>
+            ))}
           </AccordionDetails>
         </Accordion>
-
         <Mapbox data={alerts} darkMode={darkMode} />
+        <IconButton
+          aria-label="Refresh"
+          disabled={reloading}
+          onClick={() => setReload(true)}
+        >
+          <ReplayIcon />
+        </IconButton>
+        <small>Last updated: {formatDateTime(alerts.updated)} </small>
         <small>
           <a target="_blank" href="https://api.weather.gov/openapi.json">
             &copy; weather.gov
           </a>
         </small>
+        <Switch
+          {...label}
+          checkedIcon={<DarkModeIcon />}
+          onChange={() => {
+            setDarkMode(!darkMode);
+          }}
+        />
       </div>
     </ReactModal>
   );

@@ -284,7 +284,6 @@ a.collapse {
 }
 .MuiSwitch-root {
   padding: 14px !important;
-  margin: 0 10px;
   .MuiSwitch-switchBase {
     * {
       margin-top: -2px;
