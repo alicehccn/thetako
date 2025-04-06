@@ -22,8 +22,8 @@ export const MPieChart: React.FC = () => {
       <StyledText
         x={left + width / 2}
         y={top + height / 2}
-        onClick={() => {
-          setLegend(!legend);
+        onMouseOver={() => {
+          setLegend(true);
         }}
       >
         {children}
@@ -71,6 +71,9 @@ export const MPieChart: React.FC = () => {
         margin="auto"
         fontSize={14}
         className="legend2"
+        onMouseOut={() => {
+          setLegend(false);
+        }}
       >
         <Box
           marginRight={1}
