@@ -5,7 +5,7 @@ import Switch from "@mui/material/Switch";
 import ReplayIcon from "@mui/icons-material/Replay";
 import mapboxgl, { Point } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { GeoJSON } from "geojson";
+import { Feature, GeoJSON } from "geojson";
 
 import CloseIcon from "@mui/icons-material/Close";
 import DarkModeIcon from "@mui/icons-material/Contrast";
@@ -40,15 +40,23 @@ const MODAL_STYLES = {
   },
 };
 
+type Alerts = {
+  features: Feature[];
+  updated: string;
+  type: "FeatureCollection";
+};
+
 export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
-  const [alerts, setAlerts] = useState<any>();
+  const [alerts, setAlerts] = useState<Alerts>();
   const [reloading, setReload] = useState(false);
-  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
   useEffect(() => {
     if (!alerts || !!reloading) {
       fetch(fetchWeatherApi())
         .then((response) => response?.json())
-        .then((json) => setAlerts(json))
+        .then((json) => {
+          setAlerts(json);
+        })
         .catch((error) => console.error(error));
     }
     setReload(false);
@@ -58,7 +66,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   }
   const result = _.chain(alerts.features)
     .groupBy("properties.event")
-    .map((value, key) => ({ label: key, value: value.length }))
+    .map((value, key) => ({ label: key, value }))
     .filter((value) => value.label !== "Test Message")
     .value();
   const label = { inputProps: { "aria-label": "Dark Mode" } };
@@ -88,7 +96,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
                 fontWeight={900}
                 margin="auto"
               >
-                {event.label}: {event.value}
+                {event.label}: {event.value.length}
               </Box>
             ))}
           </AccordionSummary>
@@ -100,7 +108,9 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
               renderInput={(params) => (
                 <TextField {...params} label="Active Alerts" />
               )}
-              getOptionLabel={(option) => `${option.label}: ${option.value}`}
+              getOptionLabel={(option) =>
+                `${option.label}: ${option.value.length}`
+              }
             />
           </AccordionDetails>
         </Accordion>
@@ -140,7 +150,7 @@ type MapProps = {
 const Mapbox: React.FC<MapProps> = ({ data, darkMode }) => {
   const mapContainerRef = useRef<any>();
   const mapRef = useRef<any>();
-  const [selectedFeature, setSelectedFeature] = useState<any>();
+  const [selectedFeature, setSelectedFeature] = useState<Feature | null>();
   const [point, setPoint] = useState<Point>();
 
   // Refs to track the latest state values
