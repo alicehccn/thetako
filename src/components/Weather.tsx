@@ -69,7 +69,9 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
   const alertGroups = _.chain(alerts.features)
     .groupBy("properties.event")
     .map((value, key) => ({ label: key, value }))
-    .filter((value) => value.label !== "Test Message")
+    .filter(
+      (value) => value.label !== "Test Message" && !!value.value[0].geometry,
+    )
     .value();
   return (
     <ReactModal
@@ -90,14 +92,9 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             >
               Current Alerts: {alerts.features.length}
             </Box>
-            {alertGroups.splice(0, 3).map((event) => (
-              <Box
-                key={event.label}
-                fontSize={16}
-                fontWeight={900}
-                margin="auto"
-              >
-                {event.label}: {event.value.length}
+            {alertGroups.slice(0, 3).map((g) => (
+              <Box key={g.label} fontSize={16} fontWeight={900} margin="auto">
+                {g.label}: {g.value.length}
               </Box>
             ))}
           </AccordionSummary>
@@ -107,7 +104,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
               options={alertGroups}
               sx={{ width: "100%", margin: "auto" }}
               renderInput={(params) => (
-                <TextField {...params} label="Active Alerts" />
+                <TextField {...params} label="Active Events" />
               )}
               getOptionLabel={(option) =>
                 `${option.label}: ${option.value.length}`
@@ -175,12 +172,20 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode, alertGroup }) => {
         },
       },
     }));
-
     map.on("load", () => {
       map.addSource("alerts", {
         type: "geojson",
         data,
       });
+
+      alertGroup &&
+        map.addSource("alert-group", {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: alertGroup,
+          },
+        });
 
       map.addLayer(MAIN_LAYER("alerts"), "waterway-label");
       map.on("click", "alerts-heat", (e: any) => {
@@ -189,9 +194,22 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode, alertGroup }) => {
         map.setCenter(e.lngLat);
         map.setZoom(6);
       });
+
+      alertGroup &&
+        map.addLayer({
+          id: "clusters",
+          type: "circle",
+          source: "alert-group",
+          paint: {
+            "circle-color": "#0F52BA",
+            "circle-radius": 6,
+            "circle-stroke-width": 1,
+            "circle-stroke-color": "#fff",
+          },
+        });
     });
     return () => map.remove();
-  }, [data, darkMode]);
+  }, [data, darkMode, alertGroup]);
 
   return (
     <>
