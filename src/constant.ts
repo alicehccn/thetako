@@ -152,3 +152,17 @@ export const MAIN_LAYER = (source: string): Layer => {
     },
   };
 };
+
+export const CIRCLE_LAYER = (color: string): Layer => {
+  return {
+    id: "clusters",
+    type: "circle",
+    source: "alert-group",
+    paint: {
+      "circle-color": color,
+      "circle-radius": 6,
+      "circle-stroke-width": 1,
+      "circle-stroke-color": "#fff",
+    },
+  };
+};

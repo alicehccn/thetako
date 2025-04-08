@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import ReactModal from "react-modal";
-import { fetchWeatherApi, formatDateTime, MAIN_LAYER } from "../constant";
+import {
+  CIRCLE_LAYER,
+  fetchWeatherApi,
+  formatDateTime,
+  MAIN_LAYER,
+} from "../constant";
 import Switch from "@mui/material/Switch";
 import ReplayIcon from "@mui/icons-material/Replay";
 import mapboxgl, { Point } from "mapbox-gl";
@@ -177,36 +182,23 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode, alertGroup }) => {
         type: "geojson",
         data,
       });
-
-      alertGroup &&
-        map.addSource("alert-group", {
-          type: "geojson",
-          data: {
-            type: "FeatureCollection",
-            features: alertGroup,
-          },
-        });
-
       map.addLayer(MAIN_LAYER("alerts"), "waterway-label");
+      alertGroup &&
+      map.addSource("alert-group", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: alertGroup,
+        },
+      });
+      alertGroup && map.addLayer(CIRCLE_LAYER("#0F52BA"));
+
       map.on("click", "alerts-heat", (e: any) => {
         setSelectedFeature(e.features[0]);
         setPoint(e.point);
         map.setCenter(e.lngLat);
         map.setZoom(6);
       });
-
-      alertGroup &&
-        map.addLayer({
-          id: "clusters",
-          type: "circle",
-          source: "alert-group",
-          paint: {
-            "circle-color": "#0F52BA",
-            "circle-radius": 6,
-            "circle-stroke-width": 1,
-            "circle-stroke-color": "#fff",
-          },
-        });
     });
     return () => map.remove();
   }, [data, darkMode, alertGroup]);
