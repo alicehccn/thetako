@@ -208,7 +208,7 @@ a.collapse {
   }
   img {
     width: 100%;
-    height: fit-content;
+    height: auto;
     border: none;
     margin-bottom: 10px;
   }
@@ -217,8 +217,7 @@ a.collapse {
   video,
   embed {
     width: 100%;
-    min-height: 450px;
-    height: fit-content;
+    height: auto;
     border: none;
   }
 
