@@ -32,6 +32,7 @@ h3 {
   margin-top: 0;
   min-height: 100vh;
   max-width: 680px;
+  overflow: hidden;
 }
 
 .App-header {
