@@ -26,6 +26,7 @@ type EpicReponse = {
 const MODAL_STYLES = {
   content: {
     maxWidth: "700px",
+    height: "fit-content",
     maxHeight: "96vh",
     top: "50%",
     left: "50%",
@@ -50,7 +51,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       setAssetIndex(0);
       return;
     } else {
-      fetch(fetchEpicApi(formatApiDate(7), color))
+      fetch(fetchEpicApi(formatApiDate(0), color))
         .then((response) =>
           response?.json().then((json) => {
             setAssets(json);

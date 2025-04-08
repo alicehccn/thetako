@@ -184,13 +184,13 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode, alertGroup }) => {
       });
       map.addLayer(MAIN_LAYER("alerts"), "waterway-label");
       alertGroup &&
-      map.addSource("alert-group", {
-        type: "geojson",
-        data: {
-          type: "FeatureCollection",
-          features: alertGroup,
-        },
-      });
+        map.addSource("alert-group", {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: alertGroup,
+          },
+        });
       alertGroup && map.addLayer(CIRCLE_LAYER("#0F52BA"));
 
       map.on("click", "alerts-heat", (e: any) => {
