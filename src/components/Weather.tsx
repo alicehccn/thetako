@@ -36,6 +36,8 @@ const MODAL_STYLES = {
   content: {
     width: "960px",
     maxWidth: "100%",
+    height: "fit-content",
+    maxHeight: "95vh",
     top: "50%",
     left: "50%",
     right: "auto",
