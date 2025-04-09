@@ -82,6 +82,7 @@ h3 {
   justify-content: end;
 
   .skill-chart {
+    width: 80%;
     margin-left: auto;
     @media screen and (max-width: 600px) {
       display: none !important;
@@ -216,7 +217,7 @@ a.collapse {
 }
 
 .epic {
-  margin: 20px 10px 0;
+  margin: 5px auto;
   text-align: center;
 }
 .ReactModal__Overlay,
