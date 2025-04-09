@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Box } from "@mui/material";
 
 export const MPieChart: React.FC = () => {
-  const [legend, setLegend] = useState(false);
+  const [legend, setLegend] = useState(true);
   const StyledText = styled("text")(({ theme }) => ({
     fill: theme.palette.text.secondary,
     textAnchor: "middle",
@@ -22,8 +22,8 @@ export const MPieChart: React.FC = () => {
       <StyledText
         x={left + width / 2}
         y={top + height / 2}
-        onMouseOver={() => {
-          setLegend(true);
+        onClick={() => {
+          setLegend(!legend);
         }}
       >
         {children}
@@ -55,7 +55,7 @@ export const MPieChart: React.FC = () => {
             valueFormatter: () => ``,
           },
         ]}
-        width={990}
+        width={780}
         slotProps={{
           legend: { hidden: !legend },
         }}
@@ -71,9 +71,6 @@ export const MPieChart: React.FC = () => {
         margin="auto"
         fontSize={14}
         className="legend2"
-        onMouseOut={() => {
-          setLegend(false);
-        }}
       >
         <Box
           marginRight={1}
