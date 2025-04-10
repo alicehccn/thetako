@@ -38,18 +38,17 @@ h3 {
 .App-header {
   display: flex;
   justify-content: end;
-
+  flex-direction: row;
   .social {
+    text-align: right;
     display: flex;
     margin-top: 100px;
     padding: 20px;
-    flex-direction: row;
-    justify-content: end;
-    width: 100%;
+    width: max-content;
     img,
     svg {
       height: 25px;
-      margin: -5px 10px;
+      margin: -5px 20px;
       width: fit-content;
     }
 
