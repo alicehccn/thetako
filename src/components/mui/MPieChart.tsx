@@ -55,8 +55,8 @@ export const MPieChart: React.FC = () => {
             valueFormatter: () => ``,
           },
         ]}
-        width={800}
-        height={380}
+        width={760}
+        height={370}
         slotProps={{
           legend: { hidden: !legend },
         }}
