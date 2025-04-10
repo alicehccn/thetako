@@ -42,12 +42,15 @@ h3 {
   .social {
     display: flex;
     margin-top: 100px;
-    padding: 20px 0;
-
+    padding: 20px;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
     img,
     svg {
       height: 25px;
-      margin: -5px 10px -5px 40px;
+      margin: -5px 10px;
+      width: fit-content;
     }
 
     @media screen and (max-width: 600px) {
