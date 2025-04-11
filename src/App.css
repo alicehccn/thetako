@@ -24,6 +24,8 @@ h1 {
 
 h2 {
   font-size: 22px;
+  color: #808080;
+
 }
 h3 {
   font-size: 16px;
@@ -117,10 +119,6 @@ h3 {
       margin: auto;
     }
   }
-}
-
-h2 {
-  color: gray;
 }
 
 footer {

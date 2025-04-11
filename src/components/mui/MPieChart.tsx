@@ -9,9 +9,10 @@ export const MPieChart: React.FC = () => {
   const [legend, setLegend] = useState(true);
   const StyledText = styled("text")(({ theme }) => ({
     fill: theme.palette.text.secondary,
+    stroke: "#aaa",
     textAnchor: "middle",
     dominantBaseline: "central",
-    fontSize: 16,
+    fontSize: 15,
     textTransform: "uppercase",
     cursor: "pointer",
   }));
