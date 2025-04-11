@@ -101,8 +101,7 @@ h3 {
   .MuiInputBase-root,
   .MuiTextField-root {
     margin: 40px;
-    width: 100%;
-    max-width: 430px;
+    width: 430px;
     button {
       padding: 15px;
       border-color: #808080 !important;
