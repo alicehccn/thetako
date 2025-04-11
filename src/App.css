@@ -100,7 +100,7 @@ h3 {
   .MuiButtonGroup-root,
   .MuiInputBase-root,
   .MuiTextField-root {
-    margin: 40px 0;
+    margin: 10px 0;
     width: 430px;
     button {
       padding: 15px;
@@ -122,10 +122,11 @@ h3 {
 footer {
   color: #808080;
   font-size: 12px;
-  text-align: center;
+  text-align: right;
   position: fixed;
   bottom: 5px;
-  right: 40px;
+  width: 95%;
+  margin: 0 auto;
 }
 
 a,
