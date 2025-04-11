@@ -33,7 +33,7 @@ h3 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .App-header {
@@ -81,9 +81,8 @@ h3 {
   flex-direction: column;
   width: 100%;
   margin: auto;
-  margin-right: 0;
   align-items: end;
-  height: 70vh;
+  min-height: 65vh;
 
   .skill-chart {
     @media screen and (max-width: 600px) {
@@ -95,7 +94,7 @@ h3 {
     @media screen and (max-width: 600px) {
       display: none !important;
     }
-    margin-right: 20px;
+    margin: 0 40px;
   }
 
   .MuiButtonGroup-root,
@@ -131,7 +130,7 @@ footer {
   text-align: center;
   position: fixed;
   bottom: 20px;
-  right: 5%;
+  right: 40px;
 }
 
 a,
