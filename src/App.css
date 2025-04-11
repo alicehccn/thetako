@@ -30,15 +30,19 @@ h3 {
 }
 
 .App {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
 }
 
 .App-header {
+  /* position: fixed; */
+  /* top: 0; */
   display: flex;
   justify-content: end;
   flex-direction: row;
+  width: 100%;
   .social {
     text-align: right;
     display: flex;
@@ -70,8 +74,6 @@ h3 {
 
     @media screen and (max-width: 600px) {
       width: 100%;
-      background-color: rgba(10, 10, 10, 0.8);
-      margin-top: -20px;
     }
   }
 }
@@ -80,21 +82,16 @@ h3 {
   display: flex;
   flex-direction: column;
   width: 90%;
-  margin: 10px auto;
-  justify-content: center;
+  margin: 40px auto;
   align-items: end;
   .skill-chart {
-    margin-bottom: 20px;
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 900px) {
       display: none !important;
-    }
-    @media screen and (max-width: 1000px) {
-      margin: auto;
     }
     cursor: pointer;
   }
   .legend2 {
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 900px) {
       display: none !important;
     }
     margin-right: 0;
@@ -103,7 +100,7 @@ h3 {
   .MuiButtonGroup-root,
   .MuiInputBase-root,
   .MuiTextField-root {
-    margin: 40px 0;
+    margin-top: 40px;
     width: 100%;
     max-width: 430px;
     button {
@@ -118,6 +115,9 @@ h3 {
       font-weight: 600;
     }
   }
+  @media screen and (max-width: 900px) {
+    max-width: 430px;
+  }
 }
 
 h2 {
@@ -126,11 +126,11 @@ h2 {
 
 footer {
   color: #808080;
-  width: 100%;
   font-size: 12px;
   text-align: center;
   position: fixed;
   bottom: 20px;
+  right: 5%;
 }
 
 a,
