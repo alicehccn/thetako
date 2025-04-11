@@ -37,8 +37,6 @@ h3 {
 }
 
 .App-header {
-  /* position: fixed; */
-  /* top: 0; */
   display: flex;
   justify-content: end;
   flex-direction: row;
@@ -81,28 +79,29 @@ h3 {
 .App-content {
   display: flex;
   flex-direction: column;
-  width: 90%;
-  margin: auto auto;
+  width: 100%;
+  margin: auto;
+  margin-right: 0;
   align-items: end;
-  height: 60vh;
+  height: 70vh;
 
   .skill-chart {
-    @media screen and (max-width: 940px) {
+    @media screen and (max-width: 600px) {
       display: none !important;
     }
     cursor: pointer;
   }
   .legend2 {
-    @media screen and (max-width: 940px) {
+    @media screen and (max-width: 600px) {
       display: none !important;
     }
-    margin-right: 0;
+    margin-right: 20px;
   }
 
   .MuiButtonGroup-root,
   .MuiInputBase-root,
   .MuiTextField-root {
-    margin-top: 40px;
+    margin: 40px;
     width: 100%;
     max-width: 430px;
     button {
@@ -116,9 +115,9 @@ h3 {
       font-size: 20px;
       font-weight: 600;
     }
-  }
-  @media screen and (max-width: 900px) {
-    max-width: 430px;
+    @media screen and (max-width: 600px) {
+      margin: auto;
+    }
   }
 }
 
