@@ -85,13 +85,13 @@ h3 {
   margin: 40px auto;
   align-items: end;
   .skill-chart {
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 840px) {
       display: none !important;
     }
     cursor: pointer;
   }
   .legend2 {
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 840px) {
       display: none !important;
     }
     margin-right: 0;
