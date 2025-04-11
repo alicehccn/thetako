@@ -56,7 +56,7 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
         ref={anchorRef}
         aria-label="button-group"
       >
-        <Button onClick={handleClick}>
+        <Button onClick={handleClick} fullWidth>
           {MENU_OPTIONS[selectedIndex].split("(")[0]}
         </Button>
         <Button
