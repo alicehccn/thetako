@@ -25,7 +25,6 @@ h1 {
 h2 {
   font-size: 22px;
   color: #808080;
-
 }
 h3 {
   font-size: 16px;
@@ -81,10 +80,10 @@ h3 {
 .App-content {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
   margin: auto;
   align-items: end;
-  min-height: 65vh;
+  min-height: 60vh;
 
   .skill-chart {
     @media screen and (max-width: 600px) {
@@ -96,13 +95,12 @@ h3 {
     @media screen and (max-width: 600px) {
       display: none !important;
     }
-    margin: 0 40px;
   }
 
   .MuiButtonGroup-root,
   .MuiInputBase-root,
   .MuiTextField-root {
-    margin: 40px;
+    margin: 40px 0;
     width: 430px;
     button {
       padding: 15px;
@@ -126,9 +124,8 @@ footer {
   font-size: 12px;
   text-align: center;
   position: fixed;
-  bottom: 0;
-  padding: 10px;
-  right: 30px;
+  bottom: 5px;
+  right: 40px;
 }
 
 a,
