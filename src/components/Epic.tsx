@@ -11,6 +11,8 @@ import {
 } from "../constant";
 import ReactModal from "react-modal";
 import { BasicTab } from "./mui/BasicTab";
+import { LngLat } from "mapbox-gl";
+import { Box } from "@mui/material";
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -21,12 +23,14 @@ type EpicReponse = {
   date: string;
   identifier: string;
   image: string;
+  centroid_coordinates: { lat: number; lon: number };
 };
 
 const MODAL_STYLES = {
   content: {
     maxWidth: "700px",
     height: "auto",
+    maxHeight: "96vh",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -102,7 +106,6 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     setColor(e.target.id);
     setAssetIndex(0);
   }
-
   return (
     <ReactModal
       isOpen={modalIsOpen}
@@ -113,11 +116,24 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     >
       <div className="epic">
         <BasicTab handleChange={onTabChange} value={color} />
+        <Box
+          display="flex"
+          justifyContent="space-evenly"
+          width="100%"
+          position="fixed"
+          padding="10px 0"
+          color="#808080"
+          fontSize={14}
+        >
+          <div>Latitude: {asset?.centroid_coordinates?.lat}</div>
+          <div>Longitude: {asset?.centroid_coordinates?.lon}</div>
+          <div>{asset?.date}</div>
+        </Box>
         <img src={composeEpicImageUrl(asset.image, asset.date, color)} />
         <small>
           Credits:{" "}
           <a target="_blank" href={EPIC_HOMEPAGE}>
-            DSCOVR: EPIC &copy; NASA, {formatDate(asset.date)}
+            DSCOVR: EPIC &copy; NASA
           </a>
         </small>
       </div>
