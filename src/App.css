@@ -10,6 +10,7 @@ body {
   backdrop-filter: blur(12px);
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 ol,
@@ -103,7 +104,7 @@ h3 {
     margin: 10px 0;
     width: 430px;
     button {
-      padding: 15px;
+      padding: 15px 0;
       border-color: #808080 !important;
       background-color: transparent !important;
       color: #808080 !important;
@@ -115,6 +116,7 @@ h3 {
     }
     @media screen and (max-width: 600px) {
       margin: auto;
+      width: 100%;
     }
   }
 }
