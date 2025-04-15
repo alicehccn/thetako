@@ -22,9 +22,9 @@ type ModalProps = {
 
 const MODAL_STYLES = {
   content: {
-    maxWidth: "800px",
+    maxWidth: "900px",
     height: "fit-content",
-    maxHeight: "96vh",
+    maxHeight: "90vh",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -91,7 +91,7 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         </div>
         <Accordion>
           <AccordionSummary aria-controls="panel1-content" id="panel1-header">
-            <h2>{asset?.title}</h2>
+            <h3>{asset?.title}</h3>
           </AccordionSummary>
           <AccordionDetails>
             {asset?.date && <p>{formatDate(asset.date)}</p>}

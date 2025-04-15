@@ -7,11 +7,9 @@ import {
   EPIC_INTERVAL,
   fetchEpicApi,
   formatApiDate,
-  formatDate,
 } from "../constant";
 import ReactModal from "react-modal";
 import { BasicTab } from "./mui/BasicTab";
-import { LngLat } from "mapbox-gl";
 import { Box } from "@mui/material";
 type ModalProps = {
   modalIsOpen: boolean;
@@ -30,7 +28,7 @@ const MODAL_STYLES = {
   content: {
     maxWidth: "700px",
     height: "auto",
-    maxHeight: "96vh",
+    maxHeight: "90vh",
     top: "50%",
     left: "50%",
     right: "auto",
