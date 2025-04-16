@@ -36,7 +36,7 @@ type ModalProps = {
 const MODAL_STYLES = {
   content: {
     width: "960px",
-    maxWidth: "100%",
+    maxWidth: "94%",
     maxHeight: "90vh",
     top: "50%",
     left: "50%",
@@ -91,20 +91,21 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       <div className="weather">
         <Accordion>
           <AccordionSummary aria-controls="panel1-content" id="panel1-header">
-            <Box
-              fontSize={20}
-              fontWeight={900}
-              margin="auto 10px"
-              color="#A2574F"
-            >
-              Current Alerts: {alerts.features.length}
+            <Box fontSize={20} fontWeight={900} margin="auto 0" color="#A2574F">
+              Total alerts: {alerts.features.length}
             </Box>
             {alertGroups.slice(0, 6).map((g) => (
-              <Box key={g.label} fontSize={22} fontWeight={800} margin="auto">
-                {WeatherEmoji(g.label)} &#160;
-                <small>
-                  {g.label}:&#160;&#160;{g.value.length}
-                </small>
+              <Box
+                key={g.label}
+                fontSize={20}
+                fontWeight={800}
+                margin="auto"
+                display="flex"
+                alignItems="end"
+              >
+                {WeatherEmoji(g.label)}&#160;
+                <small className="label">&#160;{g.label}&#160;</small>
+                <small>: {g.value.length}</small>
               </Box>
             ))}
           </AccordionSummary>
@@ -114,10 +115,10 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
               options={alertGroups}
               sx={{ width: "100%", margin: "auto" }}
               renderInput={(params) => (
-                <TextField {...params} label="Search Alert" />
+                <TextField {...params} label="Find alert" />
               )}
               getOptionLabel={(option) =>
-                `${WeatherEmoji(option.label)} ${option.label}: ${option.value.length}`
+                `${option.label}: ${option.value.length}`
               }
               onChange={(e, option, i, d) => {
                 setAlertGroup(option?.value);
@@ -142,13 +143,12 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
               setDarkMode(!darkMode);
             }}
           />
-          <div>
-            <small>
-              <a target="_blank" href="https://api.weather.gov/openapi.json">
-                Source: Weather.gov &copy; NOAA
-              </a>
-            </small>
-          </div>
+          <br />
+          <small>
+            <a target="_blank" href="https://api.weather.gov/openapi.json">
+              Source: Weather.gov &copy; NOAA
+            </a>
+          </small>
         </Box>
       </div>
     </ReactModal>
