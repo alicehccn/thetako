@@ -114,7 +114,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
               options={alertGroups}
               sx={{ width: "100%", margin: "auto" }}
               renderInput={(params) => (
-                <TextField {...params} label="Search Event" />
+                <TextField {...params} label="Search Alert" />
               )}
               getOptionLabel={(option) =>
                 `${WeatherEmoji(option.label)} ${option.label}: ${option.value.length}`
