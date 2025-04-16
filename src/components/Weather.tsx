@@ -5,6 +5,7 @@ import {
   fetchWeatherApi,
   formatDateTime,
   MAIN_LAYER,
+  WeatherEmoji,
 } from "../constant";
 import Switch from "@mui/material/Switch";
 import ReplayIcon from "@mui/icons-material/Replay";
@@ -98,9 +99,12 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             >
               Current Alerts: {alerts.features.length}
             </Box>
-            {alertGroups.slice(0, 3).map((g) => (
-              <Box key={g.label} fontSize={16} fontWeight={900} margin="auto">
-                {g.label}: {g.value.length}
+            {alertGroups.slice(0, 6).map((g) => (
+              <Box key={g.label} fontSize={22} fontWeight={800} margin="auto">
+                {WeatherEmoji(g.label)} &#160;
+                <small>
+                  {g.label}:&#160;&#160;{g.value.length}
+                </small>
               </Box>
             ))}
           </AccordionSummary>
@@ -110,10 +114,10 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
               options={alertGroups}
               sx={{ width: "100%", margin: "auto" }}
               renderInput={(params) => (
-                <TextField {...params} label="Active Events" />
+                <TextField {...params} label="Search Event" />
               )}
               getOptionLabel={(option) =>
-                `${option.label}: ${option.value.length}`
+                `${WeatherEmoji(option.label)} ${option.label}: ${option.value.length}`
               }
               onChange={(e, option, i, d) => {
                 setAlertGroup(option?.value);

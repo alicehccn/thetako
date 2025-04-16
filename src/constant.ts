@@ -166,3 +166,36 @@ export const CIRCLE_LAYER = (color: string): Layer => {
     },
   };
 };
+
+export const WeatherEmoji = (label: string) => {
+  const table: { [key: string]: string } = {
+    "Severe Thunderstorm Warning": "⚡️",
+    "Flood Warning": "🌊",
+    "Flood Advisory": "🌊",
+    "Fire Weather Watch": "🔥",
+    "Special Weather Statement": "☔️",
+    "Special Marine Warning": "⚓️",
+    "Blizzard Warning": "🌨️",
+    "High Wind Warning": "💨",
+    "Wind Advisory": "💨",
+    "Small Craft Advisory": "⚓️",
+    "Low Water Advisory": "🌵",
+    "Gale Warning": "🌀",
+    "Storm Warning": "⛈️",
+    "Lake Wind Advisory": "💨",
+    "Brisk Wind Advisory": "💨",
+    "Winter Weather Advisory": "☃️",
+    "Freeze Watch": "🥶",
+    "Hazardous Seas Warning": "🌊",
+    "Winter Storm Watch": "🌨️",
+    "Red Flag Warning": "🚩",
+    "High Wind Watch": "💨",
+    "Winter Storm Warning": "🌨️",
+    "Lakeshore Flood Advisory": "🌊",
+    "Air Quality Alert": "😶‍🌫️",
+    "Frost Advisory": "🥶",
+    "Flood Watch": "🌊",
+    "Rip Current Statement": "🌊",
+  };
+  return table[label];
+};
