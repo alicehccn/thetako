@@ -94,7 +94,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             <Box fontSize={20} fontWeight={900} margin="auto 0" color="#A2574F">
               Total alerts: {alerts.features.length}
             </Box>
-            {alertGroups.slice(0, 6).map((g) => (
+            {alertGroups.slice(0, 3).map((g) => (
               <Box
                 key={g.label}
                 fontSize={20}
@@ -104,8 +104,8 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
                 alignItems="end"
               >
                 {WeatherEmoji(g.label)}&#160;
-                <small className="label">&#160;{g.label}&#160;</small>
-                <small>: {g.value.length}</small>
+                <small className="label">&#160;{g.label}</small>
+                <small>:&#160;{g.value.length}</small>
               </Box>
             ))}
           </AccordionSummary>
