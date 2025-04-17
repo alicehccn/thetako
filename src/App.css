@@ -218,7 +218,7 @@ h3 {
   margin-top: 20px;
 
   small.label {
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 800px) {
       display: none !important;
     }
   }
@@ -297,7 +297,7 @@ h3 {
 .map-overlay {
   position: fixed;
   left: -5px;
-  bottom: 45px;
+  bottom: 65px;
   width: 400px;
   height: fit-content;
   padding: 10px;

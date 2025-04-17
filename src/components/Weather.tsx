@@ -2,9 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import ReactModal from "react-modal";
 import {
   CIRCLE_LAYER,
+  DEFAULT_MAP_CENTER,
+  DEFAULT_MAP_ZOOM,
   fetchWeatherApi,
   formatDateTime,
   MAIN_LAYER,
+  MAP_CIRCLE_COLOR,
   WeatherEmoji,
 } from "../constant";
 import Switch from "@mui/material/Switch";
@@ -104,8 +107,8 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
                 alignItems="end"
               >
                 {WeatherEmoji(g.label)}&#160;
-                <small className="label">&#160;{g.label}</small>
-                <small>:&#160;{g.value.length}</small>
+                <small className="label">&#160;{g.label}:</small>
+                <small>&#160;{g.value.length}</small>
               </Box>
             ))}
           </AccordionSummary>
@@ -174,8 +177,8 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode, alertGroup }) => {
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
     const map = (mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
-      center: [-99.04, 38.907],
-      zoom: 3.8,
+      center: DEFAULT_MAP_CENTER,
+      zoom: DEFAULT_MAP_ZOOM,
       style: `mapbox://styles/mapbox/${darkMode ? "dark" : "light"}-v11`,
       config: {
         basemap: {
@@ -198,7 +201,7 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode, alertGroup }) => {
             features: alertGroup,
           },
         });
-      alertGroup && map.addLayer(CIRCLE_LAYER("#0F52BA"));
+      alertGroup && map.addLayer(CIRCLE_LAYER(MAP_CIRCLE_COLOR));
 
       map.on("click", "alerts-heat", (e: any) => {
         setSelectedFeature(e.features[0]);
@@ -219,8 +222,8 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode, alertGroup }) => {
             <Button
               onClick={() => {
                 setSelectedFeature(null);
-                mapRef.current.setCenter([-99.04, 38.907]);
-                mapRef.current.setZoom(3.8);
+                mapRef.current.setCenter(DEFAULT_MAP_CENTER);
+                mapRef.current.setZoom(DEFAULT_MAP_ZOOM);
               }}
               endIcon={<CloseIcon />}
             />
