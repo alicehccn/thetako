@@ -33,7 +33,7 @@ export const MPieChart: React.FC = () => {
   }
 
   return (
-    <>
+    <div className="skill-chart-container">
       <PieChart
         series={[
           {
@@ -73,22 +73,22 @@ export const MPieChart: React.FC = () => {
         className="legend2"
         padding="10px"
       >
-        <Box display="inline" marginRight={1} bgcolor="#c6c0b9" color="#c6c0b9">
+        Frontend (Web, iOS, Android)
+        <Box display="inline" marginLeft={1} bgcolor="#c6c0b9" color="#c6c0b9">
           {"----"}
         </Box>
-        Frontend (Web, iOS, Android)
         <br />
+        Backend (Service, Database, DevOps)
         <Box
           display="inline"
-          marginRight={1}
+          marginLeft={1}
           bgcolor="#666666"
           color="#666666"
           width="20px"
         >
           {"----"}
         </Box>
-        Backend (Service, Database, DevOps)
       </Box>
-    </>
+    </div>
   );
 };

@@ -8,9 +8,6 @@ body {
   line-height: 1.2;
   color: #141414;
   backdrop-filter: blur(12px);
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
 }
 
 ol,
@@ -35,118 +32,123 @@ h3 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
+  justify-content: start;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-.App-header {
-  display: flex;
-  justify-content: end;
-  flex-direction: row;
-  width: 100%;
-  .social {
-    text-align: right;
+  .App-header {
     display: flex;
-    margin-top: 100px;
-    padding: 20px;
-    width: max-content;
-    img,
-    svg {
-      height: 25px;
-      width: 25px;
-      margin: -5px 20px;
+    justify-content: end;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    .social {
+      text-align: right;
+      display: flex;
+      margin-top: 100px;
+      padding: 20px;
+      width: max-content;
+      img,
+      svg {
+        height: 25px;
+        width: 25px;
+        margin: -5px 20px;
+      }
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
     }
 
-    @media screen and (max-width: 600px) {
-      display: none;
-    }
-  }
+    .logo {
+      padding: 40px 50px 20px;
+      text-align: right;
+      img {
+        width: 200px;
 
-  .logo {
-    padding: 40px 50px 20px;
-    text-align: right;
-    img {
-      width: 200px;
+        @media screen and (max-width: 600px) {
+          width: 100%;
+        }
+      }
 
       @media screen and (max-width: 600px) {
         width: 100%;
       }
     }
-
-    @media screen and (max-width: 600px) {
-      width: 100%;
-    }
-  }
-}
-
-.App-content {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  margin: auto;
-  align-items: end;
-  min-height: 60vh;
-
-  .skill-chart {
-    @media screen and (max-width: 600px) {
-      display: none !important;
-    }
-    cursor: pointer;
-  }
-  .legend2 {
-    @media screen and (max-width: 600px) {
-      display: none !important;
-    }
   }
 
-  .MuiButtonGroup-root,
-  .MuiInputBase-root,
-  .MuiTextField-root {
-    margin: 10px 0;
-    width: 430px;
-    button {
-      padding: 15px 0;
-      border-color: #808080 !important;
-      background-color: transparent !important;
-      color: #808080 !important;
-      &:first-child {
+  .App-content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    align-items: end;
+    justify-content: space-between;
+    .skill-chart-container {
+      .skill-chart {
+        @media screen and (max-width: 600px) {
+          display: none !important;
+        }
+        cursor: pointer;
+      }
+      .legend2 {
+        width: 99%;
+        text-align: right;
+        @media screen and (max-width: 600px) {
+          display: none !important;
+        }
+      }
+    }
+
+    .MuiButtonGroup-root,
+    .MuiInputBase-root,
+    .MuiTextField-root {
+      margin: 50px 0 10px;
+      width: 430px;
+      button {
+        padding: 15px;
+        border-color: #808080 !important;
+        background-color: transparent !important;
+        color: #808080 !important;
+        &:first-child {
+          width: 100%;
+        }
+        font-size: 20px;
+        font-weight: 600;
+      }
+      @media screen and (max-width: 600px) {
+        margin: auto;
         width: 100%;
       }
-      font-size: 20px;
-      font-weight: 600;
-    }
-    @media screen and (max-width: 600px) {
-      margin: auto;
-      width: 100%;
     }
   }
-}
 
-footer {
-  color: #808080;
-  font-size: 12px;
-  text-align: right;
-  position: fixed;
-  bottom: 5px;
-  width: 95%;
-  margin: 0 auto;
-}
+  footer {
+    color: #808080;
+    font-size: 12px;
+    text-align: right;
+    width: 90%;
+    margin: 0 auto;
+  }
 
-a,
-a:visited,
-a:hover {
-  text-decoration: none;
-  font-weight: normal;
-  color: #808080;
-}
+  a,
+  a:visited,
+  a:hover {
+    text-decoration: none;
+    font-weight: normal;
+    color: #808080;
+  }
 
-a:focus,
-a:hover {
-  text-decoration: underline;
-}
+  a:focus,
+  a:hover {
+    text-decoration: underline;
+  }
 
-a.collapse {
-  font-size: small;
-  color: #e0e0e0;
+  a.collapse {
+    font-size: small;
+    color: #e0e0e0;
+  }
 }
 
 .apod,
