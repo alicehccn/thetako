@@ -27,6 +27,23 @@ h2 {
 h3 {
   font-size: 16px;
 }
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+  font-weight: normal;
+  color: #808080;
+}
+
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
+
+a.collapse {
+  font-size: small;
+  color: #e0e0e0;
+}
 
 .App {
   height: 100%;
@@ -131,24 +148,6 @@ h3 {
     width: 90%;
     margin: 0 auto;
   }
-
-  a,
-  a:visited,
-  a:hover {
-    text-decoration: none;
-    font-weight: normal;
-    color: #808080;
-  }
-
-  a:focus,
-  a:hover {
-    text-decoration: underline;
-  }
-
-  a.collapse {
-    font-size: small;
-    color: #e0e0e0;
-  }
 }
 
 .apod,
@@ -164,7 +163,6 @@ h3 {
   }
   img {
     width: 100%;
-    height: auto;
     border: none;
     margin-bottom: 10px;
   }
