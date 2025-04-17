@@ -197,6 +197,9 @@ export const WeatherEmoji = (label: string) => {
     "Flood Watch": "🌊",
     "Rip Current Statement": "🌊",
     "Dust Advisory": "😶‍🌫️",
+    "Dust Storm Warning": "😶‍🌫️",
+    "Tornado Warning": "🌪️",
+    "Tornado Watch": "🌪️",
   };
   return table[label];
 };
