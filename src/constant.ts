@@ -173,7 +173,7 @@ export const WeatherEmoji = (label: string) => {
     "Flood Warning": "🌊",
     "Flood Advisory": "🌊",
     "Fire Weather Watch": "🔥",
-    "Special Weather Statement": "☔️",
+    "Special Weather Statement": "⛈️",
     "Special Marine Warning": "⚓️",
     "Blizzard Warning": "🌨️",
     "High Wind Warning": "💨",

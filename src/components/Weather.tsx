@@ -98,17 +98,10 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
               Total alerts: {alerts.features.length}
             </Box>
             {alertGroups.slice(0, 3).map((g) => (
-              <Box
-                key={g.label}
-                fontSize={20}
-                fontWeight={800}
-                margin="auto"
-                display="flex"
-                alignItems="end"
-              >
-                {WeatherEmoji(g.label)}&#160;
-                <small className="label">&#160;{g.label}:</small>
-                <small>&#160;{g.value.length}</small>
+              <Box key={g.label} fontSize={20} fontWeight={600} margin="auto">
+                <small className="label">{g.label}</small>
+                &#160;{WeatherEmoji(g.label)}&#160;
+                <small>{g.value.length}&#160;</small>
               </Box>
             ))}
           </AccordionSummary>
@@ -121,7 +114,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
                 <TextField {...params} label="Find alert" />
               )}
               getOptionLabel={(option) =>
-                `${option.label}: ${option.value.length}`
+                ` ${option.label} ${WeatherEmoji(option.label)} ${option.value.length}`
               }
               onChange={(e, option, i, d) => {
                 setAlertGroup(option?.value);

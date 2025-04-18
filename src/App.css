@@ -216,7 +216,7 @@ a.collapse {
   margin-top: 20px;
 
   small.label {
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 860px) {
       display: none !important;
     }
   }
