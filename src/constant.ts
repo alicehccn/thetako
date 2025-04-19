@@ -200,6 +200,8 @@ export const WeatherEmoji = (label: string) => {
     "Dust Storm Warning": "😶‍🌫️",
     "Tornado Warning": "🌪️",
     "Tornado Watch": "🌪️",
+    "Flash Flood Warning": "🌊",
+    "Marine Weather Statement": "⚓️",
   };
   return table[label];
 };

@@ -215,7 +215,7 @@ a.collapse {
 .weather {
   margin-top: 20px;
 
-  small.label {
+  .hightlight {
     @media screen and (max-width: 860px) {
       display: none !important;
     }
