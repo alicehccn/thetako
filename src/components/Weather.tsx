@@ -232,7 +232,10 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode, alertGroup }) => {
           <div
             className={`map-overlay-inner ${selectedFeature.properties.severity}`}
           >
-            <h3>{selectedFeature.properties.event}</h3>
+            <h3>
+              {WeatherEmoji(selectedFeature.properties.event)}
+              {selectedFeature.properties.event}
+            </h3>
             <div>
               <b>Affected area:</b>{" "}
               {selectedFeature.properties.areaDesc
