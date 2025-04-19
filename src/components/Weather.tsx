@@ -100,10 +100,12 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             {alertGroups.slice(0, 3).map((g) => (
               <Box
                 key={g.label}
-                fontSize={20}
+                fontSize={18}
                 fontWeight={600}
-                margin="auto"
+                margin="0 auto"
                 className="hightlight"
+                width="max-content"
+                lineHeight={1.2}
               >
                 {WeatherEmoji(g.label)}&#160;
                 <small>
@@ -121,8 +123,7 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
                 <TextField {...params} label="Find alert" />
               )}
               getOptionLabel={(option) =>
-                `${WeatherEmoji(option.label) ?? ""} 
-                ${option.label}: ${option.value.length}`
+                `${WeatherEmoji(option.label) ?? ""} ${option.label} - ${option.value.length}`
               }
               onChange={(e, option, i, d) => {
                 setAlertGroup(option?.value);
@@ -233,7 +234,7 @@ const Mapbox: React.FC<MapProps> = ({ data, darkMode, alertGroup }) => {
             className={`map-overlay-inner ${selectedFeature.properties.severity}`}
           >
             <h3>
-              {WeatherEmoji(selectedFeature.properties.event)}
+              {WeatherEmoji(selectedFeature.properties.event)}{" "}
               {selectedFeature.properties.event}
             </h3>
             <div>
