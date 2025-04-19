@@ -39,8 +39,8 @@ type ModalProps = {
 const MODAL_STYLES = {
   content: {
     width: "1080px",
-    maxWidth: "94%",
-    maxHeight: "90%",
+    maxWidth: "90%",
+    maxHeight: "85%",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -121,7 +121,8 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
                 <TextField {...params} label="Find alert" />
               )}
               getOptionLabel={(option) =>
-                `${WeatherEmoji(option.label) ?? ""} ${option.label}: ${option.value.length}`
+                `${WeatherEmoji(option.label) ?? ""} 
+                ${option.label}: ${option.value.length}`
               }
               onChange={(e, option, i, d) => {
                 setAlertGroup(option?.value);
