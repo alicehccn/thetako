@@ -284,3 +284,7 @@ a.collapse {
     width: auto;
   }
 }
+
+.expand {
+  margin: auto;
+}

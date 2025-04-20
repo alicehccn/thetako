@@ -26,7 +26,8 @@ type ModalProps = {
 
 const MODAL_STYLES = {
   content: {
-    maxWidth: "960px",
+    width: "960px",
+    maxWidth: "96%",
     height: "fit-content",
     maxHeight: "90vh",
     top: "50%",
@@ -72,7 +73,7 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         <Accordion>
           <AccordionSummary aria-controls="panel1-content" id="panel1-header">
             <h2>{asset?.title}</h2>
-            <ExpandMoreIcon width="30px" height="100%" />
+            <ExpandMoreIcon width="30px" height="100%" className="expand" />
           </AccordionSummary>
           <AccordionDetails>
             <p>{asset?.explanation}</p>
@@ -90,7 +91,7 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           <div>
             <small>
               <a target="_blank" href={APOD_HOMEPAGE}>
-                Credits: &copy;{asset?.copyright} NASA
+                Credits: &copy; {asset?.copyright} NASA
               </a>
             </small>
           </div>
