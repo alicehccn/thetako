@@ -3,6 +3,9 @@ import { fetchApodApi, APOD_HOMEPAGE, formatDate } from "../constant";
 import { Accordion, AccordionSummary } from "@mui/material";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { useEffect, useState } from "react";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 type AssetResponse = {
   date: string;
@@ -35,38 +38,25 @@ const MODAL_STYLES = {
 };
 
 export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
-  const [assets, setAssets] = useState<AssetResponse[]>();
   const [asset, setAsset] = useState<AssetResponse>();
+  const [value, setValue] = useState<Dayjs>(
+    dayjs(asset?.date) ?? dayjs(new Date()),
+  );
+
   let [assetIndex, setAssetIndex] = useState(1);
 
   useEffect(() => {
-    if (!assets) {
-      fetch(fetchApodApi(14))
-        .then((response) =>
-          response?.json().then((json) => {
-            setAssets(json);
-            setAsset(json[json.length - assetIndex]);
-            setAssetIndex(assetIndex);
-          }),
-        )
-        .catch((error) => console.error(error));
-    }
-  });
-
-  function goPrev() {
-    if (assetIndex < (assets?.length ?? 0)) {
-      assetIndex++;
-      setAssetIndex(assetIndex);
-      setAsset(assets?.[assets.length - assetIndex]);
-    }
-  }
-  function goNext() {
-    if (assetIndex > 1) {
-      assetIndex--;
-      setAssetIndex(assetIndex);
-      setAsset(assets?.[assets.length - assetIndex]);
-    }
-  }
+    // if (!asset) {
+    fetch(fetchApodApi(value.toDate()))
+      .then((response) =>
+        response?.json().then((json) => {
+          setAsset(json);
+          setAssetIndex(assetIndex);
+        }),
+      )
+      .catch((error) => console.error(error));
+    // }
+  }, [value]);
 
   if (!asset) {
     return;
@@ -81,20 +71,20 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       ariaHideApp={false}
     >
       <div className="apod">
-        <div className="apod-nav">
-          <div onClick={goPrev} className="prev">
-            {"<<"}
-          </div>
-          <div onClick={goNext} className="next">
-            {">>"}
-          </div>
-        </div>
         <Accordion>
           <AccordionSummary aria-controls="panel1-content" id="panel1-header">
-            <h3>{asset?.title}</h3>
+            <h2>{asset?.title}</h2>
           </AccordionSummary>
           <AccordionDetails>
-            {asset?.date && <p>{formatDate(asset.date)}</p>}
+            {asset?.date && (
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  label="Search date"
+                  value={value}
+                  onChange={(newValue) => setValue(dayjs(newValue))}
+                />
+              </LocalizationProvider>
+            )}
             <br />
             {asset?.explanation}
             <br />
