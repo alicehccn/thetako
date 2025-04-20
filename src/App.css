@@ -171,7 +171,7 @@ a.collapse {
   video,
   embed {
     width: 100%;
-    height: auto;
+    min-height: 500px;
     border: none;
   }
 
