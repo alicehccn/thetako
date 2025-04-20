@@ -1,11 +1,12 @@
 import ReactModal from "react-modal";
 import { fetchApodApi, APOD_HOMEPAGE, formatDate } from "../constant";
-import { Accordion, AccordionSummary } from "@mui/material";
+import { Accordion, AccordionSummary, Box } from "@mui/material";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { useEffect, useState } from "react";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 type AssetResponse = {
   date: string;
@@ -38,15 +39,13 @@ const MODAL_STYLES = {
 };
 
 export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
+  const today = new Date();
   const [asset, setAsset] = useState<AssetResponse>();
-  const [value, setValue] = useState<Dayjs>(
-    dayjs(asset?.date) ?? dayjs(new Date()),
-  );
+  const [value, setValue] = useState<Dayjs>(dayjs(asset?.date) ?? dayjs(today));
 
   let [assetIndex, setAssetIndex] = useState(1);
 
   useEffect(() => {
-    // if (!asset) {
     fetch(fetchApodApi(value.toDate()))
       .then((response) =>
         response?.json().then((json) => {
@@ -55,7 +54,6 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         }),
       )
       .catch((error) => console.error(error));
-    // }
   }, [value]);
 
   if (!asset) {
@@ -74,31 +72,13 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         <Accordion>
           <AccordionSummary aria-controls="panel1-content" id="panel1-header">
             <h2>{asset?.title}</h2>
+            <ExpandMoreIcon width="30px" height="100%" />
           </AccordionSummary>
           <AccordionDetails>
-            {asset?.date && (
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker
-                  label="Search date"
-                  value={value}
-                  onChange={(newValue) => setValue(dayjs(newValue))}
-                />
-              </LocalizationProvider>
-            )}
-            <br />
-            {asset?.explanation}
-            <br />
-            <br />
-            <p>
-              <small>
-                Credits: &copy;{asset?.copyright}
-                <a target="_blank" href={APOD_HOMEPAGE}>
-                  NASA
-                </a>
-              </small>
-            </p>
+            <p>{asset?.explanation}</p>
           </AccordionDetails>
         </Accordion>
+
         {asset?.media_type === "image" && <img src={asset?.url} />}
         {asset?.media_type === "html" && (
           <embed type="text/html" src={asset?.url} />
@@ -106,6 +86,26 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         {asset?.media_type === "video" && (
           <iframe src={asset?.url + "?autoplay=1"} />
         )}
+        <Box width="100%" display="flex" justifyContent="space-between">
+          <div>
+            <small>
+              <a target="_blank" href={APOD_HOMEPAGE}>
+                Credits: &copy;{asset?.copyright} NASA
+              </a>
+            </small>
+          </div>
+          {asset?.date && (
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                label="Search date"
+                value={value}
+                onChange={(newValue) => setValue(dayjs(newValue))}
+                className="date-picker"
+                maxDate={dayjs(today)}
+              />
+            </LocalizationProvider>
+          )}
+        </Box>
       </div>
     </ReactModal>
   );
