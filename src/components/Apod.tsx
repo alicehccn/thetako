@@ -87,14 +87,12 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         {asset?.media_type === "video" && (
           <iframe src={asset?.url + "?autoplay=1"} />
         )}
-        <Box width="100%" display="flex" justifyContent="space-between">
-          <div>
-            <small>
-              <a target="_blank" href={APOD_HOMEPAGE}>
-                Credits: &copy; {asset?.copyright} NASA
-              </a>
-            </small>
-          </div>
+        <Box width="100%" display="flex" justifyContent="space-around">
+          <small>
+            <a target="_blank" href={APOD_HOMEPAGE}>
+              Credits &copy; {asset?.copyright ?? "NASA"}
+            </a>
+          </small>
           {asset?.date && (
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
