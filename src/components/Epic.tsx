@@ -119,7 +119,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           justifyContent="space-evenly"
           width="100%"
           position="fixed"
-          bottom="10px"
+          bottom="0"
           padding="10px 0"
           color="#808080"
           fontSize={14}
@@ -129,12 +129,6 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           <div>{asset?.date}</div>
         </Box>
         <img src={composeEpicImageUrl(asset.image, asset.date, color)} />
-        <small>
-          Credits:{" "}
-          <a target="_blank" href={EPIC_HOMEPAGE}>
-            DSCOVR: EPIC &copy; NASA
-          </a>
-        </small>
       </div>
     </ReactModal>
   );
