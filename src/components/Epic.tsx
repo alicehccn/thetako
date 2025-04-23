@@ -119,6 +119,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           justifyContent="space-evenly"
           width="100%"
           position="fixed"
+          bottom="10px"
           padding="10px 0"
           color="#808080"
           fontSize={14}
