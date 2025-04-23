@@ -3,7 +3,6 @@ import "../App.css";
 import {
   composeEpicImageUrl,
   EPIC_COLOR,
-  EPIC_HOMEPAGE,
   EPIC_INTERVAL,
   fetchEpicApi,
   formatApiDate,
@@ -26,9 +25,9 @@ type EpicReponse = {
 
 const MODAL_STYLES = {
   content: {
-    maxWidth: "700px",
+    maxWidth: "800px",
     height: "auto",
-    maxHeight: "90vh",
+    maxHeight: "100%",
     top: "50%",
     left: "50%",
     right: "auto",

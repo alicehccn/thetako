@@ -165,7 +165,7 @@ a.collapse {
     border: none;
     margin-bottom: 10px;
     max-height: 80vh;
-    max-width: 100vw;
+    max-width: 100%;
   }
 
   iframe,
@@ -189,6 +189,11 @@ a.collapse {
     a {
       font-size: 0.9em;
     }
+  }
+}
+.apod {
+  img {
+    max-width: 100vw;
   }
 }
 

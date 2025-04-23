@@ -27,9 +27,9 @@ type ModalProps = {
 const MODAL_STYLES = {
   content: {
     width: "min-content",
-    maxWidth: "96%",
+    maxWidth: "100%",
     height: "fit-content",
-    maxHeight: "96%",
+    maxHeight: "100%",
     top: "50%",
     left: "50%",
     right: "auto",

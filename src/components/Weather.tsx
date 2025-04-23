@@ -41,7 +41,7 @@ const MODAL_STYLES = {
     width: "960px",
     maxWidth: "95%",
     height: "auto",
-    maxHeight: "90%",
+    maxHeight: "95%",
     top: "50%",
     left: "50%",
     right: "auto",
