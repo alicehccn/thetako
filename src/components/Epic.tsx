@@ -123,8 +123,8 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           color="#808080"
           fontSize={14}
         >
-          <div>Latitude: {asset?.centroid_coordinates?.lat}</div>
-          <div>Longitude: {asset?.centroid_coordinates?.lon}</div>
+          <div>Lat: {asset?.centroid_coordinates?.lat}</div>
+          <div>Lng: {asset?.centroid_coordinates?.lon}</div>
           <div>{asset?.date}</div>
         </Box>
         <img src={composeEpicImageUrl(asset.image, asset.date, color)} />
