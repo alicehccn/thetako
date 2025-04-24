@@ -38,7 +38,7 @@ type ModalProps = {
 
 const MODAL_STYLES = {
   content: {
-    width: "960px",
+    width: "1080px",
     maxWidth: "95%",
     height: "auto",
     maxHeight: "95%",
@@ -141,7 +141,11 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
           >
             <ReplayIcon />
           </IconButton>
-          <small>Last updated: {formatDateTime(alerts.updated)} </small>
+          <small>
+            <a target="_blank" href="https://api.weather.gov/openapi.json">
+              Last updated: {formatDateTime(alerts.updated)}
+            </a>
+          </small>
           <Switch
             {...label}
             checkedIcon={<DarkModeIcon />}
@@ -150,11 +154,6 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
             }}
           />
           <br />
-          <small>
-            <a target="_blank" href="https://api.weather.gov/openapi.json">
-              Source: Weather.gov &copy; NOAA
-            </a>
-          </small>
         </Box>
       </div>
     </ReactModal>

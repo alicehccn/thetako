@@ -90,7 +90,7 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
         <Box width="100%" display="flex" justifyContent="space-around">
           <small>
             <a target="_blank" href={APOD_HOMEPAGE}>
-              Credits &copy; {asset?.copyright ?? "NASA"}
+              &copy; {asset?.copyright ?? "NASA"}
             </a>
           </small>
           {asset?.date && (

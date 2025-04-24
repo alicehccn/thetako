@@ -284,7 +284,7 @@ a.collapse {
 .map-overlay {
   position: fixed;
   left: -5px;
-  bottom: 65px;
+  bottom: 45px;
   width: 400px;
   height: fit-content;
   padding: 10px;

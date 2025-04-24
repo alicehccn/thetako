@@ -113,20 +113,22 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     >
       <div className="epic">
         <BasicTab handleChange={onTabChange} value={color} />
-        <Box
-          display="flex"
-          justifyContent="space-evenly"
-          width="100%"
-          position="fixed"
-          bottom="0"
-          padding="10px 0"
-          color="#808080"
-          fontSize={14}
-        >
-          <div>Lat: {asset?.centroid_coordinates?.lat}</div>
-          <div>Lng: {asset?.centroid_coordinates?.lon}</div>
-          <div>{asset?.date}</div>
-        </Box>
+        <a target="_blank" href="https://epic.gsfc.nasa.gov">
+          <Box
+            display="flex"
+            justifyContent="space-evenly"
+            width="100%"
+            position="fixed"
+            bottom="0"
+            padding="10px 0"
+            color="#808080"
+            fontSize={14}
+          >
+            <div>Lat: {asset?.centroid_coordinates?.lat}</div>
+            <div>Lng: {asset?.centroid_coordinates?.lon}</div>
+            <div>{asset?.date}</div>
+          </Box>
+        </a>
         <img src={composeEpicImageUrl(asset.image, asset.date, color)} />
       </div>
     </ReactModal>
