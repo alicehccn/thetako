@@ -107,7 +107,6 @@ a.collapse {
         @media screen and (max-width: 600px) {
           display: none !important;
         }
-        cursor: pointer;
       }
       .legend2 {
         width: 99%;
