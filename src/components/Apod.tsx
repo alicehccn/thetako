@@ -1,5 +1,5 @@
 import ReactModal from "react-modal";
-import { fetchApodApi, APOD_HOMEPAGE, formatDate } from "../constant";
+import { fetchApodApi, APOD_HOMEPAGE, BASE_MODAL_STYLE } from "../constant";
 import { Accordion, AccordionSummary, Box } from "@mui/material";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { useEffect, useState } from "react";
@@ -22,21 +22,6 @@ type AssetResponse = {
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
-};
-
-const MODAL_STYLES = {
-  content: {
-    width: "min-content",
-    maxWidth: "100%",
-    height: "fit-content",
-    maxHeight: "100%",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
 };
 
 export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
@@ -65,7 +50,15 @@ export const APOD: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     <ReactModal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      style={MODAL_STYLES}
+      style={{
+        content: {
+          ...BASE_MODAL_STYLE,
+          width: "min-content",
+          maxWidth: "100%",
+          height: "fit-content",
+          maxHeight: "100%",
+        },
+      }}
       contentLabel="APOD Modal"
       ariaHideApp={false}
     >

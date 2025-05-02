@@ -1,6 +1,7 @@
 import { BaseSyntheticEvent, useEffect, useRef, useState } from "react";
 import "../App.css";
 import {
+  BASE_MODAL_STYLE,
   composeEpicImageUrl,
   EPIC_COLOR,
   EPIC_INTERVAL,
@@ -21,20 +22,6 @@ type EpicReponse = {
   identifier: string;
   image: string;
   centroid_coordinates: { lat: number; lon: number };
-};
-
-const MODAL_STYLES = {
-  content: {
-    maxWidth: "800px",
-    height: "auto",
-    maxHeight: "100%",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
 };
 
 export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
@@ -107,7 +94,14 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     <ReactModal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      style={MODAL_STYLES}
+      style={{
+        content: {
+          ...BASE_MODAL_STYLE,
+          maxWidth: "800px",
+          height: "auto",
+          maxHeight: "100%",
+        },
+      }}
       contentLabel="EPIC Modal"
       ariaHideApp={false}
     >

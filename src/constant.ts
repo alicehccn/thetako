@@ -211,3 +211,12 @@ export const DEFAULT_MAP_CENTER: LngLatLike = [-98.04, 38.907];
 export const DEFAULT_MAP_ZOOM: number = 3.7;
 
 export const MAP_CIRCLE_COLOR = "#0F52BA";
+
+export const BASE_MODAL_STYLE = {
+  top: "50%",
+  left: "50%",
+  right: "auto",
+  bottom: "auto",
+  marginRight: "-50%",
+  transform: "translate(-50%, -50%)",
+};

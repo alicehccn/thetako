@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import ReactModal from "react-modal";
 import {
+  BASE_MODAL_STYLE,
   CIRCLE_LAYER,
   DEFAULT_MAP_CENTER,
   DEFAULT_MAP_ZOOM,
@@ -34,21 +35,6 @@ import {
 type ModalProps = {
   modalIsOpen: boolean;
   closeModal: () => void;
-};
-
-const MODAL_STYLES = {
-  content: {
-    width: "940px",
-    maxWidth: "95%",
-    height: "auto",
-    maxHeight: "95%",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
 };
 
 type AlertGroup = {
@@ -88,7 +74,15 @@ export const Weather: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
     <ReactModal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      style={MODAL_STYLES}
+      style={{
+        content: {
+          ...BASE_MODAL_STYLE,
+          width: "940px",
+          maxWidth: "95%",
+          height: "auto",
+          maxHeight: "95%",
+        },
+      }}
       contentLabel="Weather Modal"
       ariaHideApp={false}
     >
