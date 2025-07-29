@@ -5,6 +5,7 @@ import { Weather } from "./Weather";
 import { Epic } from "./Epic";
 import { useState } from "react";
 import { MPieChart } from "./mui/MPieChart";
+import { Wiki } from "./Wiki";
 
 const Content: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -41,6 +42,10 @@ const Content: React.FC = () => {
         />
         <Weather
           modalIsOpen={selectedIndex === 3}
+          closeModal={() => setSelectedIndex(0)}
+        />
+        <Wiki
+          modalIsOpen={selectedIndex === 4}
           closeModal={() => setSelectedIndex(0)}
         />
         <MPieChart />

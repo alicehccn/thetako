@@ -1,26 +1,23 @@
 import { format, subDays } from "date-fns";
-import { Dayjs } from "dayjs";
 import { Layer, LngLatLike } from "mapbox-gl";
 
 export const APOD_HOMEPAGE = "https://apod.nasa.gov/apod/astropix.html";
 
 export const EPIC_HOMEPAGE = "https://epic.gsfc.nasa.gov/";
 
-export const formatDate = (date: Date | string) =>
-  format(new Date(date), "MMMM dd, yyyy");
-
 export const formatDateTime = (date: Date | string) =>
   format(new Date(date), "MMMM dd, yyyy, h:mmaaa");
 
-export const formatApiDate = (date: Date) => format(date, "yyyy-MM-dd");
-
 export const fetchApodApi = (date: Date) =>
-  `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_OPEN_API}&date=${formatApiDate(date)}`;
+  `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_OPEN_API}&date=${format(date, "yyyy-MM-dd")}`;
 
 export const fetchWeatherApi = () => `https://api.weather.gov/alerts/active`;
 
-export const fetchEpicApi = (date: string, color: string) =>
-  `https://epic.gsfc.nasa.gov/api/${color}?date=${date}`;
+export const fetchWikiApi = () =>
+  `https://api.wikimedia.org/feed/v1/wikipedia/en/featured/${format(new Date(), "yyyy/MM/dd")}`;
+
+export const fetchEpicApi = (color: string) =>
+  `https://epic.gsfc.nasa.gov/api/${color}?date=${format(new Date(), "yyyy/MM/dd")}`;
 
 export const composeEpicImageUrl = (
   filename: string,
@@ -34,6 +31,7 @@ export const MENU_OPTIONS = [
   "APOD (Astronomy Picture of the Day)",
   "EPIC (Earth Polychromatic Imaging Camera)",
   "NOAA (National Oceanic & Atmosphere Adminstration)",
+  "On This Day (Wikimedia)",
 ];
 
 export const EPIC_INTERVAL = 3600;

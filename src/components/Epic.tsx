@@ -6,7 +6,6 @@ import {
   EPIC_COLOR,
   EPIC_INTERVAL,
   fetchEpicApi,
-  formatApiDate,
 } from "../constant";
 import ReactModal from "react-modal";
 import { BasicTab } from "./mui/BasicTab";
@@ -38,7 +37,7 @@ export const Epic: React.FC<ModalProps> = ({ modalIsOpen, closeModal }) => {
       setAssetIndex(0);
       return;
     } else {
-      fetch(fetchEpicApi(formatApiDate(new Date()), color))
+      fetch(fetchEpicApi(color))
         .then((response) =>
           response?.json().then((json) => {
             setAssets(json);
